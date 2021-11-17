@@ -1,4 +1,6 @@
+
 export default function Main() {
+
     return (
         <div>
             <main id="main">
@@ -31,7 +33,7 @@ export default function Main() {
                 </section>
 
 
-                <section id="clients" className="clients">
+                {/* <section id="clients" className="clients">
                     <div className="container" data-aos="zoom-in">
 
                         <div className="clients-slider swiper">
@@ -49,40 +51,9 @@ export default function Main() {
                         </div>
 
                     </div>
-                </section>
+                </section> */}
 
 
-                <section id="features" className="features">
-                    <div className="container" data-aos="fade-up">
-
-                        <div className="row">
-                            <div className="image col-lg-6" style={{ backgroundImage: 'url(assets/img/data-center.jpg)' }} data-aos="fade-right"></div>
-                            <div className="col-lg-6" data-aos="fade-left" data-aos-delay="100">
-                                <div className="icon-box mt-5 mt-lg-0" data-aos="zoom-in" data-aos-delay="150">
-                                    <i className="bx bx-receipt"></i>
-                                    <h4>Est labore ad</h4>
-                                    <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
-                                </div>
-                                <div className="icon-box mt-5" data-aos="zoom-in" data-aos-delay="150">
-                                    <i className="bx bx-cube-alt"></i>
-                                    <h4>Harum esse qui</h4>
-                                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
-                                </div>
-                                <div className="icon-box mt-5" data-aos="zoom-in" data-aos-delay="150">
-                                    <i className="bx bx-images"></i>
-                                    <h4>Aut occaecati</h4>
-                                    <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
-                                </div>
-                                <div className="icon-box mt-5" data-aos="zoom-in" data-aos-delay="150">
-                                    <i className="bx bx-shield"></i>
-                                    <h4>Beatae veritatis</h4>
-                                    <p>Expedita veritatis consequuntur nihil tempore laudantium vitae denat pacta</p>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </section>
 
 
                 <section id="services" className="services">
@@ -96,28 +67,30 @@ export default function Main() {
                         <div className="row">
                             <div className="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
                                 <div className="icon-box">
-                                    <div className="icon"><i className="bx bxl-dribbble"></i></div>
-                                    <h4><a href="">Lorem Ipsum</a></h4>
-                                    <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+                                    <div className="icon"><i class='bx bx-store'></i></div>
+                                    <h4><a href="">Marketplace</a></h4>
+                                    <p>Buy or sell new and used items easily on PC Store Marketplace, locally or from businesses. Find great deals on new items shipped from stores to your door.</p>
                                 </div>
                             </div>
 
                             <div className="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
                                 <div className="icon-box">
-                                    <div className="icon"><i className="bx bx-file"></i></div>
-                                    <h4><a href="">Sed ut perspiciatis</a></h4>
-                                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
+                                    <div className="icon"><i class='bx bx-cloud' ></i></div>
+                                    <h4><a href="">Cloud services</a></h4>
+                                    <p>
+                                        Whether you're looking for compute power, database storage, content delivery, or other functionality, We have the services to help you build sophisticated applications with increased flexibility, scalability and reliability
+                                    </p>
                                 </div>
                             </div>
 
                             <div className="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="300">
                                 <div className="icon-box">
-                                    <div className="icon"><i className="bx bx-tachometer"></i></div>
-                                    <h4><a href="">Magni Dolores</a></h4>
-                                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
+                                    <div className="icon"><i class='bx bx-chip' ></i></div>
+                                    <h4><a href="">Computer & Laptop Repair</a></h4>
+                                    <p>Troubleshooting home and business computers, laptops, networks, internet, viruses, operating systems, all hardware and software. </p>
                                 </div>
                             </div>
-
+                            {/* 
                             <div className="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="100">
                                 <div className="icon-box">
                                     <div className="icon"><i className="bx bx-world"></i></div>
@@ -140,8 +113,44 @@ export default function Main() {
                                     <h4><a href="">Divera don</a></h4>
                                     <p>Modi nostrum vel laborum. Porro fugit error sit minus sapiente sit aspernatur</p>
                                 </div>
-                            </div>
+                            </div> */}
 
+                        </div>
+
+                    </div>
+                </section>
+
+                
+                <section id="features" className="features">
+                    <div className="container" data-aos="fade-up">
+                        <div className="section-title">
+                            <h2>Cloud </h2>
+                            <p>Check our Cloud Services</p>
+                        </div>
+                        <div className="row">
+                            <div className="image col-lg-6" style={{ backgroundImage: 'url(assets/img/data-center.jpg)' }} data-aos="fade-right"></div>
+                            <div className="col-lg-6" data-aos="fade-left" data-aos-delay="100">
+                                <div className="icon-box mt-5 mt-lg-0" data-aos="zoom-in" data-aos-delay="150">
+                                    <i className="bx bx-receipt"></i>
+                                    <h4>Advertising & Marketing</h4>
+                                    <p>Unmatched cloud capabilities and partner opportunities to help customers reinvent first-party data platforms, data sharing, advertising platforms, advertising intelligence, and customer experience in the post-identifier era</p>
+                                </div>
+                                <div className="icon-box mt-5" data-aos="zoom-in" data-aos-delay="150">
+                                    <i className="bx bx-cube-alt"></i>
+                                    <h4>Game Tech</h4>
+                                    <p>We have everything you need to build faster, run smarter, and grow your games—find out why 90% of the world’s biggest public game companies are using PC STORE</p>
+                                </div>
+                                <div className="icon-box mt-5" data-aos="zoom-in" data-aos-delay="150">
+                                    <i className="bx bx-images"></i>
+                                    <h4>Media & Entertainment</h4>
+                                    <p>The most purpose-built capabilities of any cloud to help customers transform content production, media supply chain, broadcast, direct-to-consumer & streaming, and analytics</p>
+                                </div>
+                                <div className="icon-box mt-5" data-aos="zoom-in" data-aos-delay="150">
+                                    <i className="bx bx-shield"></i>
+                                    <h4>Security and Identity</h4>
+                                    <p>Securely manage access to services and resources</p>
+                                </div>
+                            </div>
                         </div>
 
                     </div>
@@ -153,8 +162,10 @@ export default function Main() {
 
                         <div className="text-center">
                             <h3>Get Started</h3>
-                            <p> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                            <a className="cta-btn" href="#">Get Started</a>
+                            <p> Explore our biggest and trusted marketplace.Find solution for your business.Satisfy your needs.</p>
+                          
+                            <a className="cta-btn" href="#">Sign Up</a>
+                            
                         </div>
 
                     </div>
@@ -321,16 +332,18 @@ export default function Main() {
                             <div className="image col-xl-5 d-flex align-items-stretch justify-content-center justify-content-lg-start" data-aos="fade-right" data-aos-delay="100"></div>
                             <div className="col-xl-7 ps-0 ps-lg-5 pe-lg-1 d-flex align-items-stretch" data-aos="fade-left" data-aos-delay="100">
                                 <div className="content d-flex flex-column justify-content-center">
-                                    <h3>Voluptatem dignissimos provident quasi</h3>
+                                    <h3>Computer Service & Laptop Repair</h3>
                                     <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
+                                        Troubleshooting home and business computers, laptops, networks, internet, viruses, operating systems, all hardware and software.
+
+                                        We fix problems with home and business computers, laptops, servers, networks and Internet access. Perform quality service and troubleshoot hardware and software problems with any computer. Remove malware (viruses, Trojans, worms, etc.), information security, network security, creating data backup.
                                     </p>
                                     <div className="row">
                                         <div className="col-md-6 d-md-flex align-items-md-stretch">
                                             <div className="count-box">
                                                 <i className="bi bi-emoji-smile"></i>
                                                 <span data-purecounter-start="0" data-purecounter-end="65" data-purecounter-duration="2" className="purecounter"></span>
-                                                <p><strong>Happy Clients</strong> consequuntur voluptas nostrum aliquid ipsam architecto ut.</p>
+                                                <p><strong>Happy Clients</strong>   loyalty and happiness have a tendency to spread. </p>
                                             </div>
                                         </div>
 
@@ -338,7 +351,7 @@ export default function Main() {
                                             <div className="count-box">
                                                 <i className="bi bi-journal-richtext"></i>
                                                 <span data-purecounter-start="0" data-purecounter-end="85" data-purecounter-duration="2" className="purecounter"></span>
-                                                <p><strong>Projects</strong> adipisci atque cum quia aspernatur totam laudantium et quia dere tan</p>
+                                                <p><strong>Fast</strong> delivery and warranty by our happy employees.</p>
                                             </div>
                                         </div>
 
@@ -346,7 +359,7 @@ export default function Main() {
                                             <div className="count-box">
                                                 <i className="bi bi-clock"></i>
                                                 <span data-purecounter-start="0" data-purecounter-end="35" data-purecounter-duration="4" className="purecounter"></span>
-                                                <p><strong>Years of experience</strong> aut commodi quaerat modi aliquam nam ducimus aut voluptate non vel</p>
+                                                <p><strong>Years of experience</strong> in digital marketing satisfying clients. </p>
                                             </div>
                                         </div>
 
@@ -354,7 +367,7 @@ export default function Main() {
                                             <div className="count-box">
                                                 <i className="bi bi-award"></i>
                                                 <span data-purecounter-start="0" data-purecounter-end="20" data-purecounter-duration="4" className="purecounter"></span>
-                                                <p><strong>Awards</strong> rerum asperiores dolor alias quo reprehenderit eum et nemo pad der</p>
+                                                <p><strong>Awards</strong> and nominations for the fast growing and trusted digital marketplace.</p>
                                             </div>
                                         </div>
                                     </div>
@@ -379,7 +392,7 @@ export default function Main() {
                                         <h4>Ceo &amp; Founder</h4>
                                         <p>
                                             <i className="bx bxs-quote-alt-left quote-icon-left"></i>
-                                            I’m responsible for this company. I stand behind the results. I know the details, and I think the CEO has to be the moral leader of the company, … I think high standards are good, but let’s not anybody be confused, it’s about performance with integrity. That’s what you have to do. 
+                                            I’m responsible for this company. I stand behind the results. I know the details, and I think the CEO has to be the moral leader of the company, … I think high standards are good, but let’s not anybody be confused, it’s about performance with integrity. That’s what you have to do.
                                             <i className="bx bxs-quote-alt-right quote-icon-right"></i>
                                         </p>
                                     </div>
