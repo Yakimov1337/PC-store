@@ -77,27 +77,25 @@
   /**
    * Toggle .header-scrolled class to #header when page is scrolled
    */
-  let selectHeader = select('#header')
-  console.log(selectHeader);
-  if (selectHeader) {
     const headerScrolled = () => {
+      let selectHeader = select('#header')
+
       if (window.scrollY > 100) {
         selectHeader.classList.add('header-scrolled')
       } else {
         selectHeader.classList.remove('header-scrolled');
-        console.log('here');
       }
     }
     window.addEventListener('load', headerScrolled)
     onscroll(document, headerScrolled)
-  }
+
 
   /**
    * Back to top button
    */
-  let backtotop = select('.back-to-top')
-  if (backtotop) {
-    const toggleBacktotop = () => {
+  
+  const toggleBacktotop = () => {
+      let backtotop = select('.back-to-top')
       if (window.scrollY > 100) {
         backtotop.classList.add('active')
       } else {
@@ -106,7 +104,7 @@
     }
     window.addEventListener('load', toggleBacktotop)
     onscroll(document, toggleBacktotop)
-  }
+  
 
   /**
    * Mobile nav toggle
