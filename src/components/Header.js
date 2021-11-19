@@ -39,7 +39,7 @@ function Header() {
         </nav>
 
         <a href="#about" className="get-started-btn scrollto">Login</a>
-        <a href="#about" className="get-started-btn scrollto">Sign Up!</a>
+        <a href="#about" className="get-started-btn scrollto">Sign Up</a>
 
 
       </div>
