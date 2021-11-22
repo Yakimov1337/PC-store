@@ -11,7 +11,7 @@ function Header() {
 
         <nav id="navbar" className="navbar order-last order-lg-0">
           <ul>
-            <li><a className="nav-link scrollto active" href="#hero">Home</a></li>
+            <li><a className="nav-link scrollto active" href="/">Home</a></li>
             <li><a className="nav-link scrollto" href="#about">About</a></li>
             <li><a className="nav-link scrollto" href="#services">Services</a></li>
             <li><a className="nav-link scrollto " href="#portfolio">Portfolio</a></li>
@@ -38,8 +38,8 @@ function Header() {
           <i className="bi bi-list mobile-nav-toggle"></i>
         </nav>
 
-        <a href="#about" className="get-started-btn scrollto">Login</a>
-        <a href="#about" className="get-started-btn scrollto">Sign Up</a>
+        <a href="/login" className="get-started-btn scrollto">Get Started</a>
+        {/* <a href="#about" className="get-started-btn scrollto">Sign Up</a> */}
 
 
       </div>
