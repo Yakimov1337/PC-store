@@ -1,7 +1,30 @@
+import React, { useRef, useState } from 'react';
+import { useAuth } from '../../contexts/AuthContext';
+import {Link, useHistory} from 'react-router-dom';
 
 
 export default function Login() {
     require('./css/style.css');
+    const emailRef = useRef();
+    const passwordRef = useRef();
+    const { login} = useAuth();
+    const [error, setError] = useState('');
+    const [loading, setLoading] = useState(false);
+    const history = useHistory()
+
+    async function handleSubmit(e) {
+        e.preventDefault();
+        try {
+            setError('');
+            setLoading(true);
+            await login(emailRef.current.value, passwordRef.current.value);
+            history.push('/')
+
+        }catch{
+            setError('Failed to log in!');
+        }
+        setLoading(false);
+    }
 
 
     return (
@@ -39,17 +62,17 @@ export default function Login() {
                                             </p>
                                         </div>
                                     </div>
-                                    <form action="#"  className="signin-form">
+                                    <form action="#" onSubmit= {handleSubmit} className="signin-form">
                                         <div className="form-group mb-3">
                                             <label className="label" htmlFor="name">Username</label>
-                                            <input type="text"  className="form-control" placeholder="Email" required />
+                                            <input type="text" ref={emailRef} className="form-control" placeholder="Email" required />
                                         </div>
                                         <div className="form-group mb-3">
                                             <label className="label" htmlFor="password">Password</label>
-                                            <input type="password"  className="form-control" placeholder="Password" required />
+                                            <input type="password" ref={passwordRef} className="form-control" placeholder="Password" required />
                                         </div>
                                         <div className="form-group">
-                                            <button type="submit"  className="form-control btn btn-primary rounded submit px-3">Sign In</button>
+                                            <button type="submit" disabled={loading} className="form-control btn btn-primary rounded submit px-3">Sign In</button>
                                         </div>
                                         <div className="form-group d-md-flex">
                                             <div className="w-50 text-left">
@@ -59,11 +82,11 @@ export default function Login() {
                                                 </label>
                                             </div>
                                             <div className="w-50 text-md-right">
-                                                <a href="#">Forgot Password</a>
+                                               <Link to="/forgot-password">Forgot Password</Link>
                                             </div>
                                         </div>
                                     </form>
-                                    <p className="text-center">Not a member? <a data-toggle="tab" href="/register">Sign Up</a></p>
+                                    <p className="text-center">Not a member? <Link data-toggle="tab" to="/register">Sign Up</Link></p>
                                 </div>
                             </div>
                         </div>
