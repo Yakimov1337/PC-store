@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react';
+import {Link, useHistory} from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 
 export default function Register() {
@@ -10,6 +11,7 @@ export default function Register() {
     const { signup, currentUser } = useAuth();
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
+    const history = useHistory();
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -22,6 +24,7 @@ export default function Register() {
             setError('');
             setLoading(true);
             await signup(emailRef.current.value, passwordRef.current.value);
+            history.push('/');
 
         }catch{
             setError('Failed to create an account!');
@@ -54,7 +57,7 @@ export default function Register() {
                                     <input type="email" ref={emailRef} className="form-input" name="email" id="email" placeholder="Your Email" />
                                 </div>
                                 <div className="form-group">
-                                    <input type="text"  ref={passwordRef} className="form-input" name="password" id="password" placeholder="Password" />
+                                    <input type="password"  ref={passwordRef} className="form-input" name="password" id="password" placeholder="Password" />
                                     <span toggle="#password" className="zmdi zmdi-eye field-icon toggle-password" />
                                 </div>
                                 <div className="form-group">
@@ -65,7 +68,7 @@ export default function Register() {
                                     <label htmlFor="agree-term" className="label-agree-term"><span><span /></span>I agree all statements in  <a href="#" className="term-service">Terms of service</a></label>
                                 </div>
                                 <div className="form-group">
-                                    <input type="submit" name="submit" id="submit" className="form-submit" defaultValue="Sign up" />
+                                    <input type="submit" disabled={loading} name="submit" id="submit" className="form-submit" defaultValue="Sign up" />
                                 </div>
                             </form>
                             <p className="loginhere">
