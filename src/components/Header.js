@@ -1,6 +1,23 @@
-
+import React, {useState} from 'react';
+import {useAuth} from '../contexts/AuthContext.js';
+import { Link,useHistory } from 'react-router-dom';
 
 function Header() {
+  const[error,setError] = useState("");
+  const {currentUser, logout} = useAuth();
+  const history = useHistory();
+
+  async function handleLogOut() {
+    setError('');
+
+    try{
+      await logout();
+      history.push('/login');
+
+    }catch {
+      setError('Failed to log out!')
+    }
+  }
     return (
       <header id="header" className="fixed-top ">
       <div className="container d-flex align-items-center justify-content-lg-between">
