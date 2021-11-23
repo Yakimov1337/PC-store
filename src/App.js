@@ -5,6 +5,7 @@ import Login from './components/Login/Login.js';
 import Main from './components/Main';
 import Preloader from './components/Preloader';
 import Register from './components/Register/Register.js';
+import { AuthProvider } from './contexts/AuthContext.js';
 
 
 
@@ -13,6 +14,7 @@ import Register from './components/Register/Register.js';
 function App() {
   return (
     <div>
+      <AuthProvider>
       <Header />
       <Switch>
         <Route exact path='/' component={Main} />
@@ -21,6 +23,7 @@ function App() {
       </Switch>    
       <Footer />
       <Preloader />
+      </AuthProvider>
     </div>
   );
 }
