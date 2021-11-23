@@ -1,6 +1,8 @@
+
+
 export default function Login() {
     require('./css/style.css');
-   
+
 
     return (
         <div>
@@ -10,8 +12,8 @@ export default function Login() {
                 <input type="text" id="name" />
             </div>
             <p>Enter your HTML here</p> */}
-            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
-          
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+
             <section className="ftco-section">
                 <div className="container">
                     <div className="row justify-content-center">
@@ -32,22 +34,22 @@ export default function Login() {
                                         <div className="w-100">
                                             <p className="social-media d-flex justify-content-end">
                                                 <a href="#" className="social-icon d-flex align-items-center justify-content-center"><span className="fa fa-facebook" /></a>
-                                                
+
                                                 <a href="#" className="social-icon d-flex align-items-center justify-content-center"><span className="fa fa-twitter" /></a>
                                             </p>
                                         </div>
                                     </div>
-                                    <form action="#" className="signin-form">
+                                    <form action="#"  className="signin-form">
                                         <div className="form-group mb-3">
                                             <label className="label" htmlFor="name">Username</label>
-                                            <input type="text" className="form-control" placeholder="Username" required />
+                                            <input type="text"  className="form-control" placeholder="Email" required />
                                         </div>
                                         <div className="form-group mb-3">
                                             <label className="label" htmlFor="password">Password</label>
-                                            <input type="password" className="form-control" placeholder="Password" required />
+                                            <input type="password"  className="form-control" placeholder="Password" required />
                                         </div>
                                         <div className="form-group">
-                                            <button type="submit" className="form-control btn btn-primary rounded submit px-3">Sign In</button>
+                                            <button type="submit"  className="form-control btn btn-primary rounded submit px-3">Sign In</button>
                                         </div>
                                         <div className="form-group d-md-flex">
                                             <div className="w-50 text-left">
