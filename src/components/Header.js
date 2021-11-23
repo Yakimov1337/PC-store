@@ -5,7 +5,7 @@ function Header() {
       <header id="header" className="fixed-top ">
       <div className="container d-flex align-items-center justify-content-lg-between">
 
-        <h1 className="logo me-auto me-lg-0"><a href="index.html">Pc store<span>.</span></a></h1>
+        <h1 className="logo me-auto me-lg-0"><a href="/">Pc store<span>.</span></a></h1>
 
 
 

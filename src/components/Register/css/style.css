@@ -104,6 +104,10 @@ input[type=radio] {
   -o-appearance: radio !important;
   -ms-appearance: radio !important; }
 
+header {
+background-color: black;
+}
+
 img {
   max-width: 100%;
   height: auto; }
@@ -137,7 +141,8 @@ body {
   color: #222;
   font-weight: 400;
   font-family: 'Montserrat';
-  background-image: url("../images/77-772215_ryzen-5.png");
+  opacity: 0.8;
+  background-image: url("../images/output-onlinepngtools (1).png");
   background-repeat: no-repeat;
   background-size: cover;
   -moz-background-size: cover;
@@ -147,7 +152,7 @@ body {
   background-position: center center;
   padding: 115px 0; }
 
-.container {
+.container-reg {
   width: 660px;
   position: relative;
   margin: 0 auto; }

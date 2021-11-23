@@ -5,6 +5,7 @@ export default function Register() {
             <meta charSet="UTF-8" />
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
             <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
+        
             <title>Sign Up Form by Colorlib</title>
             {/* Font Icon */}
             <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css" />
@@ -13,7 +14,7 @@ export default function Register() {
             <div className="main">
                 <section className="signup">
                     {/* <img src="images/signup-bg.jpg" alt=""> */}
-                    <div className="container">
+                    <div className="container-reg">
                         <div className="signup-content">
                             <form method="POST" id="signup-form" className="signup-form">
                                 <h2 className="form-title">Create account</h2>
@@ -39,7 +40,7 @@ export default function Register() {
                                 </div>
                             </form>
                             <p className="loginhere">
-                                Have already an account ? <a href="#" className="loginhere-link">Login here</a>
+                                Have already an account ? <a href="/login" className="loginhere-link">Login here</a>
                             </p>
                         </div>
                     </div>
