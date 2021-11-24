@@ -23,8 +23,7 @@ function Header() {
   let button;
   let myProfile;
   if (currentUser) {
-    myProfile =    <li><a className="nav-link scrollto " href="#portfolio">{currentUser.email}</a></li>
-           
+    myProfile =    <li><a className="nav-link scrollto " href="/my-profile">{currentUser.email}</a></li>
     button= <Link to="/login" onClick={handleLogOut} className="get-started-btn scrollto">Log out</Link>
   }else{
     button= <Link to="/login" className="get-started-btn scrollto">Get Started</Link>
