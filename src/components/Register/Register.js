@@ -48,7 +48,7 @@ export default function Register() {
                     {/* <img src="images/signup-bg.jpg" alt=""> */}
                     <div className="container-reg">
                         <div className="signup-content">
-                            <form method="POST" onSubmit= {handleSubmit} id="signup-form" className="signup-form">
+                            <form method="POST" onSubmit= {handleSubmit} id="signup-form" className="signup-form form-auto">
                                 <h2 className="form-title">Create account</h2>
                                 {/* <div className="form-group">
                                     <input type="text" className="form-input" name="name" id="name" placeholder="Your Name" />
