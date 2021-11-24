@@ -4,6 +4,7 @@ import ForgotPassword from './components/ForgotPassword/ForgotPassword.js';
 import Header from './components/Header';
 import Login from './components/Login/Login.js';
 import Main from './components/Main';
+import MyProfile from './components/MyProfile/MyProfile.js';
 import Preloader from './components/Preloader';
 import PrivateRoute from './components/PrivateRoute.js';
 import Register from './components/Register/Register.js';
@@ -23,6 +24,7 @@ function App() {
         <Route path='/login' component={Login} />
         <Route path='/register' component={Register} />
         <Route path='/forgot-password' component={ForgotPassword} />
+        <Route path = '/my-profile' component={MyProfile}/>
       </Switch>    
       <Footer />
       <Preloader />
