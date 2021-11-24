@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {useAuth} from '../contexts/AuthContext.js';
 import { Link,useHistory } from 'react-router-dom';
+import { Navbar } from 'react-bootstrap';
 
 function Header() {
   const[error,setError] = useState("");
@@ -18,6 +19,19 @@ function Header() {
       setError('Failed to log out!')
     }
   }
+
+  let button;
+  let myProfile;
+  if (currentUser) {
+    myProfile =    <li><a className="nav-link scrollto " href="#portfolio">{currentUser.email}</a></li>
+           
+    button= <Link to="/login" onClick={handleLogOut} className="get-started-btn scrollto">Log out</Link>
+  }else{
+    button= <Link to="/login" className="get-started-btn scrollto">Get Started</Link>
+    myProfile =  <li><a className="nav-link scrollto " href="#portfolio">My Profile</a></li>
+  }
+
+
     return (
       <header id="header" className="fixed-top ">
       <div className="container d-flex align-items-center justify-content-lg-between">
@@ -31,8 +45,8 @@ function Header() {
             <li><a className="nav-link scrollto active" href="/">Home</a></li>
             <li><a className="nav-link scrollto" href="#about">About</a></li>
             <li><a className="nav-link scrollto" href="#services">Services</a></li>
-            <li><a className="nav-link scrollto " href="#portfolio">Portfolio</a></li>
             <li><a className="nav-link scrollto" href="#team">Team</a></li>
+            
             <li className="dropdown"><a href="#"><span>Drop Down</span> <i className="bi bi-chevron-down"></i></a>
               <ul>
                 <li><a href="#">Drop Down 1</a></li>
@@ -51,12 +65,16 @@ function Header() {
               </ul>
             </li>
             <li><a className="nav-link scrollto" href="#contact">Contact</a></li>
+           {myProfile}
+           
           </ul>
           <i className="bi bi-list mobile-nav-toggle"></i>
         </nav>
 
-        <a href="/login" className="get-started-btn scrollto">Get Started</a>
-        {/* <a href="#about" className="get-started-btn scrollto">Sign Up</a> */}
+        {button}
+      
+        
+
 
 
       </div>
