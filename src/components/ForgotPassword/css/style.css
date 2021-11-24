@@ -8,6 +8,21 @@ list-type-ulli {
   list-style-type: none;
   margin: 0;
   padding: 0; }
+  
+  @-webkit-keyframes fade {
+    from {opacity: 0}
+    to {opacity: 1;}
+  } 
+  
+  @keyframes fade {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
+  
+  .form-auto {
+    animation: wobble 0.5s;
+  
+  }
 
 /* Montserrat-300 - latin */
 @font-face {
@@ -134,15 +149,27 @@ h2 {
 
 .clear {
   clear: both; }
+    
+  @-webkit-keyframes fade {
+    from {opacity: 0}
+    to {opacity: 1;}
+  } 
+  
+  @keyframes fade {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
+  
+  .form-auto {
+    animation: wobble 0.5s;
+  
+  }
 
 body {
   font-size: 14px;
-  line-height: 1.8;
   color: #222;
   font-weight: 400;
-  font-family: 'Montserrat';
-  opacity: 0.8;
-  /* background-image: url("../images/output-onlinepngtools (1).png"); */
+  font-family: "Open Sans", sans-serif;
   background-repeat: no-repeat;
   background-size: cover;
   -moz-background-size: cover;
@@ -150,7 +177,7 @@ body {
   -o-background-size: cover;
   -ms-background-size: cover;
   background-position: center center;
-  padding: 115px 0; }
+  }
 
 .container-reg {
   width: 660px;
@@ -191,6 +218,12 @@ body {
   -o-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%); }
 
+.signup {
+  background-repeat: no-repeat;
+  background-position: center;
+  /* background-image: url("../images/77-772215_ryzen-5.png"); */
+}
+
 .signup-content {
   background: #fff;
   border-radius: 10px;
@@ -198,7 +231,10 @@ body {
   -webkit-border-radius: 10px;
   -o-border-radius: 10px;
   -ms-border-radius: 10px;
-  padding: 50px 85px; }
+  padding: 50px 85px; 
+  opacity: 0.8;
+  animation: wobble 0.5s;
+}
 
 .form-group {
   overflow: hidden;
