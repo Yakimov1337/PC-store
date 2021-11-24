@@ -4,11 +4,12 @@ import ForgotPassword from './components/ForgotPassword/ForgotPassword.js';
 import Header from './components/Header';
 import Login from './components/Login/Login.js';
 import Main from './components/Main';
+import Marketplace from './components/Marketplace/Marketplace.js';
 import MyProfile from './components/MyProfile/MyProfile.js';
 import Preloader from './components/Preloader';
-import PrivateRoute from './components/PrivateRoute.js';
 import Register from './components/Register/Register.js';
 import { AuthProvider } from './contexts/AuthContext.js';
+import PrivateRoute from './components/PrivateRoute.js';
 
 
 
@@ -25,6 +26,7 @@ function App() {
         <Route path='/register' component={Register} />
         <Route path='/forgot-password' component={ForgotPassword} />
         <Route path = '/my-profile' component={MyProfile}/>
+        <Route path = '/marketplace' component={Marketplace}/>
       </Switch>    
       <Footer />
       <Preloader />
