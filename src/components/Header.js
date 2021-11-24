@@ -27,7 +27,7 @@ function Header() {
     button= <Link to="/login" onClick={handleLogOut} className="get-started-btn scrollto">Log out</Link>
   }else{
     button= <Link to="/login" className="get-started-btn scrollto">Get Started</Link>
-    myProfile =  <li><a className="nav-link scrollto " href="#portfolio">My Profile</a></li>
+    myProfile=''
   }
 
 
@@ -46,21 +46,20 @@ function Header() {
             <li><a className="nav-link scrollto" href="#services">Services</a></li>
             <li><a className="nav-link scrollto" href="#team">Team</a></li>
             
-            <li className="dropdown"><a href="#"><span>Drop Down</span> <i className="bi bi-chevron-down"></i></a>
+            <li className="dropdown"><Link to="/marketplace"><span>Marketplace</span> <i className="bi bi-chevron-down"></i></Link>
               <ul>
-                <li><a href="#">Drop Down 1</a></li>
-                <li className="dropdown"><a href="#"><span>Deep Drop Down</span> <i className="bi bi-chevron-right"></i></a>
+                <li className="dropdown"><Link to="/marketplace"><span>Graphic cards</span> <i className="bi bi-chevron-right"></i></Link>
                   <ul>
-                    <li><a href="#">Deep Drop Down 1</a></li>
-                    <li><a href="#">Deep Drop Down 2</a></li>
-                    <li><a href="#">Deep Drop Down 3</a></li>
-                    <li><a href="#">Deep Drop Down 4</a></li>
-                    <li><a href="#">Deep Drop Down 5</a></li>
+                    <li><Link to="/marketplace">All GPUs</Link></li>
+                    <li><Link to="/marketplace">NVIDIA</Link></li>
+                    <li><Link to="/marketplace">AMD</Link></li>
+              
+                    
                   </ul>
                 </li>
-                <li><a href="#">Drop Down 2</a></li>
-                <li><a href="#">Drop Down 3</a></li>
-                <li><a href="#">Drop Down 4</a></li>
+                <li><Link to="/marketplace">Motherboards</Link></li>
+                <li><Link to="/marketplace">CPUs</Link></li>
+                <li><Link to="/marketplace">PSUs</Link></li>
               </ul>
             </li>
             <li><a className="nav-link scrollto" href="#contact">Contact</a></li>
