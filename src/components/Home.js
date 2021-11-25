@@ -52,7 +52,7 @@ export default function Main() {
                 </section>
             </div>
             <main id="main">
-             
+
 
 
                 {/* <section id="clients" className="clients">
@@ -443,13 +443,6 @@ export default function Main() {
 
                     </div>
                 </section>
-
-
-               
-
-
-               
-
             </main>
         </div>
     );
