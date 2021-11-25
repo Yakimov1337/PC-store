@@ -16,11 +16,10 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    margin-top: 10%;
-
+    
 }
 
-.card {
+.product-card {
     position: relative;
     width: 320px;
     height: 480px;
@@ -30,12 +29,13 @@ body {
     margin:auto;
     margin-left:1em;
     margin-right:1em;
-    margin-top:1em;
+    margin-top: 10%;
+   
     margin-bottom:1em;
    display:inline-block;
 }
 
-.card::before {
+.product-card::before {
     content: "";
     position: absolute;
     top: -50%;
@@ -46,12 +46,12 @@ body {
     transition: 0.5s;
 }
 
-.card:hover::before {
+.product-card:hover::before {
     top: -70%;
     transform: skewY(390deg);
 }
 
-.card::after {
+.product-card::after {
     content: "CORSAIR";
     position: absolute;
     bottom: 0;
@@ -61,7 +61,7 @@ body {
     color: rgba(0, 0, 0, 0.1);
 }
 
-.card .imgBox {
+.product-card .imgBox {
     position: relative;
     width: 100%;
     display: flex;
@@ -72,18 +72,18 @@ body {
 }
 
 /*
-.card .imgBox img {
+.product-card .imgBox img {
     max-width: 100%;
     
     transition: .5s;
 }
 
-.card:hover .imgBox img {
+.product-card:hover .imgBox img {
     max-width: 50%;
       
 }
 */
-.card .contentBox {
+.product-card .contentBox {
     position: relative;
     padding: 20px;
     display: flex;
@@ -93,7 +93,7 @@ body {
     z-index: 2;
 }
 
-.card .contentBox h3 {
+.product-card .contentBox h3 {
     font-size: 18px;
     color: white;
     font-weight: 500;
@@ -101,14 +101,14 @@ body {
     letter-spacing: 1px;
 }
 
-.card .contentBox .price {
+.product-card .contentBox .price {
     font-size: 24px;
     color: white;
     font-weight: 700;
     letter-spacing: 1px;
 }
 
-.card .contentBox .buy {
+.product-card .contentBox .buy {
     position: relative;
     top: 100px;
     opacity: 0;
@@ -123,7 +123,7 @@ body {
     transition: 0.5s;
 }
 
-.card:hover .contentBox .buy {
+.product-card:hover .contentBox .buy {
     top: 0;
     opacity: 1;
 }
