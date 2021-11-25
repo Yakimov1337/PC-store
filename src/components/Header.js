@@ -23,7 +23,7 @@ function Header() {
   let button;
   let myProfile;
   if (currentUser) {
-    myProfile =    <li><a className="nav-link scrollto " href="/my-profile">{currentUser.email}</a></li>
+    myProfile =    <li><Link className="nav-link scrollto " to="/my-profile">{currentUser.email}</Link></li>
     button= <Link to="/login" onClick={handleLogOut} className="get-started-btn scrollto">Log out</Link>
   }else{
     button= <Link to="/login" className="get-started-btn scrollto">Get Started</Link>
@@ -35,16 +35,15 @@ function Header() {
       <header id="header" className="fixed-top ">
       <div className="container d-flex align-items-center justify-content-lg-between">
 
-        <h1 className="logo me-auto me-lg-0"><a href="/">Pc store<span>.</span></a></h1>
+        <h1 className="logo me-auto me-lg-0"><Link to="/">Pc store<span>.</span></Link></h1>
 
 
 
         <nav id="navbar" className="navbar order-last order-lg-0">
           <ul>
-            <li><a className="nav-link scrollto active" href="/">Home</a></li>
-            <li><a className="nav-link scrollto" href="#about">About</a></li>
-            <li><a className="nav-link scrollto" href="#services">Services</a></li>
-            <li><a className="nav-link scrollto" href="#team">Team</a></li>
+            <li><Link className="nav-link scrollto active" to="/">Home</Link></li>
+            <li><Link className="nav-link scrollto" to="/about">About</Link></li>
+            <li><Link className="nav-link scrollto" to="/services">Services</Link></li>
             
             <li className="dropdown"><Link to="/marketplace"><span>Marketplace</span> <i className="bi bi-chevron-down"></i></Link>
               <ul>
@@ -62,7 +61,8 @@ function Header() {
                 <li><Link to="/marketplace">PSUs</Link></li>
               </ul>
             </li>
-            <li><a className="nav-link scrollto" href="#contact">Contact</a></li>
+            <li><Link className="nav-link scrollto" to="/team">Team</Link></li>
+            <li><Link className="nav-link scrollto" to="/contact-us">Contact</Link></li>
            {myProfile}
            
           </ul>
