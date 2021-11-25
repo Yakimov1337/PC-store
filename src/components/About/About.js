@@ -1,4 +1,5 @@
 export default function About() {
+    require('./style.css');
     return (
         <div>
                <section id="about" className="about">
