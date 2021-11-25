@@ -1,19 +1,19 @@
 import { Route, Switch, Redirect } from 'react-router-dom';
-import Footer from './components/Footer.js';
+import Footer from './components/Footer/Footer.js';
 import ForgotPassword from './components/ForgotPassword/ForgotPassword.js';
-import Header from './components/Header';
+import Header from './components/NavBar/NavBar';
 import Login from './components/Login/Login.js';
-import Home from './components/Home';
+import Home from './components/Home/Home';
 import Marketplace from './components/Marketplace/Marketplace.js';
 import MyProfile from './components/MyProfile/MyProfile.js';
-import Preloader from './components/Preloader';
+import Preloader from './components/Preloader/Preloader';
 import Register from './components/Register/Register.js';
 import { AuthProvider } from './contexts/AuthContext.js';
-import PrivateRoute from './components/PrivateRoute.js';
-import About from './components/About.js';
-import ContactUs from './components/ContactUs.js';
-import Services from './components/Services.js';
-import Team from './components/Team.js';
+import PrivateRoute from '../src/contexts/PrivateRoute.js';
+import About from './components/About/About.js';
+import ContactUs from './components/Contact-us/ContactUs.js';
+import Services from './components/Services-comp/Services.js';
+import Team from './components/Team/Team.js';
 
 
 
