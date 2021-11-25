@@ -31,7 +31,7 @@ export default function MyProfile() {
                                         <div className="row">
                                             <div className="col-sm-6">
                                                 <p className="m-b-10 f-w-600">Email</p>
-                                                <h6 className="text-muted f-w-400"></h6>
+                                                <h6 className="text-muted f-w-400">{currentUser.email}</h6>
                                             </div>
                                             <div className="col-sm-6">
                                                 <p className="m-b-10 f-w-600">Phone</p>
