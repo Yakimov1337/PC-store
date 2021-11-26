@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 export default function Main() {
-
+require('./style.css')
     return (
         <div>
             <div>
@@ -90,7 +90,7 @@ export default function Main() {
                             <div className="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
                                 <div className="icon-box">
                                     <div className="icon"><i class='bx bx-store'></i></div>
-                                    <h4><a href="">Marketplace</a></h4>
+                                    <h4><Link to="/marketplace">Marketplace</Link></h4>
                                     <p>PC Store Marketplace makes it simple to buy and sell new and used things locally or from businesses. Find great prices on new things delivered straight to your home from retailers.</p>
                                 </div>
                             </div>
@@ -98,7 +98,7 @@ export default function Main() {
                             <div className="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
                                 <div className="icon-box">
                                     <div className="icon"><i class='bx bx-cloud' ></i></div>
-                                    <h4><a href="">Cloud services</a></h4>
+                                    <h4><Link to="/services">Cloud services</Link></h4>
                                     <p>
                                         Whether you're looking for compute power, database storage, content delivery, or other functionality, We have the services to help you build sophisticated applications with increased flexibility, scalability and reliability
                                     </p>
@@ -108,7 +108,7 @@ export default function Main() {
                             <div className="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="300">
                                 <div className="icon-box">
                                     <div className="icon"><i class='bx bx-chip' ></i></div>
-                                    <h4><a href="">Computer & Laptop Repair</a></h4>
+                                    <h4><Link to="/services">Computer & Laptop Repair</Link></h4>
                                     <p>Troubleshooting home and business computers, laptops, networks, internet, viruses, operating systems, all hardware and software. </p>
                                 </div>
                             </div>

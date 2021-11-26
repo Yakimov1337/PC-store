@@ -1,18 +1,24 @@
-export default function Marketplace(){
+import { useEffect, useState } from "react";
+import ProductCard from "./ProductCard.js";
+import { getAll } from '../../services/productService.js';
+
+export default function Marketplace() {
     require('./style.css');
-    
-      return (
-  
-        <div className="product-card">
-          <div className="imgBox">
-            <img src="https://www.corsair.com/corsairmedia/sys_master/productcontent/CH-9300011-NA-M65_PRO_RGB_BLK_04.png" alt="mouse corsair" className="mouse" />
-          </div>
-          <div className="contentBox">
-            <h3>Mouse Corsair M65</h3>
-            <h2 className="price">61.<small>98</small> €</h2>
-            <a href="#" className="buy">Buy Now</a>
-          </div>
-          
-        </div>
-      ); 
-  }
+
+    let [products, setProduct] = useState([]);
+
+    useEffect(async ()=> {
+        let result = await getAll();
+        setProduct(result);
+    },[])
+
+    return (
+        <section id="catalog-page">
+            
+            {products.length > 0
+                ? products.map(product => <ProductCard key={product._id} product={product} />)
+                : <h3 className="no-articles">There are no available products right now!</h3>
+            }
+        </section>
+    );
+}
