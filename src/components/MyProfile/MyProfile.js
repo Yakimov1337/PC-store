@@ -1,14 +1,25 @@
 import { useAuth } from '../../contexts/AuthContext';
+import { getFirestore, collection, query, where, getDocs } from "@firebase/firestore";
+import { db } from '../../firebase'
+import { useEffect, useState } from 'react';
+
+
 
 export default function MyProfile() {
     require('./style.css');
-    let {currentUser} = useAuth();
+    let { currentUser } = useAuth();
 
-    if (currentUser) {
-        console.log('yes');
-    }else{
-        console.log('no');
-    }
+    const [user, setUser] = useState([]);
+    const [loading  , setLoading] = useState([]);
+    const userCollectionRef = collection(db, "users");
+
+    useEffect(() => {
+        const getUser = async () => {
+            const data = await getDocs(userCollectionRef);
+            setUser(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+        };
+        getUser();
+    }, []);
 
     return (
 
@@ -35,14 +46,16 @@ export default function MyProfile() {
                                             </div>
                                             <div className="col-sm-6">
                                                 <p className="m-b-10 f-w-600">Phone</p>
-                                                <h6 className="text-muted f-w-400">98979989898</h6>
+                                                {user.map((user) => {
+                                                    return <h6 className="text-muted f-w-400">{user.phoneNumber}</h6>
+                                                })}
                                             </div>
                                         </div>
                                         <h6 className="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Projects</h6>
                                         <div className="row">
                                             <div className="col-sm-6">
-                                                <p className="m-b-10 f-w-600">Recent</p>
-                                                <h6 className="text-muted f-w-400">Sam Disuja</h6>
+                                                <p className="m-b-10 f-w-600">Username</p>
+                                                <h6 className="text-muted f-w-400">{user.map((user) => { return user.username })}</h6>
                                             </div>
                                             <div className="col-sm-6">
                                                 <p className="m-b-10 f-w-600">Most Viewed</p>
