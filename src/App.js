@@ -14,6 +14,7 @@ import About from './components/About/About.js';
 import ContactUs from './components/Contact-us/ContactUs.js';
 import Services from './components/Services-comp/Services.js';
 import Team from './components/Team/Team.js';
+import Details from './components/Details/Details.js';
 
 
 
@@ -34,6 +35,7 @@ function App() {
           <Route path='/team' component={Team} />
           <Route path='/contact-us' component={ContactUs} />
           <Route path='/marketplace' component={Marketplace} />
+          <Route path='/details' component={Details} />
           <PrivateRoute path='/my-profile' component={MyProfile} />
         </Switch>
         <Footer />
