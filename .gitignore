@@ -28,3 +28,4 @@ src/firebase.js
 src/firebase.js
 env.local
 src/firebase.js
+.env
