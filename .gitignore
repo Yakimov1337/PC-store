@@ -26,3 +26,5 @@ yarn-error.log*
 src/firebase.js
 src/firebase.js
 src/firebase.js
+env.local
+src/firebase.js

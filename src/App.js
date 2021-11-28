@@ -15,7 +15,7 @@ import AddProduct from './components/AddProduct/Add.Product.js';
 import ContactUs from './components/Contact-us/ContactUs.js';
 import Services from './components/Services-comp/Services.js';
 import Team from './components/Team/Team.js';
-import Details from './components/Details/Details.js';
+import ProductDetails from './components/Details/ProductDetails.js';
 
 
 
@@ -36,7 +36,7 @@ function App() {
           <Route path='/team' component={Team} />
           <Route path='/contact-us' component={ContactUs} />
           <Route path='/marketplace' component={Marketplace} />
-          <Route path='/details' component={Details} />
+          <Route path='/product/productId' component={ProductDetails} />
           <Route path='/add-product' component={AddProduct} />
           <PrivateRoute path='/my-profile' component={MyProfile} />
         </Switch>
