@@ -4,6 +4,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { Navbar } from 'react-bootstrap';
 
 function Header() {
+  require('./style.css')
   const [error, setError] = useState("");
   const { currentUser, logout } = useAuth();
   const history = useHistory();
@@ -22,17 +23,21 @@ function Header() {
 
   let button;
   let myProfile;
+  let addProductBtn;
   if (currentUser) {
-    myProfile = <li><Link className="nav-link scrollto " to="/my-profile">{currentUser.email}</Link></li>
-    button = <Link to="/login" onClick={handleLogOut} className="get-started-btn scrollto">Log out</Link>
+    myProfile = <li><Link className="nav-link  " to="/my-profile">{currentUser.email}</Link></li>
+    addProductBtn = <li className="add-btn"><Link className="nav-link" to="/add-product"><span className="fa fa-cart-plus add-btn" />Add Product</Link></li>
+    button = <Link to="/login" onClick={handleLogOut} className="get-started-btn ">Log out</Link>
   } else {
-    button = <Link to="/login" className="get-started-btn scrollto">Get Started</Link>
+    button = <Link to="/login" className="get-started-btn ">Get Started</Link>
     myProfile = ''
+    addProductBtn = '';
   }
 
 
   return (
     <header id="header" className="fixed-top ">
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
       <div className="container d-flex align-items-center justify-content-lg-between">
 
         <h1 className="logo me-auto me-lg-0"><Link to="/">Pc store<span>.</span></Link></h1>
@@ -70,6 +75,7 @@ function Header() {
 
             <li><Link className="nav-link scrollto" to="/team">Team</Link></li>
             <li><Link className="nav-link scrollto" to="/contact-us">Contact</Link></li>
+            {addProductBtn}
             {myProfile}
 
           </ul>
