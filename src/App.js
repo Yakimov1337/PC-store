@@ -11,6 +11,7 @@ import Register from './components/Register/Register.js';
 import { AuthProvider } from './contexts/AuthContext.js';
 import PrivateRoute from '../src/contexts/PrivateRoute.js';
 import About from './components/About/About.js';
+import AddProduct from './components/AddProduct/Add.Product.js';
 import ContactUs from './components/Contact-us/ContactUs.js';
 import Services from './components/Services-comp/Services.js';
 import Team from './components/Team/Team.js';
@@ -36,6 +37,7 @@ function App() {
           <Route path='/contact-us' component={ContactUs} />
           <Route path='/marketplace' component={Marketplace} />
           <Route path='/details' component={Details} />
+          <Route path='/add-product' component={AddProduct} />
           <PrivateRoute path='/my-profile' component={MyProfile} />
         </Switch>
         <Footer />
