@@ -1,29 +1,40 @@
 import { useState, useEffect } from "react";
-import { doc, getDoc, collection, where } from "firebase/firestore";
+import { doc, getDocs, collection, where } from "firebase/firestore";
 import { db } from "../../firebase";
 
 
-export default function Details({ match }) {
+export default function ProductDetails({ match }) {
     require('./style.css');
     const [product, setProduct] = useState({});
     const [loading, setLoading] = useState(false);
 
-    console.log(match.params.id);
+    console.log(match.params.productId);
     useEffect(async () => {
-        const getProduct = async () => {
-            setLoading(true);
-            const data = await getDoc(collection(db, "products"));
-            setProduct(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-            // setProduct(data.docs.where(data.doc.id==match.params.id));
-        }
-        getProduct();
+        const items = [];
+        const querySnapshot = await getDocs(collection(db, "products"));
+
+        // const getProduct = async () => {
+        //     setLoading(true);
+        //     const data = await getDoc(collection(db, "products"));
+        //     setProduct(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+        //     // setProduct(data.docs.where(data.doc.id==match.params.id));
+        // }
+        // getProduct();
+
+        querySnapshot.forEach((doc) => {
+            let product = { id: doc.id, ...doc.data() };
+
+            if (doc.id==match.params.productId) {
+                items.push(product);
+            }
+        });
         setLoading(false);
     }, [])
 
-  
+
 
     return (
-        <div>
+        <div className="div-container">
             <div className="left-column">
                 <img data-image="black" src="images/black.png" alt="" />
                 <img data-image="blue" src="images/blue.png" alt="" />
