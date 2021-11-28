@@ -33,11 +33,11 @@ export default function Register() {
                                     <input type="text" className="form-input" name="name" id="name" placeholder="Your Name" />
                                 </div> */}
                                 <div className="form-group">
-                                    <label class="label" for="headline">Headline</label>
+                                    <label className="label" form="headline">Headline</label>
                                     <input type="headline" className="form-input" name="email" id="email" placeholder="Product headline" />
                                 </div>
                                 <div className="form-group">
-                                    <label class="label" for="name">Category</label>
+                                    <label className="label" form="name">Category</label>
                                     <select >
                                         <option value="Motherboard">Motherboard</option>
                                         <option value="GPU">GPU</option>
@@ -46,15 +46,15 @@ export default function Register() {
                                     </select>
                                 </div>
                                 <div className="form-group">
-                                    <label class="label" for="name">Image Url</label>
+                                    <label className="label" form="name">Image Url</label>
                                     <input type="imageUrl" className="form-input" name="imageUrl" id="imageUrl" placeholder="Image url" />
                                 </div>
                                 <div className="form-group">
-                                    <label class="label" for="name">Description</label>
+                                    <label className="label" form="name">Description</label>
                                     <input type="description" className="form-input" name="description" id="description" placeholder="Description" />
                                 </div>
                                 <div className="form-group">
-                                    <label class="label" for="price">Price</label>
+                                    <label className="label" form="price">Price</label>
                                     <input type="Price" className="form-input" name="price" id="price" placeholder="Price" />
                                 </div>
 
