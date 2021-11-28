@@ -322,10 +322,11 @@ body {
 
 .form-input:focus {
   border: 1px solid transparent;
-  -webkit-border-image-source: -webkit-linear-gradient(to right, #9face6, #74ebd5);
+  border: 1px solid #e3b04b;
+  /* -webkit-border-image-source: -webkit-linear-gradient(to right, #9face6, #74ebd5);
   -moz-border-image-source: -moz-linear-gradient(to right, #9face6, #74ebd5);
   -o-border-image-source: -o-linear-gradient(to right, #9face6, #74ebd5);
-  border-image-source: linear-gradient(to right, #9face6, #74ebd5);
+  border-image-source: linear-gradient(to right, #9face6, #74ebd5); */
   -webkit-border-image-slice: 1;
   border-image-slice: 1;
   border-radius: 5px;
