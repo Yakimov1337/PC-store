@@ -36,7 +36,7 @@ function App() {
           <Route path='/team' component={Team} />
           <Route path='/contact-us' component={ContactUs} />
           <Route path='/marketplace' component={Marketplace} />
-          <Route path='/product/productId' component={ProductDetails} />
+          <Route path='/product/:productId' component={ProductDetails} />
           <Route path='/add-product' component={AddProduct} />
           <PrivateRoute path='/my-profile' component={MyProfile} />
         </Switch>
