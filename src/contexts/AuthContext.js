@@ -10,40 +10,48 @@ export function useAuth() {
 export function AuthProvider({ children }) {
     const [currentUser, setCurrentUser] = useState();
     const [loading, setLoading] = useState();
+    const [userId, setUserId] = useState();
 
 
-    function signup(email, password){
-        return auth.createUserWithEmailAndPassword(email,password);
+    function signup(email, password) {
+        return auth.createUserWithEmailAndPassword(email, password);
     }
 
-    function login(email, password){
-        return auth.signInWithEmailAndPassword(email,password);
+    function login(email, password) {
+        return auth.signInWithEmailAndPassword(email, password);
     }
 
     function logout() {
         return auth.signOut();
     }
 
-    function resetPassword(email){
+    function resetPassword(email) {
         return auth.sendPasswordResetEmail(email);
     }
 
-    useEffect(()=> {
-        const unsubscribe = auth.onAuthStateChanged(user=> {
+    useEffect(() => {
+        const unsubscribe = auth.onAuthStateChanged(user => {
             setCurrentUser(user);
+            setUserId('none')
             setLoading(false);
         })
         return unsubscribe;
-    },[]);
+    }, []);
 
 
-    auth.onAuthStateChanged(user=> {
+    auth.onAuthStateChanged(user => {
         setCurrentUser(user);
+        try {
+            setUserId(user.uid)
+        } catch {
+            console.log('no user found');
+        }
     });
 
 
     const value = {
         currentUser,
+        userId,
         login,
         signup,
         logout,
@@ -51,7 +59,7 @@ export function AuthProvider({ children }) {
     }
     return (
         <AuthContext.Provider value={value}>
-            {!loading&&children}
+            {!loading && children}
         </AuthContext.Provider>
     )
 }
