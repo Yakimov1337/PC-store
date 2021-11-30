@@ -1,42 +1,53 @@
 import { useState, useEffect } from "react";
-import { doc, getDocs, collection, where } from "firebase/firestore";
+import { useAuth } from '../../contexts/AuthContext.js';
+import { doc, getDocs, collection,deleteDoc } from "firebase/firestore";
 import { db } from "../../firebase";
+import { Link } from "react-router-dom";
 
 
 export default function ProductDetails({ match }) {
     require('./style.css');
     const [product, setProduct] = useState({});
     const [loading, setLoading] = useState(false);
+    const { currentUser } = useAuth();
 
-    console.log(match.params.productId);
     useEffect(async () => {
-        const items = [];
+        setLoading(true);
         const querySnapshot = await getDocs(collection(db, "products"));
 
-        // const getProduct = async () => {
-        //     setLoading(true);
-        //     const data = await getDoc(collection(db, "products"));
-        //     setProduct(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-        //     // setProduct(data.docs.where(data.doc.id==match.params.id));
-        // }
-        // getProduct();
-
         querySnapshot.forEach((doc) => {
-            let product = { id: doc.id, ...doc.data() };
 
-            if (doc.id==match.params.productId) {
-                items.push(product);
+            let product = {
+                id: doc.id,
+                ...doc.data(),
+            };
+            if (match.params.productId === product.id) {
+                setProduct(product);
+                setLoading(false);
             }
         });
-        setLoading(false);
     }, [])
 
+    const deleteProduct = async (id) => {
+        const productDoc = doc(db, "products", id);
+        await deleteDoc(productDoc);
+    }
+    let userOptionsDiv = <div>
+        <span span > {product.price}</span>,
+        <a href="#" className="cart-btn">Add to cart</a>
+    </div>
 
-
+    if (currentUser) {
+        userOptionsDiv =
+            <div className="product-price">
+                <Link to={`/edit/${match.params.productId}`} product={product} className="cart-btn">Edit</Link>
+                <Link to="/marketplace" onClick={()=> {deleteProduct(product.id)}} className="cart-btn-delete">Delete</Link>
+            </div>;
+    }
     return (
-        <div className="div-container">
+        <div className="div-container-details">
             <div className="left-column">
-                <img data-image="black" src="images/black.png" alt="" />
+                <img className="game-img" src={product.imageUrl} />
                 <img data-image="blue" src="images/blue.png" alt="" />
                 <img data-image="red" className="active" src="images/red.png" alt="" />
             </div>
@@ -44,9 +55,9 @@ export default function ProductDetails({ match }) {
             <div className="right-column">
 
                 <div className="product-description">
-                    <span>Headphones</span>
-                    <h1>Beats EP</h1>
-                    <p>The preferred choice of a vast range of acclaimed DJs. Punchy, bass-focused sound and high isolation. Sturdy headband and on-ear cushions suitable for live performance</p>
+                    <span>{product.type}</span>
+                    <h1>{product.name}</h1>
+                    <p>{product.description}</p>
                 </div>
 
                 <div className="product-configuration">
@@ -70,19 +81,18 @@ export default function ProductDetails({ match }) {
                     </div>
 
                     <div className="cable-config">
-                        <span>Cable configuration</span>
+                        <span>Delivery options</span>
                         <div className="cable-choose">
-                            <button>Straight</button>
-                            <button>Coiled</button>
-                            <button>Long-coiled</button>
+                            <button>Express </button>
+                            <button>Normal</button>
+                            <button>Same day</button>
                         </div>
                         <a href="#">How to configurate your headphones</a>
                     </div>
                 </div>
 
                 <div className="product-price">
-                    <span>148$</span>
-                    <a href="#" className="cart-btn">Add to cart</a>
+                    {userOptionsDiv}
                 </div>
             </div>
         </div >
