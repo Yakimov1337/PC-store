@@ -32,7 +32,6 @@ export function AuthProvider({ children }) {
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(user => {
             setCurrentUser(user);
-            setUserId('none')
             setLoading(false);
         })
         return unsubscribe;
@@ -41,10 +40,13 @@ export function AuthProvider({ children }) {
 
     auth.onAuthStateChanged(user => {
         setCurrentUser(user);
-        try {
+        // try {
+        //     setUserId(user.uid)
+        // } catch {
+        //     console.log('no user found');
+        // }
+        if (user!== null) {
             setUserId(user.uid)
-        } catch {
-            console.log('no user found');
         }
     });
 
