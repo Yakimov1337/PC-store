@@ -10,8 +10,8 @@ export default function Product({
                 </div>
                 <div className="contentBox">
 
-                    <h3>{product.name}</h3>
-                    <h2 className="price">{product.price} €</h2>
+                    <h3>{product.headline}</h3>
+                    <h3 className="price">{product.price} €</h3>
                    <Link to={`/product/${product.id}`} className="buy">Details</Link>
                 </div>
             </div>
