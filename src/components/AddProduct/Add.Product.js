@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { db } from '../../firebase';
 import { useHistory } from 'react-router';
 import { addDoc, collection } from '@firebase/firestore';
+import { useAuth } from '../../contexts/AuthContext';
 
 
 export default function Register() {
@@ -13,10 +14,11 @@ export default function Register() {
     let [newPrice, setNewPrice] = useState(0);
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
+    const { currentUser,userId } = useAuth();
 
     const history = useHistory()
     const productsCollectionRef = collection(db, "products");
-
+console.log(userId);
     const createProduct = async () => {
         await addDoc(productsCollectionRef,
             {
@@ -24,7 +26,8 @@ export default function Register() {
                 type: newType,
                 description: newDesc,
                 imageUrl: newImageUrl,
-                price: Number(newPrice)
+                price: Number(newPrice),
+                author: userId
             })
     }
 
@@ -77,7 +80,7 @@ export default function Register() {
                                 </div>
                                 <div className="form-group">
                                     <label className="label" form="name">Category</label>
-                                    <select value= "{e.target.value}"  onSelect={(event) => {
+                                    <select   onSelect={(event) => {
                                         setNewType(event.target.value);
                                     }} >
                                         <option value="Motherboard">Motherboard</option>
