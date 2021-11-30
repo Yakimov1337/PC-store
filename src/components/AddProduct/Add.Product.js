@@ -1,13 +1,48 @@
-import React, { useRef, useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import React, { useState } from 'react';
+import { db } from '../../firebase';
+import { useHistory } from 'react-router';
+import { addDoc, collection } from '@firebase/firestore';
 
 
 export default function Register() {
     require('./css/style.css');
-
+    let [newHeadline, setNewHeadline] = useState("");
+    let [newType, setNewType] = useState("");
+    let [newDesc, setNewDesc] = useState("");
+    let [newImageUrl, setNewImageUrl] = useState("");
+    let [newPrice, setNewPrice] = useState(0);
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
-    const history = useHistory();
+
+    const history = useHistory()
+    const productsCollectionRef = collection(db, "products");
+
+    const createProduct = async () => {
+        await addDoc(productsCollectionRef,
+            {
+                headline: newHeadline,
+                type: newType,
+                description: newDesc,
+                imageUrl: newImageUrl,
+                price: Number(newPrice)
+            })
+    }
+
+
+
+    async function handleSubmit(e) {
+        e.preventDefault();
+        try {
+            setError('');
+            setLoading(true);
+
+            history.push('/marketplace')
+
+        } catch {
+            setError('Failed to create a product!');
+        }
+        setLoading(false);
+    }
 
 
 
@@ -17,7 +52,7 @@ export default function Register() {
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
             <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
 
-           
+
             {/* Font Icon */}
             <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css" />
             {/* Main css */}
@@ -27,18 +62,24 @@ export default function Register() {
                     {/* <img src="images/signup-bg.jpg" alt=""> */}
                     <div className="container-reg">
                         <div className="signup-content">
-                            <form method="POST" id="signup-form" className="signup-form form-auto">
+                            <form method="POST" onSubmit= {handleSubmit} id="signup-form" className="signup-form form-auto">
                                 <h2 className="form-title">Create offer</h2>
                                 {/* <div className="form-group">
                                     <input type="text" className="form-input" name="name" id="name" placeholder="Your Name" />
                                 </div> */}
                                 <div className="form-group">
                                     <label className="label" form="headline">Headline</label>
-                                    <input type="headline" className="form-input" name="email" id="email" placeholder="Product headline" />
+                                    <input type="headline" className="form-input" name="email" id="email" placeholder="Product headline"
+                                        onChange={(event) => {
+                                            setNewHeadline(event.target.value);
+                                        }}
+                                    />
                                 </div>
                                 <div className="form-group">
                                     <label className="label" form="name">Category</label>
-                                    <select >
+                                    <select value= "{e.target.value}"  onSelect={(event) => {
+                                        setNewType(event.target.value);
+                                    }} >
                                         <option value="Motherboard">Motherboard</option>
                                         <option value="GPU">GPU</option>
                                         <option value="CPU">CPU</option>
@@ -47,19 +88,31 @@ export default function Register() {
                                 </div>
                                 <div className="form-group">
                                     <label className="label" form="name">Image Url</label>
-                                    <input type="imageUrl" className="form-input" name="imageUrl" id="imageUrl" placeholder="Image url" />
+                                    <input type="imageUrl" className="form-input" name="imageUrl" id="imageUrl" placeholder="Image url"
+                                        onChange={(event) => {
+                                            setNewImageUrl(event.target.value);
+                                        }}
+                                    />
                                 </div>
                                 <div className="form-group">
-                                    <label className="label" form="name">Description</label>
-                                    <input type="description" className="form-input" name="description" id="description" placeholder="Description" />
+                                    <label className="label" form="name" >Description</label>
+                                    <input type="description" className="form-input" name="description" id="description" placeholder="Description"
+                                        onChange={(event) => {
+                                            setNewDesc(event.target.value);
+                                        }}
+                                    />
                                 </div>
                                 <div className="form-group">
                                     <label className="label" form="price">Price</label>
-                                    <input type="Price" className="form-input" name="price" id="price" placeholder="Price" />
+                                    <input type="Price" className="form-input" name="price" id="price" placeholder="Price"
+                                        onChange={(event) => {
+                                            setNewPrice(event.target.value);
+                                        }}
+                                    />
                                 </div>
 
                                 <div className="form-group">
-                                    <input type="submit" disabled={loading} name="AddProduct" id="submit" className="form-submit" defaultValue="Add product" />
+                                    <input type="submit" onClick={createProduct} name="AddProduct" className="form-submit" value="Add product" />
                                 </div>
                             </form>
                         </div>
