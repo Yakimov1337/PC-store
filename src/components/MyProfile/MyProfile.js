@@ -1,5 +1,5 @@
 import { useAuth } from '../../contexts/AuthContext';
-import { getFirestore, collection, query, where, getDocs } from "@firebase/firestore";
+import { collection, getDoc,doc } from "@firebase/firestore";
 import { db } from '../../firebase'
 import { useEffect, useState } from 'react';
 
@@ -7,18 +7,24 @@ import { useEffect, useState } from 'react';
 
 export default function MyProfile() {
     require('./style.css');
-    let { currentUser } = useAuth();
-
+    let { currentUser,userId } = useAuth();
     const [user, setUser] = useState([]);
-    const [loading  , setLoading] = useState([]);
-    const userCollectionRef = collection(db, "users");
+    const userCollectionRef = doc(db, "users",userId);
+   
 
-    useEffect(() => {
-        const getUser = async () => {
-            const data = await getDocs(userCollectionRef);
-            setUser(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-        };
-        getUser();
+    useEffect(async () => {
+        // const getUser = async () => {
+        //     const data = await getDocs(userCollectionRef);
+        //     setUser(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+        // };
+        // getUser();
+        console.log(userId);
+        const snap = await getDoc(userCollectionRef)
+        if (snap.exist()) {
+            setUser(snap.data());
+        }else{
+            console.log("User not found!");
+        }
     }, []);
 
     return (
@@ -46,9 +52,9 @@ export default function MyProfile() {
                                             </div>
                                             <div className="col-sm-6">
                                                 <p className="m-b-10 f-w-600">Phone</p>
-                                                {user.map((user) => {
+                                                
                                                     return <h6 className="text-muted f-w-400">{user.phoneNumber}</h6>
-                                                })}
+                                               
                                             </div>
                                         </div>
                                         <h6 className="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Projects</h6>
