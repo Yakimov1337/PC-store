@@ -1,3 +1,5 @@
+import { collection, addDoc } from '@firebase/firestore';
+import { db } from '../../firebase';
 import React, { useRef, useState } from 'react';
 import {Link, useHistory} from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
@@ -9,9 +11,23 @@ export default function Register() {
     const passwordRef = useRef();
     const passwordConfirmRef = useRef();
     const { signup, currentUser } = useAuth();
+    const history = useHistory();
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
-    const history = useHistory();
+    const [email, setEmail] = useState('');
+    const [username, setUsername] = useState('');
+
+
+
+    const userCollectionRef = collection(db,"users");
+    const createUser = async () => {
+        await addDoc(userCollectionRef,
+            {
+                email: email,
+                username: username,
+                products: [],
+            })
+    }
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -54,8 +70,20 @@ export default function Register() {
                                     <input type="text" className="form-input" name="name" id="name" placeholder="Your Name" />
                                 </div> */}
                                 <div className="form-group">
+                                <label className="label" form="username">Username</label>
+                                    <input type="username" className="form-input" name="username" id="username" placeholder="Username"
+                                     onChange={(event) => {
+                                            setUsername(event.target.value);
+                                        }}
+                                         />
+                                </div>
+                                <div className="form-group">
                                 <label className="label" form="email">Email</label>
-                                    <input type="email" ref={emailRef} className="form-input" name="email" id="email" placeholder="Your Email" />
+                                    <input type="email" ref={emailRef} className="form-input" name="email" id="email" placeholder="Your Email"
+                                     onChange={(event) => {
+                                        setEmail(event.target.value);
+                                    }}
+                                     />
                                 </div>
                                 <div className="form-group">
                                 <label className="label" form="password">Password</label>
@@ -71,7 +99,7 @@ export default function Register() {
                                     <label htmlFor="agree-term" className="label-agree-term"><span><span /></span>I agree all statements in  <a href="#" className="term-service">Terms of service</a></label>
                                 </div>
                                 <div className="form-group">
-                                    <input type="submit" disabled={loading} name="submit" id="submit" className="form-submit" defaultValue="Sign up" />
+                                    <input type="submit" disabled={loading} onClick={createUser} name="submit" id="submit" className="form-submit" value="Sign up" />
                                 </div>
                             </form>
                             <p className="loginhere">
