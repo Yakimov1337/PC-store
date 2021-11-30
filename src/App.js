@@ -12,6 +12,7 @@ import { AuthProvider } from './contexts/AuthContext.js';
 import PrivateRoute from '../src/contexts/PrivateRoute.js';
 import About from './components/About/About.js';
 import AddProduct from './components/AddProduct/Add.Product.js';
+import EditProduct from './components/Edit/EditProduct.js';
 import ContactUs from './components/Contact-us/ContactUs.js';
 import Services from './components/Services-comp/Services.js';
 import Team from './components/Team/Team.js';
@@ -38,6 +39,7 @@ function App() {
           <Route path='/marketplace' component={Marketplace} />
           <Route path='/product/:productId' component={ProductDetails} />
           <Route path='/add-product' component={AddProduct} />
+          <Route path='/edit/:productId' component={EditProduct} />
           <PrivateRoute path='/my-profile' component={MyProfile} />
         </Switch>
         <Footer />
