@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { useAuth } from '../../contexts/AuthContext.js';
-import { doc, getDocs, collection,deleteDoc } from "firebase/firestore";
+import { doc, getDocs, collection, deleteDoc, getDoc } from "firebase/firestore";
 import { db } from "../../firebase";
 import { Link } from "react-router-dom";
+
 
 
 export default function ProductDetails({ match }) {
@@ -13,35 +14,35 @@ export default function ProductDetails({ match }) {
 
     useEffect(async () => {
         setLoading(true);
-        const querySnapshot = await getDocs(collection(db, "products"));
-
-        querySnapshot.forEach((doc) => {
-
-            let product = {
-                id: doc.id,
-                ...doc.data(),
-            };
-            if (match.params.productId === product.id) {
-                setProduct(product);
-                setLoading(false);
-            }
-        });
+        const docRef = doc(db, "products", match.params.productId);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+            setProduct(docSnap.data())
+            setLoading(false);
+        } else {
+            console.log("No such document!");
+        }
     }, [])
+
+
+
 
     const deleteProduct = async (id) => {
         const productDoc = doc(db, "products", id);
         await deleteDoc(productDoc);
     }
     let userOptionsDiv = <div>
-        <span span > {product.price}</span>,
+        <span>{product.price}</span>
         <a href="#" className="cart-btn">Add to cart</a>
     </div>
-
+    console.log(userId);
+    console.log(product);
+    console.log(product.author);
     if (userId === product.author) {
         userOptionsDiv =
             <div className="product-price">
                 <Link to={`/edit/${match.params.productId}`} product={product} className="cart-btn">Edit</Link>
-                <Link to="/marketplace" onClick={()=> {deleteProduct(product.id)}} className="cart-btn-delete">Delete</Link>
+                <Link to="/marketplace" onClick={() => { deleteProduct(product.id) }} className="cart-btn-delete">Delete</Link>
             </div>;
     }
     return (
