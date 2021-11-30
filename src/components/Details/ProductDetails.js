@@ -9,7 +9,7 @@ export default function ProductDetails({ match }) {
     require('./style.css');
     const [product, setProduct] = useState({});
     const [loading, setLoading] = useState(false);
-    const { currentUser } = useAuth();
+    const { userId } = useAuth();
 
     useEffect(async () => {
         setLoading(true);
@@ -37,7 +37,7 @@ export default function ProductDetails({ match }) {
         <a href="#" className="cart-btn">Add to cart</a>
     </div>
 
-    if (currentUser) {
+    if (userId === product.author) {
         userOptionsDiv =
             <div className="product-price">
                 <Link to={`/edit/${match.params.productId}`} product={product} className="cart-btn">Edit</Link>
