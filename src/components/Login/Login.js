@@ -73,7 +73,7 @@ export default function Login() {
                                 </div>
 
                                 <div className="form-group">
-                                    <input type="submit" disabled={loading} name="submit" id="submit" className="form-submit" defaultValue="Sign up" />
+                                    <input type="submit" disabled={loading} name="submit" id="submit" className="form-submit" value="Sign in" />
                                 </div>
                                 <div className="form-group d-md-flex">
                                     <div className="w-50 text-left">
