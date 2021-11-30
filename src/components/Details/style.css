@@ -1,17 +1,17 @@
 /* Basic Styling */
-html, body {
+/* html, body {
     height: 100%;
     width: 100%;
     margin: 0;
     font-family: 'Roboto', sans-serif;
-}
+} */
 
-.div-container {
+.div-container-details {
     padding: 10%;
     display: flex;
 }
 
-.container {
+.container-details {
     max-width: 1200px;
     margin: 0 auto;
     padding: 15px;
@@ -26,17 +26,18 @@ html, body {
 
 .right-column {
     width: 35%;
-    margin-top: 60px;
+    /* margin-top: 60px; */
+    box-shadow: 0px 0 30px rgb(21 21 21 / 48%);
+    padding: 3%;
 }
 
 
 /* Left Column */
 .left-column img {
-    width: 100%;
     position: absolute;
     left: 0;
     top: 0;
-    opacity: 0;
+    opacity: 1;
     transition: all 0.3s ease;
 }
 
@@ -203,6 +204,19 @@ html, body {
     text-decoration: none;
     padding: 12px 30px;
     transition: all .5s;
+    margin-right: 10%;
+}
+
+.cart-btn-delete {
+    display: inline-block;
+    background-color: #FF416C;
+    border-radius: 6px;
+    font-size: 16px;
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 12px 30px;
+    transition: all .5s;
+    margin-right: 10%;
 }
 
 .cart-btn:hover {
