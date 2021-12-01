@@ -41,10 +41,12 @@ export default function Marketplace() {
 
     return (
         <section id="catalog-page">
+            <div className="container">
             {products.length > 0 && !loading
                 ? products.map(product => <ProductCard key={product.id} product={product} />)
                 : <h3 className="no-articles">There are no available products right now!</h3>
             }
+            </div>
         </section>
     );
 }

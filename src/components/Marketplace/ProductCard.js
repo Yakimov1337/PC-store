@@ -6,7 +6,7 @@ export default function Product({
     return (
             <div className="product-card">
                 <div className="imgBox">
-                    <img src="https://www.corsair.com/corsairmedia/sys_master/productcontent/CH-9300011-NA-M65_PRO_RGB_BLK_04.png" alt="mouse corsair" className="mouse" />
+                    <img src={product.imageUrl} alt="No Image" className="mouse" />
                 </div>
                 <div className="contentBox">
 

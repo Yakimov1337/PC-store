@@ -74,7 +74,7 @@ export default function EditProduct({ match }) {
                                 <h2 className="form-title">Create offer</h2>
                                 <div className="form-group">
                                     <label className="label" form="headline">Headline</label>
-                                    <input type="headline" className="form-input" name="email" id="email" value={currentProduct.headline}
+                                    <input type="headline" className="form-input" name="email" id="email" 
                                         onChange={(event) => {
                                             setNewHeadline(event.target.value);
                                         }}

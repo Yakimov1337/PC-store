@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useAuth } from '../../contexts/AuthContext.js';
-import { doc, getDocs, collection, deleteDoc, getDoc } from "firebase/firestore";
+import { doc, deleteDoc, getDoc } from "firebase/firestore";
 import { db } from "../../firebase";
 import { Link } from "react-router-dom";
 
@@ -35,9 +35,9 @@ export default function ProductDetails({ match }) {
         <span>{product.price}</span>
         <a href="#" className="cart-btn">Add to cart</a>
     </div>
-    console.log(userId);
-    console.log(product);
-    console.log(product.author);
+    // console.log(userId);
+    // console.log(product);
+    // console.log(product.author);
     if (userId === product.author) {
         userOptionsDiv =
             <div className="product-price">
@@ -57,7 +57,7 @@ export default function ProductDetails({ match }) {
 
                 <div className="product-description">
                     <span>{product.type}</span>
-                    <h1>{product.name}</h1>
+                    <h1>{product.headline}</h1>
                     <p>{product.description}</p>
                 </div>
 

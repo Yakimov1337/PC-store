@@ -14,11 +14,11 @@ export default function Register() {
     let [newPrice, setNewPrice] = useState(0);
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
-    const { currentUser,userId } = useAuth();
+    const { currentUser, userId } = useAuth();
 
     const history = useHistory()
     const productsCollectionRef = collection(db, "products");
-console.log(userId);
+    console.log(userId);
     const createProduct = async () => {
         await addDoc(productsCollectionRef,
             {
@@ -65,7 +65,7 @@ console.log(userId);
                     {/* <img src="images/signup-bg.jpg" alt=""> */}
                     <div className="container-reg">
                         <div className="signup-content">
-                            <form method="POST" onSubmit= {handleSubmit} id="signup-form" className="signup-form form-auto">
+                            <form method="POST" onSubmit={handleSubmit} id="signup-form" className="signup-form form-auto">
                                 <h2 className="form-title">Create offer</h2>
                                 {/* <div className="form-group">
                                     <input type="text" className="form-input" name="name" id="name" placeholder="Your Name" />
@@ -80,7 +80,7 @@ console.log(userId);
                                 </div>
                                 <div className="form-group">
                                     <label className="label" form="name">Category</label>
-                                    <select   onSelect={(event) => {
+                                    <select onSelect={(event) => {
                                         setNewType(event.target.value);
                                     }} >
                                         <option value="Motherboard">Motherboard</option>
