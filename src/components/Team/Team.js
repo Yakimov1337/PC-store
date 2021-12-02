@@ -1,5 +1,5 @@
 export default function Team() {
-    require('./style.css')
+    require('./team.style.css')
     return (
         <div>
                <section id="team" className="team">

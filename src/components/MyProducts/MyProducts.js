@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 
 export default function MyProducts() {
-    require('./style.css');
+    require('./myproducts.style.css');
 
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(false);

@@ -1,5 +1,5 @@
 export default function Services() {
-    require('./style.css')
+    require('./services.style.css')
     return (
         <div>
 

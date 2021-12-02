@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 
 
 export default function MyProfile() {
-    require('./style.css');
+    require('./myprofile.style.css');
     let { currentUser, userId } = useAuth();
     const [user, setUser] = useState('');
     const userCollectionRef = doc(db, "users", userId);

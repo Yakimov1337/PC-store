@@ -7,7 +7,9 @@ import { Link } from "react-router-dom";
 
 
 export default function ProductDetails({ match }) {
-    require('./style.css');
+    require('./productDetails.style.css');
+    
+
     const [product, setProduct] = useState({});
     const [loading, setLoading] = useState(false);
     const { userId } = useAuth();

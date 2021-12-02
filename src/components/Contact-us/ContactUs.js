@@ -1,5 +1,5 @@
 export default function ContactUs() {
-    require('./style.css')
+    require('./contactus.style.css')
     return (
         <div>
               <section id="contact" className="contact">

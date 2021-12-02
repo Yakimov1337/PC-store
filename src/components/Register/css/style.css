@@ -470,4 +470,9 @@ input[type=checkbox]:not(old):checked+label>span:before {
   }
 }
 
+section {
+  padding: 60px;
+  overflow: hidden;
+}
+
 /*# sourceMappingURL=style.css.map */

@@ -150,10 +150,6 @@ input[type=radio] {
   -ms-appearance: radio !important;
 }
 
-header {
-  background-color: black;
-}
-
 img {
   max-width: 100%;
   height: auto;
@@ -184,6 +180,11 @@ h2 {
 
 .clear {
   clear: both;
+}
+
+section {
+  padding: 60px;
+  overflow: hidden;
 }
 
 body {
@@ -484,7 +485,7 @@ input[type=checkbox]:not(old):checked+label>span:before {
 }
 
 .social-media .social-icon {
-  
+
   display: block;
   width: 40px;
   height: 40px;
@@ -506,5 +507,3 @@ input[type=checkbox]:not(old):checked+label>span:before {
 .social-media .social-icon:hover span, .social-media .social-icon:focus span {
   color: #fff;
 }
-
-

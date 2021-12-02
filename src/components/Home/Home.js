@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 export default function Main() {
-require('./style.css')
+require('./home.style.css')
     return (
         <div>
             <div>

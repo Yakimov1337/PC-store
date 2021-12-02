@@ -18,10 +18,8 @@ export default function Login() {
     async function handleSubmit(e) {
         e.preventDefault();
         try {
-            setError('');
             setLoading(true);
             await login(emailRef.current.value, passwordRef.current.value);
-            setMessage('Success')
             history.push('/')
             
         } catch {
@@ -60,10 +58,7 @@ export default function Login() {
                                 </div>
                                 <h2 className="form-title">Log In</h2>
                                 {error && <Alert variant="danger"> {error}</Alert>}
-                                {message && <Alert variant="success"> {message}</Alert>}
-                                {/* <div className="form-group">
-                                <input type="text" className="form-input" name="name" id="name" placeholder="Your Name" />
-                            </div> */}
+                                {/* {message && <Alert variant="success"> {message}</Alert>} */}
                                 <div className="form-group">
                                 <label className="label" form="email">Email</label>
                                     <input type="email" ref={emailRef} className="form-input" name="email" id="email" placeholder="Your Email" required />

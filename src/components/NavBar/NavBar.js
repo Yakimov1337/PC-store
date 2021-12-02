@@ -4,7 +4,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { Navbar } from 'react-bootstrap';
 
 function Header() {
-  require('./style.css')
+  require('./navbar.style.css')
   const [error, setError] = useState("");
   const { currentUser, logout } = useAuth();
   const history = useHistory();

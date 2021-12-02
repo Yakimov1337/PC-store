@@ -18,7 +18,7 @@ export default function Register() {
     const [loading, setLoading] = useState(false);
     const [email, setEmail] = useState('');
     const [username, setUsername] = useState('');
-    const [message, setMessage] = useState('');
+
 
 
 
@@ -38,6 +38,8 @@ export default function Register() {
         if (passwordRef.current.value !== passwordConfirmRef.current.value) {
             return setError('Password do not match!')
         }
+
+      
         
         try {
             setError('');
@@ -48,7 +50,6 @@ export default function Register() {
         }catch{
             setError('Failed to create an account!');
         }
-        console.log(error);
         createUser();
         setLoading(false);
     }
@@ -76,7 +77,6 @@ export default function Register() {
                                 </div> */}
                                 <div className="form-group">
                                 {error && <Alert variant="danger"> {error}</Alert>}
-                                {message && <Alert variant="success"> {message}</Alert>}
                                 <label className="label" form="username">Username</label>
                                     <input type="username" className="form-input" name="username" id="username" placeholder="Username"
                                     required

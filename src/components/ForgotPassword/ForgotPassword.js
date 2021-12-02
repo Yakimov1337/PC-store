@@ -17,6 +17,7 @@ export default function ForgotPassword() {
         e.preventDefault();
         try {
             setError('');
+            setMessage('');
             setLoading(true);
             await resetPassword(emailRef.current.value);
             setMessage('Check your inbox for further instructions!')

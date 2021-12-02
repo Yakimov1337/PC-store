@@ -1,4 +1,5 @@
 export default function Footer() {
+    require('./footer.style.css')
     return (
         <div>
             <footer id="footer">
