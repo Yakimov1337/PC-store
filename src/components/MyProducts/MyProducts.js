@@ -1,17 +1,18 @@
 import { useEffect, useState } from "react";
 import ProductCard from "./ProductCard.js";
-import {collection, getDoc, getDocs,query,where } from "@firebase/firestore";
+import { collection, getDoc, getDocs, query, where } from "@firebase/firestore";
 import { db } from "../../firebase.js";
 import { useAuth } from "../../contexts/AuthContext.js";
+import { Link } from "react-router-dom";
 
 
 
 export default function MyProducts() {
     require('./style.css');
-    
+
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(false);
-    const {userId} = useAuth();
+    const { userId } = useAuth();
     const productCollectionRef = collection(db, "products");
 
 
@@ -46,13 +47,28 @@ export default function MyProducts() {
     if (loading) return <h1> Loading </h1>
 
     return (
-        <section id="catalog-page">
-            <div className="container">
-            {products.length > 0 && !loading
-                ? products.map(product => <ProductCard key={product.id} product={product} />)
-                : <h3 className="no-articles">There are no available products right now!</h3>
-            }
-            </div>
-        </section>
+        <div >
+            <section id="breadcrumbs" class="breadcrumbs">
+                <div class="container">
+
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h2>My listed products</h2>
+                        <ol>
+                            <li><Link to="/">Home</Link></li>
+                            <li>My listed products</li>
+                        </ol>
+                    </div>
+
+                </div>
+            </section>
+            <section id="catalog-page">
+                <div className="container">
+                    {products.length > 0 && !loading
+                        ? products.map(product => <ProductCard key={product.id} product={product} />)
+                        : <h3 className="no-articles">You have no listed products!</h3>
+                    }
+                </div>
+            </section>
+        </div>
     );
 }
