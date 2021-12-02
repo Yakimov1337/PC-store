@@ -51,7 +51,7 @@ export default function ForgotPassword() {
                                 </div> */}
                                 <div className="form-group">
                                 <label className="label" form="email">Email</label>
-                                    <input type="email" ref={emailRef} className="form-input" name="email" id="email" placeholder="Your Email" />
+                                    <input type="email" ref={emailRef} className="form-input" name="email" id="email" placeholder="Your Email" required/>
                                 </div>                           
                                 <div className="form-group">
                                     <input type="submit" disabled={loading} name="submit" id="submit" className="form-submit" defaultValue="Sign up" />
