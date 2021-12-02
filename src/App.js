@@ -17,6 +17,7 @@ import ContactUs from './components/Contact-us/ContactUs.js';
 import Services from './components/Services-comp/Services.js';
 import Team from './components/Team/Team.js';
 import ProductDetails from './components/Details/ProductDetails.js';
+import MyProducts from './components/MyProducts/MyProducts.js';
 
 
 
@@ -41,6 +42,7 @@ function App() {
           <Route path='/add-product' component={AddProduct} />
           <Route path='/edit/:productId' component={EditProduct} />
           <PrivateRoute path='/my-profile' component={MyProfile} />
+          <PrivateRoute path='/my-products' component={MyProducts} />
         </Switch>
         <Footer />
         <Preloader />
