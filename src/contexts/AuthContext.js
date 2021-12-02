@@ -40,11 +40,6 @@ export function AuthProvider({ children }) {
 
     auth.onAuthStateChanged(user => {
         setCurrentUser(user);
-        // try {
-        //     setUserId(user.uid)
-        // } catch {
-        //     console.log('no user found');
-        // }
         if (user!== null) {
             setUserId(user.uid)
         }
