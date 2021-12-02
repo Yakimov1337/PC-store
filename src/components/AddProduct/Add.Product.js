@@ -72,7 +72,7 @@ export default function Register() {
                                 </div> */}
                                 <div className="form-group">
                                     <label className="label" form="headline">Headline</label>
-                                    <input type="headline" className="form-input" name="email" id="email" placeholder="Product headline"
+                                    <input type="headline" className="form-input" name="email" id="email" placeholder="Product headline" required
                                         onChange={(event) => {
                                             setNewHeadline(event.target.value);
                                         }}
@@ -91,7 +91,7 @@ export default function Register() {
                                 </div>
                                 <div className="form-group">
                                     <label className="label" form="name">Image Url</label>
-                                    <input type="imageUrl" className="form-input" name="imageUrl" id="imageUrl" placeholder="Image url"
+                                    <input type="imageUrl" className="form-input" name="imageUrl" id="imageUrl" placeholder="Image url" required
                                         onChange={(event) => {
                                             setNewImageUrl(event.target.value);
                                         }}
@@ -99,7 +99,7 @@ export default function Register() {
                                 </div>
                                 <div className="form-group">
                                     <label className="label" form="name" >Description</label>
-                                    <input type="description" className="form-input" name="description" id="description" placeholder="Description"
+                                    <input type="description" className="form-input" name="description" id="description" placeholder="Description" required
                                         onChange={(event) => {
                                             setNewDesc(event.target.value);
                                         }}
@@ -107,7 +107,7 @@ export default function Register() {
                                 </div>
                                 <div className="form-group">
                                     <label className="label" form="price">Price</label>
-                                    <input type="Price" className="form-input" name="price" id="price" placeholder="Price"
+                                    <input type="Price" className="form-input" name="price" id="price" placeholder="Price" required
                                         onChange={(event) => {
                                             setNewPrice(event.target.value);
                                         }}
