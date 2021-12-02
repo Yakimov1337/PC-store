@@ -25,7 +25,13 @@ function Header() {
   let myProfile;
   let addProductBtn;
   if (currentUser) {
-    myProfile = <li><Link className="nav-link  " to="/my-profile">{currentUser.email}</Link></li>
+    myProfile =<li className="dropdown"><Link to="/my-profile"><span>{currentUser.email}</span> <i className="bi bi-chevron-down"></i></Link>
+      <ul>
+      <li><Link to="/my-profile">My profile</Link></li>
+      <li><Link to="/my-products">My products</Link></li>
+      </ul>
+    </li>
+    // myProfile = <li><Link className="nav-link  " to="/my-profile">{currentUser.email}</Link></li>
     addProductBtn = <li className="add-btn"><Link className="nav-link" to="/add-product"><span className="fa fa-cart-plus add-btn" />Add Product</Link></li>
     button = <Link to="/login" onClick={handleLogOut} className="get-started-btn ">Log out</Link>
   } else {
