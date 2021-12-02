@@ -23,10 +23,6 @@ export default function Register() {
     const getAllUsers = async () => {
         const querySnapshot = await getDocs(userCollectionRef);
         querySnapshot.forEach((doc) => allUsersEmails.push(doc.data().email));
-      
-        // allUsersEmails.forEach(element => {
-        //     console.log(element);
-        // });
     }
 
     const userCollectionRef = collection(db, "users");
@@ -48,10 +44,6 @@ export default function Register() {
         }
         
         await getAllUsers();
-        console.log(emailRef.current.value);
-        allUsersEmails.forEach(element => {
-            console.log(element);
-        });
         if (allUsersEmails.includes(emailRef.current.value)) {
             console.log("here");
             return setError('This email already exists!')
