@@ -24,7 +24,7 @@ export default function Login() {
             
         } catch {
             setMessage('')
-            setError('Failed to log in!');
+            setError('Wrong credentials!');
         }
         setLoading(false);
     }
