@@ -49,9 +49,9 @@ export default function MyProducts() {
     return (
         <div >
             <section id="breadcrumbs" class="breadcrumbs">
-                <div class="container">
+                <div className="container">
 
-                    <div class="d-flex justify-content-between align-items-center">
+                    <div className="d-flex justify-content-between align-items-center">
                         <h2>My listed products</h2>
                         <ol>
                             <li><Link to="/">Home</Link></li>
