@@ -502,4 +502,16 @@ input[type=checkbox]:not(old):checked+label>span:before {
   overflow: hidden;
 }
 
+label {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+
+.form-group .label {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #000;
+  font-weight: 700;
+}
 /*# sourceMappingURL=style.css.map */

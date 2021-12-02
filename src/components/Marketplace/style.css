@@ -15,11 +15,11 @@
 #catalog-page {
     display: flex;
     justify-content: center;
+    font-family: "Open Sans", sans-serif;
 }
 
 
-body {
-    font-family: "Open Sans", sans-serif;
+#catalog-page body {
     color: #444444;
     justify-content: center;
     align-items: center;

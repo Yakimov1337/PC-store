@@ -30,6 +30,18 @@ list-type-ulli {
     opacity: 1;
   }
 }
+label {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+
+.form-group .label {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #000;
+  font-weight: 700;
+}
 
 .form-auto {
   animation: wobble 0.5s;
@@ -151,10 +163,6 @@ input[type=radio] {
   -webkit-appearance: radio !important;
   -o-appearance: radio !important;
   -ms-appearance: radio !important;
-}
-
-header {
-  background-color: black;
 }
 
 img {
