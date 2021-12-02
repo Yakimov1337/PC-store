@@ -3,6 +3,8 @@ import { db } from '../../firebase';
 import React, { useRef, useState } from 'react';
 import {Link, useHistory} from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
+import { Alert } from 'react-bootstrap';
+   
 
 export default function Register() {
     require('./css/style.css');
@@ -16,6 +18,7 @@ export default function Register() {
     const [loading, setLoading] = useState(false);
     const [email, setEmail] = useState('');
     const [username, setUsername] = useState('');
+    const [message, setMessage] = useState('');
 
 
 
@@ -31,20 +34,22 @@ export default function Register() {
 
     async function handleSubmit(e) {
         e.preventDefault();
-
+        
         if (passwordRef.current.value !== passwordConfirmRef.current.value) {
             return setError('Password do not match!')
         }
-
+        
         try {
             setError('');
             setLoading(true);
             await signup(emailRef.current.value, passwordRef.current.value);
             history.push('/');
-
+            
         }catch{
             setError('Failed to create an account!');
         }
+        console.log(error);
+        createUser();
         setLoading(false);
     }
 
@@ -70,8 +75,11 @@ export default function Register() {
                                     <input type="text" className="form-input" name="name" id="name" placeholder="Your Name" />
                                 </div> */}
                                 <div className="form-group">
+                                {error && <Alert variant="danger"> {error}</Alert>}
+                                {message && <Alert variant="success"> {message}</Alert>}
                                 <label className="label" form="username">Username</label>
                                     <input type="username" className="form-input" name="username" id="username" placeholder="Username"
+                                    required
                                      onChange={(event) => {
                                             setUsername(event.target.value);
                                         }}
@@ -80,6 +88,7 @@ export default function Register() {
                                 <div className="form-group">
                                 <label className="label" form="email">Email</label>
                                     <input type="email" ref={emailRef} className="form-input" name="email" id="email" placeholder="Your Email"
+                                    required
                                      onChange={(event) => {
                                         setEmail(event.target.value);
                                     }}
@@ -87,19 +96,19 @@ export default function Register() {
                                 </div>
                                 <div className="form-group">
                                 <label className="label" form="password">Password</label>
-                                    <input type="password"  ref={passwordRef} className="form-input" name="password" id="password" placeholder="Password" />
+                                    <input type="password"  ref={passwordRef} className="form-input" name="password" id="password" placeholder="Password" required/>
                                     <span toggle="#password" className="zmdi zmdi-eye field-icon toggle-password" />
                                 </div>
                                 <div className="form-group">
                                 <label className="label" form="password">Repeat password</label>
-                                    <input type="password" ref={passwordConfirmRef} className="form-input" name="re_password" id="re_password" placeholder="Repeat your password" />
+                                    <input type="password" ref={passwordConfirmRef} className="form-input" name="re_password" id="re_password" placeholder="Repeat your password" required/>
                                 </div>
                                 <div className="form-group">
-                                    <input type="checkbox" name="agree-term" id="agree-term" className="agree-term" />
+                                    <input type="checkbox" name="agree-term" id="agree-term" className="agree-term"  />
                                     <label htmlFor="agree-term" className="label-agree-term"><span><span /></span>I agree all statements in  <a href="#" className="term-service">Terms of service</a></label>
                                 </div>
                                 <div className="form-group">
-                                    <input type="submit" disabled={loading} onClick={createUser} name="submit" id="submit" className="form-submit" value="Sign up" />
+                                    <input type="submit" disabled={loading}  name="submit" id="submit" className="form-submit" value="Sign up" />
                                 </div>
                             </form>
                             <p className="loginhere">
