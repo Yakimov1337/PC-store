@@ -1,5 +1,5 @@
 import { useAuth } from '../../contexts/AuthContext';
-import { collection, getDoc,doc } from "@firebase/firestore";
+import { collection, getDocs, doc, query, where } from "@firebase/firestore";
 import { db } from '../../firebase'
 import { useEffect, useState } from 'react';
 
@@ -7,25 +7,20 @@ import { useEffect, useState } from 'react';
 
 export default function MyProfile() {
     require('./style.css');
-    let { currentUser,userId } = useAuth();
-    const [user, setUser] = useState([]);
-    const userCollectionRef = doc(db, "users",userId);
-   
+    let { currentUser, userId } = useAuth();
+    const [user, setUser] = useState('');
+    const userCollectionRef = doc(db, "users", userId);
+    const userCollectionRef2 = collection(db, "users");
 
     useEffect(async () => {
-        // const getUser = async () => {
-        //     const data = await getDocs(userCollectionRef);
-        //     setUser(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-        // };
-        // getUser();
-        console.log(userId);
-        const snap = await getDoc(userCollectionRef)
-        if (snap.exist()) {
-            setUser(snap.data());
-        }else{
-            console.log("User not found!");
-        }
+        const q = query(userCollectionRef2, where("email", "==", currentUser.email));
+        const querySnapshot = await getDocs(q)
+        querySnapshot.forEach((doc) => setUser(({ id: doc.id, ...doc.data() })));
+
+        console.log(user);
     }, []);
+
+
 
     return (
 
@@ -38,8 +33,8 @@ export default function MyProfile() {
                                 <div className="col-sm-4 bg-c-lite-green user-profile">
                                     <div className="card-block text-center text-white">
                                         <div className="m-b-25"> <img src="https://img.icons8.com/bubbles/100/000000/user.png" className="img-radius" alt="User-Profile-Image" /> </div>
-                                        <h6 className="f-w-600">Hembo Tingor</h6>
-                                        <p>Web Designer</p> <i className=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16" />
+                                        <h6 className="f-w-600">{user.username}</h6>
+                                        <p>Begginer</p> <i className=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16" />
                                     </div>
                                 </div>
                                 <div className="col-sm-8">
@@ -48,20 +43,18 @@ export default function MyProfile() {
                                         <div className="row">
                                             <div className="col-sm-6">
                                                 <p className="m-b-10 f-w-600">Email</p>
-                                                <h6 className="text-muted f-w-400">{currentUser.email}</h6>
+                                                <h6 className="text-muted f-w-400">{user.email}</h6>
                                             </div>
                                             <div className="col-sm-6">
                                                 <p className="m-b-10 f-w-600">Phone</p>
-                                                
-                                                    return <h6 className="text-muted f-w-400">{user.phoneNumber}</h6>
-                                               
+                                                <h6 className="text-muted f-w-400">{user.phoneNumber}</h6>
                                             </div>
                                         </div>
                                         <h6 className="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Projects</h6>
                                         <div className="row">
                                             <div className="col-sm-6">
                                                 <p className="m-b-10 f-w-600">Username</p>
-                                                <h6 className="text-muted f-w-400">{user.map((user) => { return user.username })}</h6>
+                                                <h6 className="text-muted f-w-400">{user.username}</h6>
                                             </div>
                                             <div className="col-sm-6">
                                                 <p className="m-b-10 f-w-600">Most Viewed</p>
