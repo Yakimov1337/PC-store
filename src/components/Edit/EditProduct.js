@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { db } from '../../firebase';
 import { useHistory } from 'react-router';
-import { addDoc, collection, doc, updateDoc,getDocs } from '@firebase/firestore';
+import {  doc, updateDoc, getDoc} from '@firebase/firestore';
 import { useEffect } from 'react';
 
 
@@ -17,13 +17,25 @@ export default function EditProduct({ match }) {
     const [loading, setLoading] = useState(false);
     
     const [currentProduct, setCurrentProduct] = useState('');
-    useEffect(async()  => {
-        const querySnapshot = await getDocs(collection(db, "products"));
-        querySnapshot.forEach((doc) => {
-            let product = { id: doc.id, ...doc.data()};
-            if (match.params.productId === product.id) setCurrentProduct(product);
-        });
-    },[])
+    // useEffect(async()  => {
+    //     const querySnapshot = await getDocs(collection(db, "products"));
+    //     querySnapshot.forEach((doc) => {
+    //         let product = { id: doc.id, ...doc.data()};
+    //         if (match.params.productId === product.id) setCurrentProduct(product);
+    //     });
+    // },[])
+
+    useEffect(async () => {
+        setLoading(true);
+        const docRef = doc(db, "products", match.params.productId);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+            setCurrentProduct({id: match.params.productId, ...docSnap.data()})
+            setLoading(false);
+        } else {
+            console.log("No such product!");
+        }
+    }, [])
 
     const editProduct = async (id) => {
         const productDoc = doc(db, "products", id)
@@ -40,6 +52,7 @@ export default function EditProduct({ match }) {
 
     async function handleSubmit(e) {
         e.preventDefault();
+        editProduct(currentProduct.id);
         try {
             setError('');
             setLoading(true);
@@ -51,8 +64,6 @@ export default function EditProduct({ match }) {
         }
         setLoading(false);
     }
-
-
 
     return (
         <div>
@@ -74,7 +85,7 @@ export default function EditProduct({ match }) {
                                 <h2 className="form-title">Create offer</h2>
                                 <div className="form-group">
                                     <label className="label" form="headline">Headline</label>
-                                    <input type="headline" className="form-input" name="email" id="email" 
+                                    <input type="headline" className="form-input" name="email" id="email" defaultValue={currentProduct.headline}
                                         onChange={(event) => {
                                             setNewHeadline(event.target.value);
                                         }}
@@ -93,7 +104,7 @@ export default function EditProduct({ match }) {
                                 </div>
                                 <div className="form-group">
                                     <label className="label" form="name">Image Url</label>
-                                    <input type="imageUrl" className="form-input" name="imageUrl" id="imageUrl" placeholder="Image url"
+                                    <input type="imageUrl" className="form-input" name="imageUrl" id="imageUrl" placeholder="Image url" defaultValue={currentProduct.imageUrl}
                                         onChange={(event) => {
                                             setNewImageUrl(event.target.value);
                                         }}
@@ -101,7 +112,7 @@ export default function EditProduct({ match }) {
                                 </div>
                                 <div className="form-group">
                                     <label className="label" form="name" >Description</label>
-                                    <input type="description" className="form-input" name="description" id="description" placeholder="Description"
+                                    <input type="description" className="form-input" name="description" id="description" placeholder="Description" defaultValue={currentProduct.description}
                                         onChange={(event) => {
                                             setNewDesc(event.target.value);
                                         }}
@@ -109,16 +120,17 @@ export default function EditProduct({ match }) {
                                 </div>
                                 <div className="form-group">
                                     <label className="label" form="price">Price</label>
-                                    <input type="Price" className="form-input" name="price" id="price" placeholder="Price"
+                                    <input type="Price" className="form-input" name="price" id="price" placeholder="Price" defaultValue={currentProduct.price}
                                         onChange={(event) => {
                                             setNewPrice(event.target.value);
-                                        }}
+                                        }}    
                                     />
                                 </div>
 
                                 <div className="form-group">
                                     <input type="submit" name="AddProduct" className="form-submit" value="Edit product"
-                                        onClick={() => {editProduct( currentProduct.id)}} />
+                                        // onClick={() => {editProduct( currentProduct.id)}} 
+                                        />
                                 </div>
                             </form>
                         </div>
