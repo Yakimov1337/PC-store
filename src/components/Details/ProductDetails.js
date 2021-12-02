@@ -17,7 +17,7 @@ export default function ProductDetails({ match }) {
         const docRef = doc(db, "products", match.params.productId);
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
-            setProduct(docSnap.data())
+            setProduct({id: match.params.productId,...docSnap.data()})
             setLoading(false);
         } else {
             console.log("No such document!");
