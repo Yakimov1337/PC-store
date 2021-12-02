@@ -21,9 +21,11 @@ export default function Login() {
             setError('');
             setLoading(true);
             await login(emailRef.current.value, passwordRef.current.value);
+            setMessage('Success')
             history.push('/')
-
+            
         } catch {
+            setMessage('')
             setError('Failed to log in!');
         }
         setLoading(false);
@@ -64,11 +66,11 @@ export default function Login() {
                             </div> */}
                                 <div className="form-group">
                                 <label className="label" form="email">Email</label>
-                                    <input type="email" ref={emailRef} className="form-input" name="email" id="email" placeholder="Your Email" />
+                                    <input type="email" ref={emailRef} className="form-input" name="email" id="email" placeholder="Your Email" required />
                                 </div>
                                 <div className="form-group">
                                 <label className="label" form="password">Password</label>
-                                    <input type="password" ref={passwordRef} className="form-input" name="password" id="password" placeholder="Password" />
+                                    <input type="password" ref={passwordRef} className="form-input" name="password" id="password" placeholder="Password" required />
                                     <span toggle="#password" className="zmdi zmdi-eye field-icon toggle-password" />
                                 </div>
 
