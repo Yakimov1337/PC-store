@@ -19,19 +19,18 @@ export default function Register() {
     const [email, setEmail] = useState('');
     const [username, setUsername] = useState('');
     const allUsersEmails = [];
-  
-    const userCollectionRef = collection(db, "users");
+    
     const getAllUsers = async () => {
         const querySnapshot = await getDocs(userCollectionRef);
-        querySnapshot.forEach((doc) => {
-          let result = (doc.data().email)
-          allUsersEmails.push(result);
-        }
-        );
+        querySnapshot.forEach((doc) => allUsersEmails.push(doc.data().email));
+      
+        // allUsersEmails.forEach(element => {
+        //     console.log(element);
+        // });
     }
-    allUsersEmails.forEach(element => {
-        console.log(element);
-    });
+
+    const userCollectionRef = collection(db, "users");
+
     const createUser = async () => {
         await addDoc(userCollectionRef,
             {
@@ -40,16 +39,15 @@ export default function Register() {
                 products: [],
             })
     }
-    allUsersEmails.forEach(element => {
-        console.log(element);
-    });
+
     async function handleSubmit(e) {
         e.preventDefault();
+
         if (passwordRef.current.value !== passwordConfirmRef.current.value) {
             return setError('Password do not match!')
         }
         
-        getAllUsers();
+        await getAllUsers();
         console.log(emailRef.current.value);
         allUsersEmails.forEach(element => {
             console.log(element);
