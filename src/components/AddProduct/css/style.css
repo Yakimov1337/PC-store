@@ -1,4 +1,4 @@
-label {
+#sign-up-form label {
   display: inline-block;
   margin-bottom: 0.5rem;
 }
@@ -17,7 +17,7 @@ display-flex, .display-flex, .display-flex-center {
 }
 
 /* @extend list-type-ulli; */
-list-type-ulli {
+list-type-ul li {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -165,22 +165,22 @@ input[type=radio] {
   -ms-appearance: radio !important;
 }
 
-img {
+#sign-up-form img {
   max-width: 100%;
   height: auto;
 }
 
-figure {
+#add-product-form figure {
   margin: 0;
 }
 
-p {
+#add-product-form p {
   margin-bottom: 0px;
   font-size: 15px;
   color: #777;
 }
 
-h2 {
+#add-product-form h2 {
   line-height: 1.66;
   margin: 0;
   padding: 0;
@@ -197,7 +197,7 @@ h2 {
   clear: both;
 }
 
-body {
+#sign-up-form body {
   font-size: 14px;
   color: #222;
   font-weight: 400;
@@ -478,7 +478,7 @@ input[type=checkbox]:not(old):checked+label>span:before {
   }
 }
 
-section {
+#signup section {
   padding: 60px;
   overflow: hidden;
 }
