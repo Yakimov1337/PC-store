@@ -64,7 +64,7 @@ export default function Register() {
                 <section className="signup">
                     {/* <img src="images/signup-bg.jpg" alt=""> */}
                     <div className="container-reg">
-                        <div className="signup-content">
+                        <div className="signup-content" id="add-product-form">
                             <form method="POST" onSubmit={handleSubmit} id="signup-form" className="signup-form form-auto">
                                 <h2 className="form-title">Create offer</h2>
                                 {/* <div className="form-group">

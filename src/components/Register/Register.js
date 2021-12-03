@@ -91,7 +91,7 @@ export default function Register() {
             {/* Main css */}
             <link rel="stylesheet" href="css/style.css" />
             <div className="main">
-                <section className="signup">
+                <section className="signup" id="signup">
                     {/* <img src="images/signup-bg.jpg" alt=""> */}
                     <div className="container-reg">
                         <div className="signup-content">

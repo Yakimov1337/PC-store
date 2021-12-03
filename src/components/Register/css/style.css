@@ -165,22 +165,22 @@ input[type=radio] {
   -ms-appearance: radio !important;
 }
 
-img {
+#sign-up-form img {
   max-width: 100%;
   height: auto;
 }
 
-figure {
+#sign-up-form figure {
   margin: 0;
 }
 
-p {
+#sign-up-form p {
   margin-bottom: 0px;
   font-size: 15px;
   color: #777;
 }
 
-h2 {
+#signup h2 {
   line-height: 1.66;
   margin: 0;
   padding: 0;
@@ -197,7 +197,7 @@ h2 {
   clear: both;
 }
 
-body {
+#sign-up-form body {
   font-size: 14px;
   color: #222;
   font-weight: 400;
@@ -478,7 +478,7 @@ input[type=checkbox]:not(old):checked+label>span:before {
   }
 }
 
-section {
+section.signup {
   padding: 60px;
   overflow: hidden;
 }

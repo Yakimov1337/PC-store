@@ -153,26 +153,16 @@ input[type=radio] {
   -ms-appearance: radio !important;
 }
 
-header {
-  background-color: black;
-}
 
-img {
-  max-width: 100%;
-  height: auto;
-}
 
-figure {
-  margin: 0;
-}
 
-p {
+p.forgotpw {
   margin-bottom: 0px;
   font-size: 15px;
   color: #777;
 }
 
-h2 {
+ #forgotpw h2 {
   line-height: 1.66;
   margin: 0;
   padding: 0;
@@ -214,7 +204,7 @@ h2 {
 
 }
 
-body {
+#sign-up-form body {
   font-size: 14px;
   color: #222;
   font-weight: 400;
@@ -497,12 +487,12 @@ input[type=checkbox]:not(old):checked+label>span:before {
   }
 }
 
- section {
+section.forgotpw {
   padding: 60px;
   overflow: hidden;
 }
 
-label {
+label.forgotpw {
   display: inline-block;
   margin-bottom: 0.5rem;
 }
