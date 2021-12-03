@@ -43,12 +43,12 @@ export default function Login() {
             {/* Main css */}
             <link rel="stylesheet" href="css/style.css" />
             <div className="main">
-                <section className="signup">
+                <section className="sign-in">
                     {/* <img src="images/signup-bg.jpg" alt=""> */}
-                    <div className="container-reg">
+                    <div className="container-reg" >
                         <div className="signup-content">
 
-                            <form method="#" onSubmit={handleSubmit} id="signin-form" className="signin-form">
+                            <form method="#" onSubmit={handleSubmit} id="sign-in-form" className="signin-form">
                                 <div className="w-100">
                                     <p className="social-media d-flex justify-content-end">
                                         <a href="#" className="social-icon d-flex align-items-center justify-content-center"><span className="fa fa-facebook" /></a>

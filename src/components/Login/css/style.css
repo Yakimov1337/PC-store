@@ -150,22 +150,22 @@ input[type=radio] {
   -ms-appearance: radio !important;
 }
 
-img {
+#sign-in-form img {
   max-width: 100%;
   height: auto;
 }
 
-figure {
+#sign-in-form figure {
   margin: 0;
 }
 
-p {
+#sign-in-form p {
   margin-bottom: 0px;
   font-size: 15px;
   color: #777;
 }
 
-h2 {
+#sign-in-form h2 {
   line-height: 1.66;
   margin: 0;
   padding: 0;
@@ -182,7 +182,7 @@ h2 {
   clear: both;
 }
 
-label {
+#sign-in-form label {
   display: inline-block;
   margin-bottom: 0.5rem;
 }
@@ -195,12 +195,12 @@ label {
   font-weight: 700;
 }
 
-section {
+section.sign-in {
   padding: 60px;
   overflow: hidden;
 }
 
-body {
+#sign-in-form body {
   font-size: 14px;
   color: #222;
   font-weight: 400;
@@ -220,7 +220,7 @@ body {
   border: solid black;
   width: 660px;
   position: relative;
-  margin: 0 auto;
+  margin: 0px auto;
 }
 
 .fgtPW {

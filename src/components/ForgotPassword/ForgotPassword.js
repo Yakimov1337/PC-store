@@ -39,7 +39,7 @@ export default function ForgotPassword() {
             {/* Main css */}
             <link rel="stylesheet" href="css/style.css" />
             <div className="main">
-                <section className="signup">
+                <section className="forgotpw" id="forgotpw">
                     {/* <img src="images/signup-bg.jpg" alt=""> */}
                     <div className="container-reg">
                         <div className="signup-content">
