@@ -80,7 +80,7 @@ export default function Register() {
                                 </div>
                                 <div className="form-group">
                                     <label className="label" form="name">Category</label>
-                                    <select onSelect={(event) => {
+                                    <select id='select-options' className='select-box' onSelect={(event) => {
                                         setNewType(event.target.value);
                                     }} >
                                         <option value="Motherboard">Motherboard</option>
