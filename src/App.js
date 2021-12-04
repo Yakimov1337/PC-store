@@ -1,4 +1,4 @@
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import Footer from './components/Footer/Footer.js';
 import ForgotPassword from './components/ForgotPassword/ForgotPassword.js';
 import Header from './components/NavBar/NavBar';

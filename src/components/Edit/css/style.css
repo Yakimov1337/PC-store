@@ -1,4 +1,4 @@
-container-reg label {
+#edit-product-form label {
   display: inline-block;
   margin-bottom: 0.5rem;
 }
@@ -166,10 +166,6 @@ input[type=radio] {
   -ms-appearance: radio !important;
 }
 
-#sign-up-form header {
-  background-color: black;
-}
-
 #edit-product-form img {
   max-width: 100%;
   height: auto;
@@ -177,6 +173,19 @@ input[type=radio] {
 
 #edit-product-form figure {
   margin: 0;
+}
+
+#edit-product-form h2 {
+  line-height: 1.66;
+  margin: 0;
+  padding: 0;
+  font-weight: 900;
+  color: #222;
+  font-family: 'Montserrat';
+  font-size: 24px;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 40px;
 }
 
 #edit-product-form p {
@@ -479,3 +488,48 @@ input[type=checkbox]:not(old):checked+label>span:before {
 }
 
 /*# sourceMappingURL=style.css.map */
+
+#select-options html,
+body {
+  min-height: 100%;
+  margin: 0;
+}
+
+#select-options body {
+  padding: 30px;
+  background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  box-sizing: border-box;
+}
+
+.select-box {
+  padding: 3%;
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+  font-family: 'Open Sans', 'Helvetica Neue', 'Segoe UI', 'Calibri', 'Arial', sans-serif;
+  font-size: 16px;
+  color: black;
+
+  @media (min-width: 768px) {
+    width: 70%;
+  }
+
+  @media (min-width: 992px) {
+    width: 50%;
+  }
+
+  @media (min-width: 1200px) {
+    width: 30%;
+  }
+
+
+  @keyframes HideList {
+    from {
+      transform: scaleY(1);
+    }
+
+    to {
+      transform: scaleY(0);
+    }
+  }
+}
