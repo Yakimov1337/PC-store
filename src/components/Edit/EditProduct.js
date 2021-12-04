@@ -8,22 +8,9 @@ import { useEffect } from 'react';
 export default function EditProduct({ match }) {
     require('./css/style.css');
     const history = useHistory()
-    const [newHeadline, setNewHeadline] = useState("");
-    const [newType, setNewType] = useState("");
-    const [newDesc, setNewDesc] = useState("");
-    const [newImageUrl, setNewImageUrl] = useState("");
-    const [newPrice, setNewPrice] = useState(0);
+    const [currentProduct, setCurrentProduct] = useState('');
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
-
-    const [currentProduct, setCurrentProduct] = useState('');
-    // useEffect(async()  => {
-    //     const querySnapshot = await getDocs(collection(db, "products"));
-    //     querySnapshot.forEach((doc) => {
-    //         let product = { id: doc.id, ...doc.data()};
-    //         if (match.params.productId === product.id) setCurrentProduct(product);
-    //     });
-    // },[])
 
     useEffect(async () => {
         setLoading(true);
@@ -37,26 +24,31 @@ export default function EditProduct({ match }) {
         }
     }, [])
 
-    const editProduct = async (id) => {
+    const editProduct = async (id, headline, type, desc, imageUrl, price) => {
         const productDoc = doc(db, "products", id)
         const newFields =
         {
-            headline: newHeadline,
-            type: newType,
-            description: newDesc,
-            imageUrl: newImageUrl,
-            price: Number(newPrice)
+            headline: headline,
+            type: type,
+            description: desc,
+            imageUrl: imageUrl,
+            price: Number(price)
         }
         await updateDoc(productDoc, newFields)
     }
 
     async function handleSubmit(e) {
         e.preventDefault();
-        editProduct(currentProduct.id);
+
+        let formData = new FormData(e.currentTarget);
+        let { headline, type, desc, imageUrl, price } = Object.fromEntries(formData);
+        console.log( Object.fromEntries(formData));
+        console.log(headline, type, desc, imageUrl, price);
+        type = 'GPU'
+        await editProduct(currentProduct.id, headline, type, desc, imageUrl, price);
         try {
             setError('');
             setLoading(true);
-
             history.push('/marketplace')
 
         } catch {
@@ -77,25 +69,20 @@ export default function EditProduct({ match }) {
             {/* Main css */}
             <link rel="stylesheet" href="css/style.css" />
             <div className="main">
-                <section className="signup">
+                <section className="edit">
                     {/* <img src="images/signup-bg.jpg" alt=""> */}
                     <div className="container-reg">
-                        <div className="signup-content">
+                        <div className="signup-content" id="edit-product-form">
                             <form method="POST" onSubmit={handleSubmit} id="signup-form" className="signup-form form-auto">
                                 <h2 className="form-title">Create offer</h2>
                                 <div className="form-group">
-                                    <label className="label" form="headline">Headline</label>
-                                    <input type="headline" className="form-input" name="email" id="email" defaultValue={currentProduct.headline} required
-                                        onChange={(event) => {
-                                            setNewHeadline(event.target.value);
-                                        }}
+                                    <label className="label">Headline</label>
+                                    <input type="text" className="form-input" name="headline" id="text" defaultValue={currentProduct.headline} required
                                     />
                                 </div>
-                                <div className="form-group">
+                                <div className="form-group" form="type">
                                     <label className="label" form="name">Category</label>
-                                    <select onSelect={(event) => {
-                                        setNewType(event.target.value);
-                                    }} >
+                                    <select form="type" name="type">
                                         <option value="Motherboard">Motherboard</option>
                                         <option value="GPU">GPU</option>
                                         <option value="CPU">CPU</option>
@@ -105,29 +92,20 @@ export default function EditProduct({ match }) {
                                 <div className="form-group">
                                     <label className="label" form="name">Image Url</label>
                                     <input type="imageUrl" className="form-input" name="imageUrl" id="imageUrl" placeholder="Image url"
-                                     defaultValue={currentProduct.imageUrl} required
-                                        onChange={(event) => {
-                                            setNewImageUrl(event.target.value);
-                                        }}
+                                        defaultValue={currentProduct.imageUrl} required
                                     />
                                 </div>
                                 <div className="form-group">
-                                    <label className="label" form="name" >Description</label>
-                                    <input type="description" className="form-input" name="description" id="description" placeholder="Description" 
-                                    defaultValue={currentProduct.description} required
-                                        onChange={(event) => {
-                                            setNewDesc(event.target.value);
-                                        }}
+                                    <label className="label" form="desc" >Description</label>
+                                    <input type="description" className="form-input" name="desc" id="description" placeholder="Description"
+                                        defaultValue={currentProduct.description} required
                                     />
                                 </div>
                                 <div className="form-group">
                                     <label className="label" form="price">Price</label>
-                                    <input type="Price" className="form-input" name="price" id="price" placeholder="Price" 
-                                    defaultValue={currentProduct.price}
-                                    required
-                                        onChange={(event) => {
-                                            setNewPrice(event.target.value);
-                                        }}
+                                    <input type="Price" className="form-input" name="price" id="price" placeholder="Price"
+                                        defaultValue={currentProduct.price}
+                                        required
                                     />
                                 </div>
 
