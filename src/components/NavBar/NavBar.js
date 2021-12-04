@@ -60,7 +60,7 @@ function Header() {
               <ul>
                 <li className="dropdown"><Link to="/marketplace"><span>Graphic cards</span> <i className="bi bi-chevron-right"></i></Link>
                   <ul>
-                    <li><Link to="/marketplace">All GPUs</Link></li>
+                    <li><Link to="/marketplace/all-gpus">All GPUs</Link></li>
                     <li><Link to="/marketplace">NVIDIA</Link></li>
                     <li><Link to="/marketplace">AMD</Link></li>
                   </ul>
