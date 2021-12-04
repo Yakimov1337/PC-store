@@ -185,6 +185,10 @@ input[type=radio] {
   color: #777;
 }
 
+section.edit {
+  padding: 60px;
+  overflow: hidden;
+}
 
 .clear {
   clear: both;

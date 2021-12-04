@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 export default function Main() {
 require('./home.style.css')
     return (
-        <div>
-            <div>
+        <div id='home'>
+            <div >
                 <section id="hero" className="d-flex align-items-center justify-content-center">
                     <div className="container" data-aos="fade-up">
 

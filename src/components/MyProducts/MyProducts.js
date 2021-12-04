@@ -48,7 +48,7 @@ export default function MyProducts() {
 
     return (
         <div >
-            <section id="breadcrumbs" class="breadcrumbs">
+            <section id="breadcrumbs" className="breadcrumbs">
                 <div className="container">
 
                     <div className="d-flex justify-content-between align-items-center">

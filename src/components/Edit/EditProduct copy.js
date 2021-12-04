@@ -1,53 +1,68 @@
 import React, { useState } from 'react';
 import { db } from '../../firebase';
 import { useHistory } from 'react-router';
-import { addDoc, collection } from '@firebase/firestore';
-import { useAuth } from '../../contexts/AuthContext';
+import { doc, updateDoc, getDoc } from '@firebase/firestore';
+import { useEffect } from 'react';
 
 
-export default function Register() {
+export default function EditProduct({ match }) {
     require('./css/style.css');
-    let [newHeadline, setNewHeadline] = useState("");
-    let [newType, setNewType] = useState("");
-    let [newDesc, setNewDesc] = useState("");
-    let [newImageUrl, setNewImageUrl] = useState("");
-    let [newPrice, setNewPrice] = useState(0);
+    const history = useHistory()
+    const [currentProduct, setCurrentProduct] = useState('');
+    const [newHeadline, setNewHeadline] = useState(currentProduct.headline);
+    const [newType, setNewType] = useState("");
+    const [newDesc, setNewDesc] = useState("");
+    const [newImageUrl, setNewImageUrl] = useState("");
+    const [newPrice, setNewPrice] = useState(0);
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
-    const { currentUser, userId } = useAuth();
+    // useEffect(async()  => {
+    //     const querySnapshot = await getDocs(collection(db, "products"));
+    //     querySnapshot.forEach((doc) => {
+    //         let product = { id: doc.id, ...doc.data()};
+    //         if (match.params.productId === product.id) setCurrentProduct(product);
+    //     });
+    // },[])
 
-    const history = useHistory()
-    const productsCollectionRef = collection(db, "products");
-    console.log(userId);
-    const createProduct = async () => {
-        await addDoc(productsCollectionRef,
-            {
-                headline: newHeadline,
-                type: newType,
-                description: newDesc,
-                imageUrl: newImageUrl,
-                price: Number(newPrice),
-                author: userId
-            })
+    useEffect(async () => {
+        setLoading(true);
+        const docRef = doc(db, "products", match.params.productId);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+            setCurrentProduct({ id: match.params.productId, ...docSnap.data() })
+            setLoading(false);
+        } else {
+            console.log("No such product!");
+        }
+    }, [])
+
+    const editProduct = async (id) => {
+        const productDoc = doc(db, "products", id)
+        const newFields =
+        {
+            headline: newHeadline,
+            type: newType,
+            description: newDesc,
+            imageUrl: newImageUrl,
+            price: Number(newPrice)
+        }
+        await updateDoc(productDoc, newFields)
     }
-
-
 
     async function handleSubmit(e) {
         e.preventDefault();
+
+        await editProduct(currentProduct.id);
         try {
             setError('');
             setLoading(true);
-
             history.push('/marketplace')
 
         } catch {
-            setError('Failed to create a product!');
+            setError('Failed to edit a product!');
         }
         setLoading(false);
     }
-
-
 
     return (
         <div>
@@ -61,18 +76,15 @@ export default function Register() {
             {/* Main css */}
             <link rel="stylesheet" href="css/style.css" />
             <div className="main">
-                <section className="signup" id="add-product">
+                <section className="edit">
                     {/* <img src="images/signup-bg.jpg" alt=""> */}
                     <div className="container-reg">
-                        <div className="signup-content" >
+                        <div className="signup-content" id="edit-product-form">
                             <form method="POST" onSubmit={handleSubmit} id="signup-form" className="signup-form form-auto">
                                 <h2 className="form-title">Create offer</h2>
-                                {/* <div className="form-group">
-                                    <input type="text" className="form-input" name="name" id="name" placeholder="Your Name" />
-                                </div> */}
                                 <div className="form-group">
                                     <label className="label" form="headline">Headline</label>
-                                    <input type="headline" className="form-input" name="email" id="email" placeholder="Product headline" required
+                                    <input type="text" className="form-input" name="text" id="text" defaultValue={currentProduct.headline} required
                                         onChange={(event) => {
                                             setNewHeadline(event.target.value);
                                         }}
@@ -91,7 +103,8 @@ export default function Register() {
                                 </div>
                                 <div className="form-group">
                                     <label className="label" form="name">Image Url</label>
-                                    <input type="imageUrl" className="form-input" name="imageUrl" id="imageUrl" placeholder="Image url" required
+                                    <input type="imageUrl" className="form-input" name="imageUrl" id="imageUrl" placeholder="Image url"
+                                        defaultValue={currentProduct.imageUrl} required
                                         onChange={(event) => {
                                             setNewImageUrl(event.target.value);
                                         }}
@@ -99,7 +112,8 @@ export default function Register() {
                                 </div>
                                 <div className="form-group">
                                     <label className="label" form="name" >Description</label>
-                                    <input type="description" className="form-input" name="description" id="description" placeholder="Description" required
+                                    <input type="description" className="form-input" name="description" id="description" placeholder="Description"
+                                        defaultValue={currentProduct.description} required
                                         onChange={(event) => {
                                             setNewDesc(event.target.value);
                                         }}
@@ -107,7 +121,9 @@ export default function Register() {
                                 </div>
                                 <div className="form-group">
                                     <label className="label" form="price">Price</label>
-                                    <input type="Price" className="form-input" name="price" id="price" placeholder="Price" required
+                                    <input type="Price" className="form-input" name="price" id="price" placeholder="Price"
+                                        defaultValue={currentProduct.price}
+                                        required
                                         onChange={(event) => {
                                             setNewPrice(event.target.value);
                                         }}
@@ -115,7 +131,9 @@ export default function Register() {
                                 </div>
 
                                 <div className="form-group">
-                                    <input type="submit" onClick={createProduct} name="AddProduct" className="form-submit" value="Add product" />
+                                    <input type="submit" name="AddProduct" className="form-submit" value="Edit product"
+                                    // onClick={() => {editProduct( currentProduct.id)}} 
+                                    />
                                 </div>
                             </form>
                         </div>

@@ -5,17 +5,14 @@
 .no-articles {
     padding-top: 5%;
 }
-/* 
-#header {
-    background-color: black;
-} */
+
 
 #catalog-page {
     display: flex;
     justify-content: center;
 }
 
-body {
+#breadcrumbs body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
