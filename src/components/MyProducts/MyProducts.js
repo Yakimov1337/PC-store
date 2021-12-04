@@ -48,17 +48,12 @@ export default function MyProducts() {
 
     return (
         <div >
-            <section id="breadcrumbs" className="breadcrumbs">
-                <div className="container">
-
-                    <div className="d-flex justify-content-between align-items-center">
-                        <h2>My listed products</h2>
-                        <ol>
-                            <li><Link to="/">Home</Link></li>
-                            <li>My listed products</li>
-                        </ol>
-                    </div>
-
+            <section id="my-profile" className="my-profile">
+            <div className="container" data-aos="fade-up">
+                <div className="section-title">
+                    <h2>Products</h2>
+                    <p>My listed products</p>
+                </div>
                 </div>
             </section>
             <section id="catalog-page">

@@ -24,21 +24,21 @@
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-  }
-  
-  a {
+}
+
+a {
     color: #ffc451;
     text-decoration: none;
-  }
-  
-  a:hover {
+}
+
+a:hover {
     color: #ffd584;
     text-decoration: none;
-  }
-  
-  h1, h2, h3, h4, h5, h6 {
+}
+
+h1, h2, h3, h4, h5, h6 {
     font-family: "Raleway", sans-serif;
-  }
+}
 
 .product-card {
     position: relative;
@@ -50,7 +50,6 @@
     margin: auto;
     margin-left: 1em;
     margin-right: 1em;
-    margin-top: 10%;
 
     margin-bottom: 1em;
     display: inline-block;
@@ -99,7 +98,7 @@
 
 .product-card:hover .imgBox img {
     max-width: 50%;
-      
+
 }
 
 .product-card .contentBox {
@@ -150,4 +149,127 @@
 .mouse {
     height: 300px;
     width: auto;
+}
+
+/*--------------------------------------------------------------
+  # Breadcrumbs
+  --------------------------------------------------------------*/
+.breadcrumbs {
+    padding: 15px 0;
+    background: white;
+    min-height: 40px;
+    margin-top: 74px;
+}
+
+.breadcrumbs h2 {
+    font-size: 28px;
+    font-weight: 400;
+}
+
+.breadcrumbs ol {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin-bottom: 5%;
+    padding: 0;
+}
+
+.breadcrumbs ol li+li {
+    padding-left: 10px;
+}
+
+.breadcrumbs ol li+li::before {
+    display: inline-block;
+    padding-right: 10px;
+    color: #2f2f2f;
+    content: "/";
+}
+
+@media (max-width: 992px) {
+    .breadcrumbs {
+        margin-top: 68px;
+    }
+
+    .breadcrumbs .d-flex {
+        display: block !important;
+    }
+
+    .breadcrumbs ol {
+        display: block;
+    }
+
+    .breadcrumbs ol li {
+        display: inline-block;
+    }
+}
+
+
+/*--------------------------------------------------------------
+  # Sections General
+  --------------------------------------------------------------*/
+
+
+
+.section-title-marketplace {
+    margin-left: 34%;
+}
+
+.section-title-marketplace h2 {
+    font-size: 21px;
+    font-weight: 500;
+    padding: 0;
+    line-height: 1px;
+    margin: 0 0 5px -10%;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #141616;
+    ;
+
+    font-family: "Poppins", sans-serif;
+}
+
+.section-title-marketplace h2::after {
+    content: "";
+    width: 120px;
+    height: 1px;
+    display: inline-block;
+    background: #ffde9e;
+    margin: 4px 10px;
+}
+
+.section-title-marketplace h2::before {
+    content: "";
+    width: 120px;
+    height: 1px;
+    display: inline-block;
+    background: #ffde9e;
+    margin: 4px 10px;
+}
+
+.section-title-marketplace p::after {
+    content: "";
+    width: 120px;
+    height: 1px;
+    display: inline-block;
+    background: #ffde9e;
+    margin: 4px 10px;
+}
+
+.section-title-marketplace p::before {
+    content: "";
+    width: 120px;
+    height: 1px;
+    display: inline-block;
+    background: #ffde9e;
+    margin: 4px 10px;
+}
+
+.section-title-marketplace p {
+    margin: 0;
+    margin: 0;
+    font-size: 36px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-family: "Poppins", sans-serif;
+    color: #141616;
 }
