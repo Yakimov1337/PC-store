@@ -18,6 +18,7 @@ import Services from './components/Services-comp/Services.js';
 import Team from './components/Team/Team.js';
 import ProductDetails from './components/Details/ProductDetails.js';
 import MyProducts from './components/MyProducts/MyProducts.js';
+import GPUs from './components/Marketplace/GPUs.js';
 
 
 
@@ -38,6 +39,7 @@ function App() {
           <Route path='/team' component={Team} />
           <Route path='/contact-us' component={ContactUs} />
           <Route path='/marketplace' component={Marketplace} />
+          <Route exact path='/marketplaceall-gpus' component={GPUs} />
           <Route path='/product/:productId' component={ProductDetails} />
           <Route path='/add-product' component={AddProduct} />
           <Route path='/edit/:productId' component={EditProduct} />
