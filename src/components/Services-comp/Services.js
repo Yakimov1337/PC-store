@@ -3,7 +3,7 @@ export default function Services() {
     return (
         <div>
 
-            <section id="features" className="features">
+            <section id="services" className="features">
                 <div className="container" data-aos="fade-up">
                     <div className="section-title">
                         <h2>Cloud </h2>

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import ProductCard from "./ProductCard.js";
 import { Link } from "react-router-dom";
-import { getFirestore, collection, getDoc, getDocs,where,query } from "@firebase/firestore";
+import { getFirestore, collection, getDoc, getDocs, where, query } from "@firebase/firestore";
 import { db } from "../../firebase.js";
 
 
@@ -41,7 +41,22 @@ export default function GPUs() {
                 <div className="container">
                     <div className="section-title-marketplace">
                         <h2>All GPUs</h2>
-                       
+
+                    </div>
+                </div>
+
+            </section>
+            <section id="portfolio" className="portfolio">
+                <div className="container" data-aos="fade-up">
+                    <div className="row" data-aos="fade-up" data-aos-delay="100">
+                        <div className="col-lg-12 d-flex justify-content-center">
+                            <ul id="portfolio-flters">
+                                <li data-filter="*" className="filter-active">All</li>
+                                <li data-filter=".filter-app">CPU</li>
+                                <li data-filter=".filter-card">GPU</li>
+                                <li data-filter=".filter-web">MOTHERBOARD</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </section>
