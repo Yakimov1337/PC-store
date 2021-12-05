@@ -2,10 +2,12 @@
 
 
 
-.no-articles {
+/* .no-articles {
     padding-top: 5%;
+} */
+h3 {
+  text-align: center;
 }
-
 
 #catalog-page {
     display: flex;
