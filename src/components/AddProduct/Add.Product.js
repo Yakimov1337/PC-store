@@ -9,27 +9,32 @@ export default function Register() {
     require('./css/style.css');
     let [newHeadline, setNewHeadline] = useState("");
     let [newType, setNewType] = useState("");
+    let [newBrand, setNewBrand] = useState("");
+    let [brands, setBrands] = useState([]);
     let [newDesc, setNewDesc] = useState("");
     let [newImageUrl, setNewImageUrl] = useState("");
     let [newPrice, setNewPrice] = useState(0);
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
-    const { currentUser, userId } = useAuth();
+    const { userId } = useAuth();
 
     const history = useHistory()
     const productsCollectionRef = collection(db, "products");
-    console.log(userId);
-    const createProduct = async () => {
-        await addDoc(productsCollectionRef,
-            {
-                headline: newHeadline,
-                type: newType,
-                description: newDesc,
-                imageUrl: newImageUrl,
-                price: Number(newPrice),
-                author: userId
-            })
+
+    async function getOptions(type) {
+        if (type == "Motherboard") {
+            setBrands(["ASRock", "Asus", "Biostar", "EVGA", "GIGABYTE", "MSI"]);
+        } else if (type == "CPU") {
+            setBrands(["Intel", "AMD"]);
+        }
+        else if (type == "PSU") {
+            setBrands(["Corsair", "EVGA", "Thermaltake"]);
+        } else if (type == "GPU") {
+            setBrands(["Nvidia", "AMD", "Asus", "EVGA", "GIGABYTE", "MSI", "Sapphire"]);
+        }
+        return;
     }
+
 
 
 
@@ -38,7 +43,16 @@ export default function Register() {
         try {
             setError('');
             setLoading(true);
-
+            await addDoc(productsCollectionRef,
+                {
+                    headline: newHeadline,
+                    type: newType,
+                    description: newDesc,
+                    imageUrl: newImageUrl,
+                    price: Number(newPrice),
+                    author: userId,
+                    brand: newBrand
+                })
             history.push('/marketplace')
 
         } catch {
@@ -80,13 +94,22 @@ export default function Register() {
                                 </div>
                                 <div className="form-group">
                                     <label className="label" form="name">Category</label>
-                                    <select id='select-options' className='select-box' onSelect={(event) => {
+                                    <select id='select-options' className='select-box' onChange={(event) => {
                                         setNewType(event.target.value);
+                                        getOptions(event.target.value);
                                     }} >
                                         <option value="Motherboard">Motherboard</option>
                                         <option value="GPU">GPU</option>
                                         <option value="CPU">CPU</option>
                                         <option value="PSU">PSU</option>
+                                    </select>
+                                </div>
+                                <div className="form-group">
+                                    <label className="label" form="name">Brand</label>
+                                    <select id='select-options' className='select-box' onChange={(event) => {
+                                        setNewBrand(event.target.value);
+                                    }} >
+                                        {brands.map((brand, idx) => <option key={idx} value={brand} required>{brand}</option>)}
                                     </select>
                                 </div>
                                 <div className="form-group">
@@ -115,7 +138,7 @@ export default function Register() {
                                 </div>
 
                                 <div className="form-group">
-                                    <input type="submit" onClick={createProduct} name="AddProduct" className="form-submit" value="Add product" />
+                                    <input type="submit" name="AddProduct" className="form-submit" value="Add product" />
                                 </div>
                             </form>
                         </div>
