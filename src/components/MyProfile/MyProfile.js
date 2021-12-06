@@ -7,19 +7,22 @@ import { useEffect, useState } from 'react';
 
 export default function MyProfile() {
     require('./myprofile.style.css');
-    let { currentUser, userId } = useAuth();
+    let { currentUser } = useAuth();
     const [user, setUser] = useState('');
-    const userCollectionRef = doc(db, "users", userId);
-    const userCollectionRef2 = collection(db, "users");
+    const userCollectionRef = collection(db, "users");
+    // const userCollectionRef = doc(db, "users", userId);
 
+    let level="Begginer";
     useEffect(async () => {
-        const q = query(userCollectionRef2, where("email", "==", currentUser.email));
+        const q = query(userCollectionRef, where("email", "==", currentUser.email));
         const querySnapshot = await getDocs(q)
         querySnapshot.forEach((doc) => setUser(({ id: doc.id, ...doc.data() })));
 
         console.log(user);
+        if (user.products.length > 3) {
+            level = "Advanced"
+        } else { level = "Begginer" }
     }, []);
-
 
 
     return (
@@ -34,7 +37,7 @@ export default function MyProfile() {
                                     <div className="card-block text-center text-white">
                                         <div className="m-b-25"> <img src="https://img.icons8.com/bubbles/100/000000/user.png" className="img-radius" alt="User-Profile-Image" /> </div>
                                         <h6 className="f-w-600">{user.username}</h6>
-                                        <p>Begginer</p> <i className=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16" />
+                                        <p>{level}</p> <i className=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16" />
                                     </div>
                                 </div>
                                 <div className="col-sm-8">
@@ -61,11 +64,11 @@ export default function MyProfile() {
                                                 <h6 className="text-muted f-w-400">Dinoter husainm</h6>
                                             </div>
                                         </div>
-                                        <ul className="social-link list-unstyled m-t-40 m-b-10">
+                                        {/* <ul className="social-link list-unstyled m-t-40 m-b-10">
                                             <li><a href="#!" data-toggle="tooltip" data-placement="bottom" title data-original-title="facebook" data-abc="true"><i className="mdi mdi-facebook feather icon-facebook facebook" aria-hidden="true" /></a></li>
                                             <li><a href="#!" data-toggle="tooltip" data-placement="bottom" title data-original-title="twitter" data-abc="true"><i className="mdi mdi-twitter feather icon-twitter twitter" aria-hidden="true" /></a></li>
                                             <li><a href="#!" data-toggle="tooltip" data-placement="bottom" title data-original-title="instagram" data-abc="true"><i className="mdi mdi-instagram feather icon-instagram instagram" aria-hidden="true" /></a></li>
-                                        </ul>
+                                        </ul> */}
                                     </div>
                                 </div>
                             </div>
