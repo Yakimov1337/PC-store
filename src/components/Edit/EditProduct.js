@@ -74,7 +74,7 @@ export default function EditProduct({ match }) {
                                     <input type="text" className="form-input" name="headline" id="text" defaultValue={currentProduct.headline} required
                                     />
                                 </div>
-                                <div className="form-group" form="type">
+                                {/* <div className="form-group" form="type">
                                     <label className="label" form="name">Category</label>
                                     <select id='select-options' className='select-box' >
                                         <option value="Motherboard">Motherboard</option>
@@ -82,7 +82,7 @@ export default function EditProduct({ match }) {
                                         <option value="CPU">CPU</option>
                                         <option value="PSU">PSU</option>
                                     </select>
-                                </div>
+                                </div> */}
                                 <div className="form-group">
                                     <label className="label" form="name">Image Url</label>
                                     <input type="imageUrl" className="form-input" name="imageUrl" id="imageUrl" placeholder="Image url"
