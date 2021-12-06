@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
 import ProductCard from "./ProductCard.js";
-import { Link } from "react-router-dom";
-import { getFirestore, collection, getDoc, getDocs, where, query } from "@firebase/firestore";
+import { collection, getDocs, where, query } from "@firebase/firestore";
 import { db } from "../../firebase.js";
 
 
 
 export default function GPUs() {
-    require('./style.css');
+    require('./marketplace.style.css');
     const [products, setProducts] = useState([]);
     const [heading, setHeading]=useState("");
     const [loading, setLoading] = useState(false);
@@ -61,6 +60,7 @@ export default function GPUs() {
 
     return (
         <div >
+            <section id="marketplace" className="marketplace">
             <section id="breadcrumbs" className="breadcrumbs">
                 <div className="container">
                     <div className="section-title-marketplace">
@@ -70,7 +70,6 @@ export default function GPUs() {
                 </div>
 
             </section>
-            <section id="marketplace" className="marketplace">
                 <div className="container" data-aos="fade-up">
                     <div className="row" data-aos="fade-up" data-aos-delay="100">
                         <div className="col-lg-12 d-flex justify-content-center">
