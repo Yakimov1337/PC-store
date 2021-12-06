@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { db } from '../../firebase';
 import { useHistory } from 'react-router';
 import { addDoc, collection } from '@firebase/firestore';
 import { useAuth } from '../../contexts/AuthContext';
+import { Alert } from 'react-bootstrap';
 
 
 export default function Register() {
@@ -15,6 +16,8 @@ export default function Register() {
     let [newImageUrl, setNewImageUrl] = useState("");
     let [newPrice, setNewPrice] = useState(0);
     const [error, setError] = useState('');
+    const [emptyCategory, setEmptyCategory] = useState(true);
+    const [emptyBrand, setEmptyBrand] = useState(true);
     const [loading, setLoading] = useState(false);
     const { userId } = useAuth();
 
@@ -40,6 +43,10 @@ export default function Register() {
 
     async function handleSubmit(e) {
         e.preventDefault();
+        console.log(emptyBrand,emptyCategory);
+        if (emptyBrand||emptyCategory) {
+            return setError('Please select category and option!')
+        }
         try {
             setError('');
             setLoading(true);
@@ -84,6 +91,7 @@ export default function Register() {
                                 {/* <div className="form-group">
                                     <input type="text" className="form-input" name="name" id="name" placeholder="Your Name" />
                                 </div> */}
+                                {error && <Alert variant="danger"> {error}</Alert>}
                                 <div className="form-group">
                                     <label className="label" form="headline">Headline</label>
                                     <input type="headline" className="form-input" name="email" id="email" placeholder="Product headline" required
@@ -97,18 +105,22 @@ export default function Register() {
                                     <select id='select-options' className='select-box' onChange={(event) => {
                                         setNewType(event.target.value);
                                         getOptions(event.target.value);
+                                        setEmptyCategory(false);
                                     }} >
+                                        <option value="emptyOption">Please select an option...</option>
                                         <option value="Motherboard">Motherboard</option>
+                                        <option value="PSU">PSU</option>
                                         <option value="GPU">GPU</option>
                                         <option value="CPU">CPU</option>
-                                        <option value="PSU">PSU</option>
                                     </select>
                                 </div>
                                 <div className="form-group">
                                     <label className="label" form="name">Brand</label>
                                     <select id='select-options' className='select-box' onChange={(event) => {
                                         setNewBrand(event.target.value);
+                                        setEmptyBrand(false);
                                     }} >
+                                        <option value="emptyOption">Please select an option...</option>
                                         {brands.map((brand, idx) => <option key={idx} value={brand} required>{brand}</option>)}
                                     </select>
                                 </div>
