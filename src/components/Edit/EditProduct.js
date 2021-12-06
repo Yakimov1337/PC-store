@@ -26,12 +26,11 @@ export default function EditProduct({ match }) {
         }
     }, [])
 
-    const editProduct = async (id, headline, type, desc, imageUrl, price) => {
+    const editProduct = async (id, headline, desc, imageUrl, price) => {
         const productDoc = doc(db, "products", id)
         const newFields =
         {
             headline: headline,
-            type: type,
             description: desc,
             imageUrl: imageUrl,
             price: Number(price)
@@ -43,11 +42,9 @@ export default function EditProduct({ match }) {
         e.preventDefault();
 
         let formData = new FormData(e.currentTarget);
-        let { headline, type, desc, imageUrl, price } = Object.fromEntries(formData);
-        console.log( Object.fromEntries(formData));
-        console.log(headline, type, desc, imageUrl, price);
-        type = 'GPU'
-        await editProduct(currentProduct.id, headline, type, desc, imageUrl, price);
+        let { headline, desc, imageUrl, price } = Object.fromEntries(formData);
+
+        await editProduct(currentProduct.id, headline, desc, imageUrl, price);
         try {
             setError('');
             setLoading(true);
