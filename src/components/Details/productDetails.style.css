@@ -34,6 +34,7 @@
 
 /* Left Column */
 .left-column img {
+    max-block-size: -webkit-fill-available;
     position: absolute;
     left: 0;
     top: 0;
