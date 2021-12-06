@@ -2,7 +2,7 @@ export default function About() {
     require('./about.style.css');
     return (
         <div>
-               <section id="about" className="about">
+               <section id="about-page" className="about-page">
                     <div className="container" data-aos="fade-up">
 
                         <div className="row">
