@@ -1,15 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Istok+Web:wght@400;700&display=swap");
 
-/* * {
-  margin: 0;
-  padding: 0;
-  font-family: "Istok Web", sans-serif;
-  
-} */
-/* 
-.no-articles {
-    padding-top: 5%;
-} */
 
 h3 {
     text-align: center;
@@ -221,7 +211,6 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 500;
     padding: 0;
     line-height: 1px;
-    margin: 0 0 5px -10%;
     letter-spacing: 2px;
     text-transform: uppercase;
     color: #141616;
