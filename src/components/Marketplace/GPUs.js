@@ -12,6 +12,28 @@ export default function GPUs() {
     const [loading, setLoading] = useState(false);
 
 
+    async function  clickHandler(e) {
+        const q = getAllByType(e.target.textContent);
+        const querySnapshot = await getDocs(q);
+        console.log(querySnapshot);
+        const items = [];
+        querySnapshot.forEach((doc) => {
+            let product = {
+                id: doc.id,
+                ...doc.data(),
+            };
+            items.push(product);
+        });
+        setProducts(items);
+        setLoading(false);
+        items.forEach(element => {
+            console.log(element);
+        });
+    }
+    
+    function getAllByType(type) {
+        return query(collection(db, "products"), where("type", "==", type));
+    }
     useEffect(async () => {
         setLoading(true);
         const q = query(collection(db, "products"), where("type", "==", "GPU"));
@@ -30,7 +52,7 @@ export default function GPUs() {
             console.log(element);
         });
     }, [])
-
+    
 
 
     if (loading) return <h1> Loading </h1>
@@ -50,7 +72,7 @@ export default function GPUs() {
                 <div className="container" data-aos="fade-up">
                     <div className="row" data-aos="fade-up" data-aos-delay="100">
                         <div className="col-lg-12 d-flex justify-content-center">
-                            <ul id="portfolio-flters">
+                            <ul onClick={clickHandler} id="portfolio-flters">
                                 <li data-filter="*" className="filter-active">All</li>
                                 <li data-filter=".filter-app">CPU</li>
                                 <li data-filter=".filter-card">GPU</li>
