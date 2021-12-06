@@ -51,8 +51,6 @@ export default function ProductDetails({ match }) {
         <div className="div-container-details">
             <div className="left-column">
                 <img className="game-img" src={product.imageUrl} />
-                <img data-image="blue" src="images/blue.png" alt="" />
-                <img data-image="red" className="active" src="images/red.png" alt="" />
             </div>
 
             <div className="right-column">
