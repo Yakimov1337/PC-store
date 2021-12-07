@@ -1,18 +1,40 @@
 /*--------------------------------------------------------------
 # About
 --------------------------------------------------------------*/
-
-
+.about .content h3 {
+  font-weight: 700;
+  font-size: 28px;
+  font-family: "Poppins", sans-serif;
+}
+.about .content ul {
+  list-style: none;
+  padding: 0;
+}
+.about .content ul li {
+  padding: 0 0 8px 26px;
+  position: relative;
+}
+.about .content ul i {
+  position: absolute;
+  font-size: 20px;
+  left: 0;
+  top: -3px;
+  color: #ffc451;
+}
+.about .content p:last-child {
+  margin-bottom: 0;
+}
 /*--------------------------------------------------------------
   # Sections General
   --------------------------------------------------------------*/
-section.about-page {
-  padding: 80px 0;
+section.about {
+  margin-bottom: 1%;
   overflow: hidden;
 }
 
-.section-title {
-  padding-bottom: 40px;
+section.about-title {
+  margin-top: 4%;
+  margin-bottom: 1%;
 }
 
 .section-title h2 {
@@ -47,8 +69,9 @@ section.about-page {
 }
 
 .about .content h3 {
+  color:dimgray;
   font-weight: 700;
-  font-size: 28px;
+  font-size: 27px;
   font-family: "Poppins", sans-serif;
 }
 
