@@ -1,7 +1,18 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from '../../contexts/AuthContext.js';
+
 
 export default function Main() {
-require('./home.style.css')
+    require('./home.style.css')
+    const { currentUser } = useAuth();
+
+    let button = '';
+    if (currentUser) {
+        button = <Link className="cta-btn" to="/Marketplace">Explore now</Link>
+    } else {
+        button = <Link className="cta-btn" to="/login">Sign Up</Link>
+    }
     return (
         <div id='home'>
             <div >
@@ -55,27 +66,25 @@ require('./home.style.css')
 
 
 
-                {/* <section id="clients" className="clients">
-                    <div className="container" data-aos="zoom-in">
+                {/* <section id="clients" class="clients">
+      <div class="container" data-aos="zoom-in">
 
-                        <div className="clients-slider swiper">
-                            <div className="swiper-wrapper align-items-center">
-                                <div className="swiper-slide"><img src="assets/img/clients/client-1.png" className="img-fluid" alt="" /></div>
-                                <div className="swiper-slide"><img src="assets/img/clients/client-2.png" className="img-fluid" alt="" /></div>
-                                <div className="swiper-slide"><img src="assets/img/clients/client-3.png" className="img-fluid" alt="" /></div>
-                                <div className="swiper-slide"><img src="assets/img/clients/client-4.png" className="img-fluid" alt="" /></div>
-                                <div className="swiper-slide"><img src="assets/img/clients/client-5.png" className="img-fluid" alt="" /></div>
-                                <div className="swiper-slide"><img src="assets/img/clients/client-6.png" className="img-fluid" alt="" /></div>
-                                <div className="swiper-slide"><img src="assets/img/clients/client-7.png" className="img-fluid" alt="" /></div>
-                                <div className="swiper-slide"><img src="assets/img/clients/client-8.png" className="img-fluid" alt="" /></div>
-                            </div>
-                            <div className="swiper-pagination"></div>
-                        </div>
+        <div class="clients-slider swiper">
+          <div class="swiper-wrapper align-items-center">
+            <div class="swiper-slide"><img src="assets/img/clients/client-1.png" class="img-fluid" alt=""/></div>
+            <div class="swiper-slide"><img src="assets/img/clients/client-2.png" class="img-fluid" alt=""/></div>
+            <div class="swiper-slide"><img src="assets/img/clients/client-3.png" class="img-fluid" alt=""/></div>
+            <div class="swiper-slide"><img src="assets/img/clients/client-4.png" class="img-fluid" alt=""/></div>
+            <div class="swiper-slide"><img src="assets/img/clients/client-5.png" class="img-fluid" alt=""/></div>
+            <div class="swiper-slide"><img src="assets/img/clients/client-6.png" class="img-fluid" alt=""/></div>
+            <div class="swiper-slide"><img src="assets/img/clients/client-7.png" class="img-fluid" alt=""/></div>
+            <div class="swiper-slide"><img src="assets/img/clients/client-8.png" class="img-fluid" alt=""/></div>
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
 
-                    </div>
-                </section> */}
-
-
+      </div>
+    </section> */}
 
 
                 <section id="services" className="services">
@@ -152,7 +161,7 @@ require('./home.style.css')
                             <h3>Get Started</h3>
                             <p> Explore our biggest and trusted marketplace.Find solution for your business.Satisfy your needs.</p>
 
-                            <a className="cta-btn" href="#">Sign Up</a>
+                            {button}
 
                         </div>
 

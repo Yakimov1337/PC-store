@@ -21,7 +21,6 @@ export default function Login() {
             setLoading(true);
             await login(emailRef.current.value, passwordRef.current.value);
             history.push('/')
-            
         } catch {
             setMessage('')
             setError('Wrong credentials!');

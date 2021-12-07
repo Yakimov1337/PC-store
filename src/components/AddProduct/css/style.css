@@ -498,6 +498,8 @@ body {
 }
 
 .select-box {
+  border-color: #ebebeb;
+  border-radius: 10px;
   padding: 3%;
   display: block;
   width: 100%;
