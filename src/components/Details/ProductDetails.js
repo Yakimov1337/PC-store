@@ -43,7 +43,7 @@ export default function ProductDetails({ match }) {
     if (userId === product.author) {
         userOptionsDiv =
             <div className="product-price">
-                <Link to={`/edit/${match.params.productId}`} product={product} className="cart-btn">Edit</Link>
+                <Link to={`/edit-${match.params.productId}`} product={product} className="cart-btn">Edit</Link>
                 <Link to="/marketplace" onClick={() => { deleteProduct(product.id) }} className="cart-btn-delete">Delete</Link>
             </div>;
     }
