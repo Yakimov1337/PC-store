@@ -10,6 +10,7 @@ import MyProfile from './components/MyProfile/MyProfile.js';
 import Preloader from './components/Preloader/Preloader';
 import Register from './components/Register/Register.js';
 import PrivateRoute from '../src/contexts/PrivateRoute.js';
+import NotFound from './components/404-NotFound/NotFound.js';
 import About from './components/About/About.js';
 import AddProduct from './components/AddProduct/Add.Product.js';
 import EditProduct from './components/Edit/EditProduct.js';
@@ -62,10 +63,11 @@ function App() {
           <Route exact path='/marketplace-msi' component={MSI} />
           <Route exact path='/marketplace-asus' component={ASUS} />
           <Route path='/product-:productId' component={ProductDetails} />
-          <Route path='/add-product' component={AddProduct} />
-          <Route path='/edit-:productId' component={EditProduct} />
+          <PrivateRoute path='/add-product' component={AddProduct} />
+          <PrivateRoute path='/edit-:productId' component={EditProduct} />
           <PrivateRoute path='/my-profile' component={MyProfile} />
           <PrivateRoute path='/my-products' component={MyProducts} />
+          <Route path="/" component={NotFound} />
         </Switch>
         <Footer />
         <Preloader />
