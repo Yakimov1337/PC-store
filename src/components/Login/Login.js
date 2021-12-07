@@ -9,23 +9,24 @@ export default function Login() {
     require('./css/style.css');
     const emailRef = useRef();
     const passwordRef = useRef();
+
     const { login } = useAuth();
     const [error, setError] = useState('');
-    const [message, setMessage] = useState('');
     const [loading, setLoading] = useState(false);
     const history = useHistory()
 
     async function handleSubmit(e) {
         e.preventDefault();
         try {
-            setLoading(true);
-            await login(emailRef.current.value, passwordRef.current.value);
-            history.push('/')
+            setLoading(false);
+            await login(emailRef.current.value, passwordRef.current.value)
+            .then(()=>{
+                setLoading(true);
+                history.push('/');
+            })
         } catch {
-            setMessage('')
             setError('Wrong credentials!');
         }
-        setLoading(false);
     }
 
 
