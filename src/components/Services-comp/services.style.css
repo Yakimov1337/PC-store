@@ -60,7 +60,7 @@
   # Features
   --------------------------------------------------------------*/
   .features {
-    padding-top: 20px;
+    padding-top: 5%;
   }
   .features .icon-box {
     padding-left: 15px;
@@ -87,13 +87,11 @@
     min-height: 400px;
   }
   
-.features {
-    padding-top: 90px;
-}
  /*--------------------------------------------------------------
   # Sections General
   --------------------------------------------------------------*/
   #services section {
+    padding-bottom: 3%;
     padding: 60px 0;
     overflow: hidden;
   }
