@@ -58,24 +58,24 @@ function Header() {
 
             <li className="dropdown"><Link to="/marketplace"><span>Marketplace</span> <i className="bi bi-chevron-down"></i></Link>
               <ul>
-                <li className="dropdown"><Link to="/marketplace"><span>Graphic cards</span> <i className="bi bi-chevron-right"></i></Link>
+                <li className="dropdown"><Link to="/marketplace-all-gpus"><span>Graphic cards</span> <i className="bi bi-chevron-right"></i></Link>
                   <ul>
-                    <li><Link to="/marketplaceall-gpus">All GPUs</Link></li>
-                    <li><Link to="/marketplace">NVIDIA</Link></li>
-                    <li><Link to="/marketplace">AMD</Link></li>
+                    <li><Link to="/marketplace-all-gpus">All GPUs</Link></li>
+                    <li><Link to="/marketplace-nvidia">NVIDIA</Link></li>
+                    <li><Link to="/marketplace-amd">AMD</Link></li>
                   </ul>
                 </li>
 
-                <li className="dropdown"><Link to="/marketplace"><span>Motherboards</span> <i className="bi bi-chevron-right"></i></Link>
+                <li className="dropdown"><Link to="/marketplace-all-motherboards"><span>Motherboards</span> <i className="bi bi-chevron-right"></i></Link>
                   <ul>
-                    <li><Link to="/marketplace">All Motherboards</Link></li>
-                    <li><Link to="/marketplace">ASRock</Link></li>
-                    <li><Link to="/marketplace">ASUS</Link></li>
-                    <li><Link to="/marketplace">MSI</Link></li>
+                    <li><Link to="/marketplace-all-motherboards">All Motherboards</Link></li>
+                    <li><Link to="/marketplace-asrock">ASRock</Link></li>
+                    <li><Link to="/marketplace-asus">ASUS</Link></li>
+                    <li><Link to="/marketplace-msi">MSI</Link></li>
                   </ul>
                 </li>
-                <li><Link to="/marketplace">CPUs</Link></li>
-                <li><Link to="/marketplace">PSUs</Link></li>
+                <li><Link to="/marketplace-all-cpu">CPUs</Link></li>
+                <li><Link to="/marketplace-all-psu">PSUs</Link></li>
               </ul>
             </li>
 
