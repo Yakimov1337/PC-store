@@ -1,0 +1,123 @@
+/*--------------------------------------------------------------
+  # Breadcrumbs
+  --------------------------------------------------------------*/
+  .breadcrumbs-not-found {
+    padding: 15px 0;
+    background: white;
+    min-height: 40px;
+    margin-top: 74px;
+}
+
+.breadcrumbs-not-found h2 {
+    font-size: 28px;
+    font-weight: 400;
+}
+
+.breadcrumbs-not-found ol {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin-bottom: 5%;
+    padding: 0;
+}
+
+.breadcrumbs-not-found ol li+li {
+    padding-left: 10px;
+}
+
+.breadcrumbs-not-found ol li+li::before {
+    display: inline-block;
+    padding-right: 10px;
+    color: #2f2f2f;
+    content: "/";
+}
+
+@media (max-width: 992px) {
+    .breadcrumbs-not-found {
+        margin-top: 68px;
+    }
+
+    .breadcrumbs-not-found .d-flex {
+        display: block !important;
+    }
+
+    .breadcrumbs-not-found ol {
+        display: block;
+    }
+
+    .breadcrumbs-not-found ol li {
+        display: inline-block;
+    }
+}
+
+/*--------------------------------------------------------------
+  # Sections General
+  --------------------------------------------------------------*/
+
+
+
+
+
+  .section-title-not-found h2 {
+    text-align: center;
+    font-size: 45px;
+    font-weight: 500;
+    padding: 0;
+    line-height: 1px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #141616;
+    ;
+
+    font-family: "Poppins", sans-serif;
+}
+
+.section-title-not-found h2::after {
+    content: "";
+    width: 120px;
+    height: 1px;
+    display: inline-block;
+    background: #ffde9e;
+    margin: 4px 10px;
+}
+
+.section-title-not-found h2::before {
+    content: "";
+    width: 120px;
+    height: 1px;
+    display: inline-block;
+    background: #ffde9e;
+    margin: 4px 10px;
+}
+
+.section-title-not-found p::after {
+    content: "";
+    width: 120px;
+    height: 1px;
+    display: inline-block;
+    background: #ffde9e;
+    margin: 4px 10px;
+}
+
+.section-title-not-found p::before {
+    content: "";
+    width: 120px;
+    height: 1px;
+    display: inline-block;
+    background: #ffde9e;
+    margin: 4px 10px;
+}
+
+.section-title-not-found p {
+    margin: 0;
+    margin: 0;
+    font-size: 36px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-family: "Poppins", sans-serif;
+    color: #141616;
+}
+
+.container-not-found {
+    padding:15rem;
+}
