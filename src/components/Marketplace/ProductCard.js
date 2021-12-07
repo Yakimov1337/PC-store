@@ -4,7 +4,7 @@ export default function Product({
     product
 }) {
     return (
-            <div className="product-card">
+            <div className="product-card" data-aos="fade-up" data-aos-delay="50">
                 <div className="imgBox">
                     <img src={product.imageUrl} alt="No Image" className="mouse" />
                 </div>
