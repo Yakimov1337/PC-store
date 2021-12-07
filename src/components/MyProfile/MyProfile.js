@@ -18,10 +18,6 @@ export default function MyProfile() {
         const querySnapshot = await getDocs(q)
         querySnapshot.forEach((doc) => setUser(({ id: doc.id, ...doc.data() })));
 
-        console.log(user);
-        if (user.products.length > 3) {
-            level = "Advanced"
-        } else { level = "Begginer" }
     }, []);
 
 
@@ -55,14 +51,14 @@ export default function MyProfile() {
                                         </div>
                                         <h6 className="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Projects</h6>
                                         <div className="row">
-                                            <div className="col-sm-6">
+                                            {/* <div className="col-sm-6">
                                                 <p className="m-b-10 f-w-600">Username</p>
                                                 <h6 className="text-muted f-w-400">{user.username}</h6>
                                             </div>
                                             <div className="col-sm-6">
                                                 <p className="m-b-10 f-w-600">Most Viewed</p>
                                                 <h6 className="text-muted f-w-400">Dinoter husainm</h6>
-                                            </div>
+                                            </div> */}
                                         </div>
                                         {/* <ul className="social-link list-unstyled m-t-40 m-b-10">
                                             <li><a href="#!" data-toggle="tooltip" data-placement="bottom" title data-original-title="facebook" data-abc="true"><i className="mdi mdi-facebook feather icon-facebook facebook" aria-hidden="true" /></a></li>
