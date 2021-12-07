@@ -5,7 +5,7 @@ import { db } from "../../../firebase.js";
 
 
 
-export default function asus() {
+export default function Asus() {
     require('../marketplace.style.css');
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(false);

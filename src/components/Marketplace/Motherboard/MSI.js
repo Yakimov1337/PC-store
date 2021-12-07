@@ -5,7 +5,7 @@ import { db } from "../../../firebase.js";
 
 
 
-export default function msi() {
+export default function Msi() {
     require('../marketplace.style.css');
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(false);

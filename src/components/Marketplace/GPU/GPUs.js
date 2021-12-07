@@ -5,7 +5,7 @@ import { db } from "../../../firebase.js";
 
 
 
-export default function allGpus() {
+export default function AllGpus() {
     require('../marketplace.style.css');
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(false);

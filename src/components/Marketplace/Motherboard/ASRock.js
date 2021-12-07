@@ -5,7 +5,7 @@ import { db } from "../../../firebase.js";
 
 
 
-export default function asrock() {
+export default function ASRock() {
     require('../marketplace.style.css');
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(false);
