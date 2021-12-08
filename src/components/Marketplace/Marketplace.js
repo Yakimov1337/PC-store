@@ -26,9 +26,6 @@ export default function GPUs() {
         });
         setProducts(items);
         setLoading(false);
-        items.forEach(element => {
-            console.log(element);
-        });
     }
 
     function getAllByType(type) {
