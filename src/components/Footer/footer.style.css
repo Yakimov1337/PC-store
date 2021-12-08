@@ -157,12 +157,12 @@
     color: #444444;
   }
 
-  a {
+  #footer a {
     color: #ffc451;
     text-decoration: none;
   }
 
-  a:hover {
+  #footer a:hover {
     color: #ffd584;
     text-decoration: none;
   }
