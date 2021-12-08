@@ -82,7 +82,7 @@ export default function EditProduct({ match }) {
                                 <div className="form-group">
                                     <label className="label" form="name">Image Url</label>
                                     <input type="imageUrl" className="form-input" name="imageUrl" id="imageUrl" placeholder="Image url"
-                                        defaultValue={user.imageUrl} required
+                                        defaultValue={user.imageUrl} 
                                     />
                                 </div>
                                 <div className="form-group">
