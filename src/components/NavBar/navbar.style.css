@@ -39,12 +39,12 @@
    color: #444444;
  }
 
- a {
+  a {
    color: #ffc451;
    text-decoration: none;
  }
 
- a:hover {
+ #navbar a:hover {
    color: #ffd584;
    text-decoration: none;
  }

@@ -138,3 +138,33 @@ h6 {
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out
 }
+
+a.cart-btn {
+    color:floralwhite;
+}
+.product-price {
+    display: flex;
+    align-items: center;
+    margin-top: 18%;
+}
+
+.product-price span {
+    font-size: 26px;
+    font-weight: 300;
+    color: #43474D;
+    margin-right: 20px;
+}
+.cart-btn {
+    display: inline-block;
+    background-color: #7DC855;
+    border-radius: 6px;
+    font-size: 16px;
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 12px 30px;
+    transition: all .5s;
+    margin-right: 10%;
+}
+.cart-btn:hover {
+    background-color: #64af3d;
+}
