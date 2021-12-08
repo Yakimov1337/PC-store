@@ -35,6 +35,8 @@ export default function Register() {
                 email: emailRef.current.value,
                 username: usernameRef.current.value,
                 products: [],
+                address:'',
+                phoneNumber:Number(0),
             })
     }
 
@@ -57,7 +59,6 @@ export default function Register() {
                 if (result.includes(emailRef.current.value)) {
                     return setError('This email already exists!')
                 }
-
                 try {
                     setError('');
                     setLoading(true);
