@@ -2,6 +2,7 @@ import { useAuth } from '../../contexts/AuthContext';
 import { collection, getDocs, doc, query, where } from "@firebase/firestore";
 import { db } from '../../firebase'
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 
 
@@ -12,7 +13,7 @@ export default function MyProfile() {
     const userCollectionRef = collection(db, "users");
     // const userCollectionRef = doc(db, "users", userId);
 
-    let level="Begginer";
+    let level = "Begginer";
     useEffect(async () => {
         const q = query(userCollectionRef, where("email", "==", currentUser.email));
         const querySnapshot = await getDocs(q)
@@ -49,8 +50,17 @@ export default function MyProfile() {
                                                 <h6 className="text-muted f-w-400">{user.phoneNumber}</h6>
                                             </div>
                                         </div>
-                                        <h6 className="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Projects</h6>
+                                        <h6 className="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Delivery Address</h6>
+                                        <h6 className="text-muted f-w-400">{user.address}</h6>
+
+                                        <h6 className="text-muted f-w-400"></h6>
+
                                         <div className="row">
+                                            <div className="product-price">
+                                                <Link to='/edit-my-profile' className="cart-btn">Edit</Link>
+
+                                            </div>
+
                                             {/* <div className="col-sm-6">
                                                 <p className="m-b-10 f-w-600">Username</p>
                                                 <h6 className="text-muted f-w-400">{user.username}</h6>
