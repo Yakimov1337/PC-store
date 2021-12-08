@@ -21,7 +21,14 @@ export default function MyProfile() {
 
     }, []);
 
-
+    let imgUrl ='';
+if (user.imageUrl == '') {
+    imgUrl = "https://img.icons8.com/bubbles/100/000000/user.png";
+}else {
+    imgUrl = user.imageUrl;
+}
+console.log(user.imageUrl);
+console.log(imgUrl);
     return (
 
         <div className="page-content page-container" id="page-content">
@@ -32,7 +39,7 @@ export default function MyProfile() {
                             <div className="row m-l-0 m-r-0">
                                 <div className="col-sm-4 bg-c-lite-green user-profile">
                                     <div className="card-block text-center text-white">
-                                        <div className="m-b-25"> <img src="https://img.icons8.com/bubbles/100/000000/user.png" className="img-radius" alt="User-Profile-Image" /> </div>
+                                        <div className="m-b-25"> <img  src={imgUrl} className="img-radius " alt="User-Profile-Image" /> </div>
                                         <h6 className="f-w-600">{user.username}</h6>
                                         <p>{level}</p> <i className=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16" />
                                     </div>
@@ -56,7 +63,7 @@ export default function MyProfile() {
                                         <h6 className="text-muted f-w-400"></h6>
 
                                         <div className="row">
-                                            <div className="product-price">
+                                            <div className="edit-btn">
                                                 <Link to='/edit-my-profile' className="cart-btn">Edit</Link>
 
                                             </div>

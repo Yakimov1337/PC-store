@@ -2,9 +2,10 @@
     background-color: #f9f9fa
 }
 
-#header{
-    background-color:black;
+#header {
+    background-color: black;
 }
+
 .padding {
     display: block;
     margin-left: auto;
@@ -55,7 +56,8 @@
 }
 
 .img-radius {
-    border-radius: 5px
+    max-width: 100px;
+    border-radius: 5px,
 }
 
 h6 {
@@ -140,20 +142,22 @@ h6 {
 }
 
 a.cart-btn {
-    color:floralwhite;
+    color: floralwhite;
 }
-.product-price {
+
+.edit-btn  {
     display: flex;
     align-items: center;
     margin-top: 18%;
 }
 
-.product-price span {
+.edit-btn span {
     font-size: 26px;
     font-weight: 300;
     color: #43474D;
     margin-right: 20px;
 }
+
 .cart-btn {
     display: inline-block;
     background-color: #7DC855;
@@ -165,6 +169,7 @@ a.cart-btn {
     transition: all .5s;
     margin-right: 10%;
 }
+
 .cart-btn:hover {
     background-color: #64af3d;
 }
