@@ -58,7 +58,9 @@ export default function Register() {
                     imageUrl: newImageUrl,
                     price: Number(newPrice),
                     author: userId,
-                    brand: newBrand
+                    brand: newBrand,
+                    stars: Number(0),
+                    quantity: Number(1)
                 })
             history.push('/marketplace')
 
