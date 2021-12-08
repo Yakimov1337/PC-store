@@ -254,3 +254,190 @@ div.left-column > img {
         top: -85px;
     }
 }
+
+/*--------------------------------------------------------------
+  # Breadcrumbs
+  --------------------------------------------------------------*/
+  .breadcrumbs-details {
+    padding: 15px 0;
+    background: white;
+    min-height: 40px;
+    margin-top: 74px;
+}
+
+.breadcrumbs-details h2 {
+    font-size: 28px;
+    font-weight: 400;
+}
+
+.breadcrumbs-details ol {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin-bottom: 5%;
+    padding: 0;
+}
+
+.breadcrumbs-details ol li+li {
+    padding-left: 10px;
+}
+
+.breadcrumbs-details ol li+li::before {
+    display: inline-block;
+    padding-right: 10px;
+    color: #2f2f2f;
+    content: "/";
+}
+
+@media (max-width: 992px) {
+    .breadcrumbs-details {
+        margin-top: 68px;
+    }
+
+    .breadcrumbs-details .d-flex {
+        display: block !important;
+    }
+
+    .breadcrumbs-details ol {
+        display: block;
+    }
+
+    .breadcrumbs-details ol li {
+        display: inline-block;
+    }
+}
+
+
+/*--------------------------------------------------------------
+  # Sections General
+  --------------------------------------------------------------*/
+
+
+
+
+
+  .section-title-details h2 {
+    text-align: center;
+    font-size: 45px;
+    font-weight: 500;
+    padding: 0;
+    line-height: 1px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #141616;
+    ;
+
+    font-family: "Poppins", sans-serif;
+}
+
+.section-title-details h2::after {
+    content: "";
+    width: 120px;
+    height: 1px;
+    display: inline-block;
+    background: #ffde9e;
+    margin: 4px 10px;
+}
+
+.section-title-details h2::before {
+    content: "";
+    width: 120px;
+    height: 1px;
+    display: inline-block;
+    background: #ffde9e;
+    margin: 4px 10px;
+}
+
+.section-title-details p::after {
+    content: "";
+    width: 120px;
+    height: 1px;
+    display: inline-block;
+    background: #ffde9e;
+    margin: 4px 10px;
+}
+
+.section-title-details p::before {
+    content: "";
+    width: 120px;
+    height: 1px;
+    display: inline-block;
+    background: #ffde9e;
+    margin: 4px 10px;
+}
+
+.section-title-details p {
+    margin: 0;
+    margin: 0;
+    font-size: 36px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-family: "Poppins", sans-serif;
+    color: #141616;
+}
+
+.container-not-found {
+    padding:15rem;
+}
+
+/* Order Confgirm */
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap");
+
+#order body {
+    background-color: #eee;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300
+}
+
+.cart {
+    height: 100vh
+}
+
+.progresses {
+    display: flex;
+    align-items: center
+}
+
+.line {
+    width: 76px;
+    height: 6px;
+    background: #63d19e
+}
+
+.steps {
+    display: flex;
+    background-color: #63d19e;
+    color: #fff;
+    font-size: 12px;
+    width: 30px;
+    height: 30px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%
+}
+
+.check1 {
+    display: flex;
+    background-color: #63d19e;
+    color: #fff;
+    font-size: 17px;
+    width: 60px;
+    height: 60px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin-bottom: 10px
+}
+
+.invoice-link {
+    font-size: 15px
+}
+
+.order-button {
+    height: 50px
+}
+
+.background-muted {
+    background-color: #fafafc
+}
