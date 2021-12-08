@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useAuth } from '../../contexts/AuthContext.js';
-import { doc, deleteDoc, getDoc } from "firebase/firestore";
+import { doc, deleteDoc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "../../firebase";
 import { Link } from "react-router-dom";
 
@@ -11,6 +11,9 @@ export default function ProductDetails({ match }) {
     const [product, setProduct] = useState({});
     const [loading, setLoading] = useState(false);
     const [order, setOrder] = useState(false);
+    const [rated, setRated] = useState(false);
+    const [stars, setStars] = useState();
+    const [deliveryTime,setDeliveryTime] = useState("3 days delivery");
     const { userId } = useAuth();
 
     useEffect(async () => {
@@ -30,14 +33,35 @@ export default function ProductDetails({ match }) {
         await deleteDoc(productDoc);
     }
 
+    //FIX THIS 
+    const addStars = async (id) => {
+        const productDoc = doc(db, "products", id);
+        let count = Number(product.stars) + Number(stars);
+        console.log(count);
+        let addStars = {
+            stars: Number(count)
+        }
+        await updateDoc(productDoc, addStars)
+    }
+
     // Order submit
     const buyNowHandler = async (e) => {
         e.preventDefault();
-        // TURN ON LATER
-        // deleteProduct(product.id);
+        product.quantity--;
+        const productDoc = doc(db, "products", match.params.productId);
+        let removeUnit = {
+            quantity: product.quantity
+        }
+        await updateDoc(productDoc, removeUnit)
+
+        if (product.quantity == 0) {
+            // TURN ON LATER
+            deleteProduct(product.id);
+        }
         setOrder(true);
 
     }
+
     let buyNow =
         <div id="order" className="container mt-4 mb-4">
             <div className="row d-flex cart align-items-center justify-content-center">
@@ -55,12 +79,18 @@ export default function ProductDetails({ match }) {
                         <div className="row g-0">
                             <div className="col-md-6 border-right p-5">
                                 <div className="text-center order-details">
-                                    <div className="d-flex justify-content-center mb-5 flex-column align-items-center"> <span className="check1"><i className="fa fa-check" /></span> <span className="font-weight-bold">Order Confirmed</span> <small className="mt-2">Your illustraion will go to you soon</small> <a href="#" className="text-decoration-none invoice-link">View Invoice</a> </div> <button className="btn btn-danger btn-block order-button">Go to your Order</button>
+                                    <div className="d-flex justify-content-center mb-5 flex-column align-items-center">
+                                         <span className="check1"><i className="fa fa-check" /></span>
+                                          <span className="font-weight-bold">Order Confirmed</span> 
+                                          <small className="mt-2">Your delivery will go to you soon</small> 
+                                          <a href="#" className="text-decoration-none invoice-link">View Invoice</a>
+                                          </div> <Link to='/marketplace' className="btn btn-danger btn-block order-button">Go back to marketplace</Link>
                                 </div>
                             </div>
                             <div className="col-md-6 background-muted">
                                 <div className="p-3 border-bottom">
-                                    <div className="d-flex justify-content-between align-items-center"> <span><i className="fa fa-clock-o text-muted" /> 3 days delivery</span> <span><i className="fa fa-refresh text-muted" /> 2 Max Revisions</span> </div>
+                                    <div className="d-flex justify-content-between align-items-center"> <span>
+                                        <i className="fa fa-clock-o text-muted" /> {deliveryTime}</span> <span><i className="fa fa-refresh text-muted" /> 2 Max Revisions</span> </div>
                                     <div className="mt-3">
                                         <h6 className="mb-0">Illustraion in Sketch or AI</h6> <span className="d-block mb-0">Includes: Sketch, PSD, PNG, SVG, AI </span> <small>Min: 1 illustraion</small>
                                         <div className="d-flex flex-column mt-3"> <small><i className="fa fa-check text-muted" /> Vector file</small> <small><i className="fa fa-check text-muted" /> Sources files</small> </div>
@@ -110,7 +140,7 @@ export default function ProductDetails({ match }) {
 
     let userOptionsDiv =
         <div>
-            <span>{product.price}</span>
+            <span>{product.price} € </span>
             {userId
                 ? <button onClick={buyNowHandler} className="cart-btn">Buy now</button>
                 : ""
@@ -130,6 +160,59 @@ export default function ProductDetails({ match }) {
                 <Link to="/marketplace" onClick={() => { deleteProduct(product.id) }} className="cart-btn-delete">Delete</Link>
             </div>;
     }
+
+
+    let noUserRating =
+        <div className="rate">
+            <h6>This product has rate of {product.stars} stars!⭐</h6>
+        </div>
+
+    let starsHtml =
+        <div className="rate">
+            {rated
+                ? <h6>Your vote has been submitted!</h6>
+                : <>
+                    <input type="radio" id="star5" name="rate" value="5"
+                        onClick={(event) => {
+                            setStars(event.target.value);
+                            addStars(match.params.productId);
+                            setRated(true);
+                        }} />
+                    <label htmlFor="star5" title="text">5 stars</label>
+                    <input type="radio" id="star4" name="rate" value="4"
+                        onClick={(event) => {
+                            setStars(event.target.value);
+                            addStars(match.params.productId);
+                            setRated(true);
+                        }} />
+                    <label htmlFor="star4" title="text">4 stars</label>
+                    <input type="radio" id="star3" name="rate" value="3"
+                        onClick={(event) => {
+                            setStars(event.target.value);
+                            addStars(match.params.productId);
+                            setRated(true);
+                        }} />
+                    <label htmlFor="star3" title="text">3 stars</label>
+                    <input type="radio" id="star2" name="rate" value="2"
+                        onClick={(event) => {
+                            setStars(event.target.value);
+                            addStars(match.params.productId);
+                            setRated(true);
+                        }} />
+                    <label htmlFor="star2" title="text">2 stars</label>
+                    <input type="radio" id="star1" name="rate" value="1"
+                        onClick={(event) => {
+                            setStars(event.target.value);
+                            addStars(match.params.productId);
+                            setRated(true);
+                        }} />
+                    <label htmlFor="star1" title="text">1 star</label>
+                </>
+            }
+
+        </div>
+
+
 
     return (
         <div className="div-container-details-all">
@@ -174,9 +257,15 @@ export default function ProductDetails({ match }) {
                             <div className="cable-config">
                                 <span>Delivery options</span>
                                 <div className="cable-choose">
-                                    <button>Express </button>
-                                    <button>Normal</button>
-                                    <button>Same day</button>
+                                    <button onClick={(event) => {
+                                        setDeliveryTime("1 day delivery")
+                                    }}>Express </button>
+                                    <button onClick={(event) => {
+                                        setDeliveryTime("3 days delivery")
+                                    }}>Normal</button>
+                                    <button onClick={(event) => {
+                                        setDeliveryTime("Same day delivery")
+                                    }}>Same day</button>
                                 </div>
                                 <a href="#">How to configurate your headphones</a>
                             </div>
@@ -184,7 +273,16 @@ export default function ProductDetails({ match }) {
 
                         <div className="product-price">
                             {userOptionsDiv}
+                            {userId && userId != product.author
+                                ? starsHtml
+                                : ''
+                            }
+                            {!userId
+                                ? noUserRating
+                                : ''
+                            }
                         </div>
+
                     </div>
                 </div>
 
