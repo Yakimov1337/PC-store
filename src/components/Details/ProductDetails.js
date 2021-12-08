@@ -13,7 +13,7 @@ export default function ProductDetails({ match }) {
     const [order, setOrder] = useState(false);
     const [rated, setRated] = useState(false);
     const [stars, setStars] = useState();
-    const [deliveryTime,setDeliveryTime] = useState("3 days delivery");
+    const [deliveryTime, setDeliveryTime] = useState("3 days delivery");
     const { userId } = useAuth();
 
     useEffect(async () => {
@@ -26,7 +26,14 @@ export default function ProductDetails({ match }) {
         } else {
             console.log("No such document!");
         }
+
     }, [])
+
+    //THIS doesnt work
+    // console.log(product);
+    // if (product.ratedUsers.includes(userId)) {
+    //     setRated(true)
+    // }
 
     const deleteProduct = async (id) => {
         const productDoc = doc(db, "products", id);
@@ -39,7 +46,8 @@ export default function ProductDetails({ match }) {
         let count = Number(product.stars) + Number(stars);
         console.log(count);
         let addStars = {
-            stars: Number(count)
+            stars: Number(count),
+            ratedUsers: userId
         }
         await updateDoc(productDoc, addStars)
     }
@@ -80,11 +88,11 @@ export default function ProductDetails({ match }) {
                             <div className="col-md-6 border-right p-5">
                                 <div className="text-center order-details">
                                     <div className="d-flex justify-content-center mb-5 flex-column align-items-center">
-                                         <span className="check1"><i className="fa fa-check" /></span>
-                                          <span className="font-weight-bold">Order Confirmed</span> 
-                                          <small className="mt-2">Your delivery will go to you soon</small> 
-                                          <a href="#" className="text-decoration-none invoice-link">View Invoice</a>
-                                          </div> <Link to='/marketplace' className="btn btn-danger btn-block order-button">Go back to marketplace</Link>
+                                        <span className="check1"><i className="fa fa-check" /></span>
+                                        <span className="font-weight-bold">Order Confirmed</span>
+                                        <small className="mt-2">Your delivery will go to you soon</small>
+                                        <a href="#" className="text-decoration-none invoice-link">View Invoice</a>
+                                    </div> <Link to='/marketplace' className="btn btn-danger btn-block order-button">Go back to marketplace</Link>
                                 </div>
                             </div>
                             <div className="col-md-6 background-muted">

@@ -60,7 +60,8 @@ export default function Register() {
                     author: userId,
                     brand: newBrand,
                     stars: Number(0),
-                    quantity: Number(1)
+                    quantity: Number(1),
+                    ratedUsers: []
                 })
             history.push('/marketplace')
 
