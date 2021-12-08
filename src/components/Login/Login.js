@@ -13,21 +13,29 @@ export default function Login() {
     const { login } = useAuth();
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
-    const history = useHistory()
+    const history = useHistory();
+
 
     async function handleSubmit(e) {
         e.preventDefault();
         try {
-            setLoading(false);
-            await login(emailRef.current.value, passwordRef.current.value)
-            .then(()=>{
-                setLoading(true);
-                history.push('/');
-            })
-        } catch {
-            setError('Wrong credentials!');
+            setLoading(true);
+            login(emailRef.current.value, passwordRef.current.value)
+                .then((res) => {
+                    setLoading(false);
+                    history.push('/');
+                })
+                .catch(err => {
+                    setLoading(false);
+                    setError('Wrong credentials!');
+                })
+
+
+        } catch (err) {
+            console.log('catch');
         }
     }
+
 
 
     return (
@@ -60,11 +68,11 @@ export default function Login() {
                                 {error && <Alert variant="danger"> {error}</Alert>}
                                 {/* {message && <Alert variant="success"> {message}</Alert>} */}
                                 <div className="form-group">
-                                <label className="label" form="email">Email</label>
+                                    <label className="label" form="email">Email</label>
                                     <input type="email" ref={emailRef} className="form-input" name="email" id="email" placeholder="Your Email" required />
                                 </div>
                                 <div className="form-group">
-                                <label className="label" form="password">Password</label>
+                                    <label className="label" form="password">Password</label>
                                     <input type="password" ref={passwordRef} className="form-input" name="password" id="password" placeholder="Password" required />
                                     <span toggle="#password" className="zmdi zmdi-eye field-icon toggle-password" />
                                 </div>

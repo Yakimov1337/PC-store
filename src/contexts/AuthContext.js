@@ -4,7 +4,9 @@ import { auth } from "../firebase";
 const AuthContext = React.createContext();
 
 export function useAuth() {
-    return useContext(AuthContext)
+    const auth = useContext(AuthContext)
+    
+    return {...auth, isAuthenticated: auth.user !==null}
 }
 
 export function AuthProvider({ children }) {
@@ -44,8 +46,7 @@ export function AuthProvider({ children }) {
             setUserId(user.uid)
         }
     });
-
-
+    
     const value = {
         currentUser,
         userId,
