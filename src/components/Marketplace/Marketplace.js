@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useParams } from 'react-router-dom'
 import ProductCard from "./ProductCard.js";
 import { collection, getDocs, where, query } from "@firebase/firestore";
 import { db } from "../../firebase.js";
@@ -8,13 +9,13 @@ import { db } from "../../firebase.js";
 export default function GPUs() {
     require('./marketplace.style.css');
     const [products, setProducts] = useState([]);
-    const [heading, setHeading]=useState("");
+    const [heading, setHeading] = useState("");
     const [loading, setLoading] = useState(false);
-
+    const { categoryType, brandName } = useParams();
 
     async function clickHandler(e) {
         setHeading(e.target.textContent)
-        const q = getAllByType(e.target.textContent);
+        const q = getAllByTypeAndBrand(e.target.textContent, "all");
         const querySnapshot = await getDocs(q);
         const items = [];
         querySnapshot.forEach((doc) => {
@@ -28,18 +29,48 @@ export default function GPUs() {
         setLoading(false);
     }
 
-    function getAllByType(type) {
-        if (type=="All") {
+    function getAllByTypeAndBrand(category, brand) {
+        if ((category == "all"|| category=="All") && brand == "all") {
+            setHeading("ALL LISTINGS");
             return collection(db, "products");
-        }else if (type=="GPU"||"PSU"||"Motherboard"||"CPU"){
-            return query(collection(db, "products"), where("type", "==", type));
-        }else{
+        }
+        else if (category == "GPU" && brand == "all") {
+            setHeading("ALL GPUs");
+            return query(collection(db, "products"), where("type", "==", category));
+        }
+        else if (category == "GPU" && brand == "AMD") {
+            setHeading("AMD GPUs");
+            return query(collection(db, "products"), where("type", "==", category), where("brand", "==", brand));
+        }
+        else if (category == "GPU" && brand == "NVIDIA") {
+            setHeading("NVIDIA GPUs");
+            return query(collection(db, "products"), where("type", "==", category), where("brand", "==", brand));
+        } else if (category == "Motherboard" && brand == "all") {
+            setHeading("ALL MOTHERBOARDS");
+            return query(collection(db, "products"), where("type", "==", category));
+        } else if (category == "Motherboard" && brand == "ASRock") {
+            setHeading("ASROCK MOTHERBOARDS");
+            return query(collection(db, "products"), where("type", "==", category), where("brand", "==", brand));
+        } else if (category == "Motherboard" && brand == "Asus") {
+            setHeading("ASUS MOTHERBOARDS");
+            return query(collection(db, "products"), where("type", "==", category), where("brand", "==", brand));
+        } else if (category == "Motherboard" && brand == "MSI") {
+            setHeading("MSI MOTHERBOARDS");
+            return query(collection(db, "products"), where("type", "==", category), where("brand", "==", brand));
+        } else if (category == "CPU" && brand == "all") {
+            setHeading("ALL CPUs");
+            return query(collection(db, "products"), where("type", "==", category));
+        } else if (category == "PSU" && brand == "all") {
+            setHeading("ALL PSUs");
+            return query(collection(db, "products"), where("type", "==", category));
+        }
+        else {
             return console.log("Wrong product TYPE!");
         }
     }
     useEffect(async () => {
         setLoading(true);
-        const querySnapshot = await getDocs(collection(db, "products"));
+        const querySnapshot = await getDocs(getAllByTypeAndBrand(categoryType, brandName));
         const items = [];
         querySnapshot.forEach((doc) => {
             let product = {
@@ -49,7 +80,7 @@ export default function GPUs() {
             items.push(product);
         });
         setProducts(items); setLoading(false);
-    }, [])
+    }, [brandName, categoryType])
 
 
 
@@ -58,15 +89,13 @@ export default function GPUs() {
     return (
         <div >
             <section id="marketplace" className="marketplace">
-            <section id="breadcrumbs" className="breadcrumbs">
-                <div className="container">
-                    <div className="section-title-marketplace">
-                        <h2>MARKETPLACE</h2>
-
+                <section id="breadcrumbs" className="breadcrumbs">
+                    <div className="container">
+                        <div className="section-title-marketplace">
+                            <h2>{heading}</h2>
+                        </div>
                     </div>
-                </div>
-
-            </section>
+                </section>
                 <div className="container" data-aos="fade-up">
                     <div className="row" data-aos="fade-up" data-aos-delay="100">
                         <div className="col-lg-12 d-flex justify-content-center">
@@ -94,11 +123,7 @@ export default function GPUs() {
 }
 
 
-// import { useEffect, useState } from "react";
-// import { Link } from "react-router-dom";
-// import ProductCard from "./ProductCard.js";
-// import { getFirestore, collection, getDoc, getDocs } from "@firebase/firestore";
-// import { db } from "../../firebase.js";
+
 
 
 

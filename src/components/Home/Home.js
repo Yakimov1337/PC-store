@@ -382,7 +382,7 @@ export default function Main() {
                     </div>
                 </section>
                 <section id="clients" class="clients">
-                    <div className ="container" data-aos="zoom-in">
+                    <div className="container" data-aos="zoom-in">
 
                         <div className="clients-slider swiper">
                             <div className="swiper-wrapper align-items-center">

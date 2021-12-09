@@ -290,10 +290,13 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 3px;
   }
   
-  .marketplace #marketplace-flters li:hover, .marketplace #marketplace-flters li.filter-active {
+  .marketplace #marketplace-flters li:hover, .marketplace #marketplace-flters li:focus  {
     color: #151515;
     background: #ffc451;
   }
+
+ 
+
   
   .marketplace #marketplace-flters li:last-child {
     margin-right: 0;
