@@ -20,15 +20,7 @@ import Services from './components/Services-comp/Services.js';
 import Team from './components/Team/Team.js';
 import ProductDetails from './components/Details/ProductDetails.js';
 import MyProducts from './components/MyProducts/MyProducts.js';
-import GPUs from './components/Marketplace/GPU/GPUs.js';
-import NVIDIA from './components/Marketplace/GPU/NVIDIA';
-import AMD from './components/Marketplace/GPU/AMD';
-import ASUS from './components/Marketplace/Motherboard/ASUS';
-import ASRock from './components/Marketplace/Motherboard/ASRock';
-import MOTHERBOARDS from './components/Marketplace/Motherboard/All';
-import MSI from './components/Marketplace/Motherboard/MSI';
-import CPU from './components/Marketplace/CPU/All';
-import PSU from './components/Marketplace/PSU/All';
+
 
 function App() {
 
@@ -45,16 +37,7 @@ function App() {
           <Route path='/services' component={Services} />
           <Route path='/team' component={Team} />
           <Route path='/contact-us' component={ContactUs} />
-          <Route path='/marketplace' component={Marketplace} />
-          <Route path='/marketplace-all-gpus' component={GPUs} />
-          <Route path='/marketplace-all-motherboards' component={MOTHERBOARDS} />
-          <Route path='/marketplace-all-cpu' component={CPU} />
-          <Route path='/marketplace-all-psu' component={PSU} />
-          <Route path='/marketplace-nvidia' component={NVIDIA} />
-          <Route path='/marketplace-amd' component={AMD} />
-          <Route path='/marketplace-asrock' component={ASRock} />
-          <Route path='/marketplace-msi' component={MSI} />
-          <Route path='/marketplace-asus' component={ASUS} />
+          <Route path='/marketplace-type-:categoryType-brand-:brandName' component={Marketplace} />
           <Route path='/product-:productId' component={ProductDetails} />
           <PrivateRoute path='/add-product' component={AddProduct} />
           <PrivateRoute path='/edit-my-profile' component={EditProfile} />
