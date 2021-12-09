@@ -22,13 +22,11 @@ export default function MyProfile() {
     }, []);
 
     let imgUrl ='';
-if (user.imageUrl == '') {
+if (user.imageUrl == '' || user.imageUrl == undefined) {
     imgUrl = "https://img.icons8.com/bubbles/100/000000/user.png";
 }else {
     imgUrl = user.imageUrl;
 }
-console.log(user.imageUrl);
-console.log(imgUrl);
     return (
 
         <div className="page-content page-container" id="page-content">
