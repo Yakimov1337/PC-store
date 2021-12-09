@@ -97,7 +97,7 @@ export default function Register() {
                                 {error && <Alert variant="danger"> {error}</Alert>}
                                 <div className="form-group">
                                     <label className="label" form="headline">Headline</label>
-                                    <input type="headline" className="form-input" name="email" id="email" placeholder="Product headline" required
+                                    <input type="headline" className="form-input" name="email" id="email" placeholder="Product headline" required maxLength="25"
                                         onChange={(event) => {
                                             setNewHeadline(event.target.value);
                                         }}
