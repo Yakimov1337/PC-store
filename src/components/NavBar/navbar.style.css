@@ -94,7 +94,7 @@
  }
 
  .navbar a:hover, .navbar .active, .navbar .active:focus, .navbar li:hover>a {
-   color: #ffc451;
+   color: #fff;
  }
 
  .navbar .dropdown ul {
@@ -128,9 +128,19 @@
    font-size: 12px;
  }
 
- .navbar .dropdown ul a:hover, .navbar .dropdown ul .active:hover, .navbar .dropdown ul li:hover>a {
+ .dropdown li:hover>a {
+   color:black;
+ }
+
+ .navbar .dropdown ul a:hover, .navbar .dropdown ul .active:hover, .navbar .dropdown ul li:hover {
    background-color: #ffc451;
  }
+
+ .navbar a:focus{
+   color: #ffd584;
+ }
+
+ 
 
  .navbar .dropdown:hover>ul {
    opacity: 1;
@@ -292,4 +302,8 @@
  .add-btn {
 
    padding-right: 1em;
+ }
+
+ .dropdown li:hover {
+   color: black;
  }

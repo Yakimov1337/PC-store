@@ -56,26 +56,26 @@ function Header() {
             <li><Link className="nav-link scrollto" to="/about">About</Link></li>
             <li><Link className="nav-link scrollto" to="/services">Services</Link></li>
 
-            <li className="dropdown"><Link to="/marketplace"><span>Marketplace</span> <i className="bi bi-chevron-down"></i></Link>
+            <li className="dropdown"><Link to="/marketplace-type-all-brand-all"><span>Marketplace</span> <i className="bi bi-chevron-down"></i></Link>
               <ul>
-                <li className="dropdown"><Link to="/marketplace-all-gpus"><span>Graphic cards</span> <i className="bi bi-chevron-right"></i></Link>
+                <li className="dropdown"><Link to="/marketplace-type-GPU-brand-all"><span>Graphic cards</span> <i className="bi bi-chevron-right"></i></Link>
                   <ul>
-                    <li><Link to="/marketplace-all-gpus">All GPUs</Link></li>
-                    <li><Link to="/marketplace-nvidia">NVIDIA</Link></li>
-                    <li><Link to="/marketplace-amd">AMD</Link></li>
+                    <li><Link to="/marketplace-type-GPU-brand-all">All GPUs</Link></li>
+                    <li><Link to="/marketplace-type-GPU-brand-NVIDIA">NVIDIA</Link></li>
+                    <li><Link to="/marketplace-type-GPU-brand-AMD">AMD</Link></li>
                   </ul>
                 </li>
 
-                <li className="dropdown"><Link to="/marketplace-all-motherboards"><span>Motherboards</span> <i className="bi bi-chevron-right"></i></Link>
+                <li className="dropdown"><Link to="/marketplace-type-Motherboard-brand-all"><span>Motherboards</span> <i className="bi bi-chevron-right"></i></Link>
                   <ul>
-                    <li><Link to="/marketplace-all-motherboards">All Motherboards</Link></li>
-                    <li><Link to="/marketplace-asrock">ASRock</Link></li>
-                    <li><Link to="/marketplace-asus">ASUS</Link></li>
-                    <li><Link to="/marketplace-msi">MSI</Link></li>
+                    <li><Link to="/marketplace-type-Motherboard-brand-all">All Motherboards</Link></li>
+                    <li><Link to="/marketplace-type-Motherboard-brand-ASRock">ASRock</Link></li>
+                    <li><Link to="/marketplace-type-Motherboard-brand-Asus">ASUS</Link></li>
+                    <li><Link to="/marketplace-type-Motherboard-brand-MSI">MSI</Link></li>
                   </ul>
                 </li>
-                <li><Link to="/marketplace-all-cpu">CPUs</Link></li>
-                <li><Link to="/marketplace-all-psu">PSUs</Link></li>
+                <li><Link to="/marketplace-type-CPU-brand-all">CPUs</Link></li>
+                <li><Link to="/marketplace-type-PSU-brand-all">PSUs</Link></li>
               </ul>
             </li>
 
