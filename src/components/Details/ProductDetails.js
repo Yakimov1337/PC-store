@@ -30,10 +30,12 @@ export default function ProductDetails({ match }) {
     }, [])
 
     //THIS doesnt work
-    // console.log(product);
-    // if (product.ratedUsers.includes(userId)) {
-    //     setRated(true)
-    // }
+    if (Object.keys(product).length > 0) {
+        console.log(product);
+        if (product.ratedUsers.includes(userId) && rated == false) {
+            setRated(true)
+        }
+    }
 
     const deleteProduct = async (id) => {
         const productDoc = doc(db, "products", id);
@@ -47,7 +49,7 @@ export default function ProductDetails({ match }) {
         console.log(count);
         let addStars = {
             stars: Number(count),
-            ratedUsers: userId
+            ratedUsers: [userId],
         }
         await updateDoc(productDoc, addStars)
     }
