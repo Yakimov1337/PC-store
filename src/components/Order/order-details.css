@@ -1,0 +1,204 @@
+@import url("https://rsms.me/inter/inter.css");
+
+:root {
+    --color-gray: #737888;
+    --color-lighter-gray: #e3e5ed;
+    --color-light-gray: #f7f7fa;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+html {
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+@supports (font-variation-settings: normal) {
+    html {
+        font-family: "Inter var", sans-serif;
+    }
+}
+
+hr {
+    height: 1px;
+    width: 100%;
+    background-color: var(--color-light-gray);
+    border: 0;
+    margin: 2rem 0;
+}
+
+.order-container {
+    max-width: 40rem;
+    padding: 5vw 2rem 0;
+    margin: 0 auto;
+    height: 100vh;
+}
+
+.center {
+    text-align: center;
+}
+
+.order-form {
+    display: grid;
+    grid-gap: 1rem;
+}
+
+.field {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--color-lighter-gray);
+    padding: .5rem;
+    border-radius: .25rem;
+}
+
+.field__label {
+    color: var(--color-gray);
+    font-size: 0.6rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    margin-bottom: 0.25rem
+}
+
+.field__input {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    outline: 0;
+    font-weight: bold;
+    font-size: 1rem;
+    width: 100%;
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: transparent;
+}
+
+.field:focus-within {
+    border-color: #000;
+}
+
+.fields {
+    display: grid;
+    grid-gap: 1rem;
+}
+
+.fields--2 {
+    grid-template-columns: 1fr 1fr;
+}
+
+.fields--3 {
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.button {
+    background-color: #000;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: block;
+    color: #fff;
+    width: 100%;
+    padding: 1rem;
+    border-radius: 0.25rem;
+    border: 0;
+    cursor: pointer;
+    outline: 0;
+}
+
+.button:focus-visible {
+    background-color: #333;
+}
+
+/* //CHECKBOX */
+.checkbox {
+    margin-bottom: 1%;
+    margin-right: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+}
+
+.checkbox input[type=checkbox] {
+    margin: 0;
+    visibility: hidden;
+    left: 7px;
+    top: 7px;
+}
+
+.checkbox label {
+    margin-top:-23px;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    border-radius: 50%;
+    border: 5px solid #666;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) inset;
+    cursor: pointer;
+    display: block;
+    position: relative;
+    transition: all 0.3s ease 0s;
+}
+
+.checkbox label:hover {
+    border-width: 7px;
+}
+
+.checkbox input[type=checkbox]:checked+label {
+    background-color: #07d410;
+    border: 7px solid #07d410;
+    box-shadow: none;
+}
+
+.checkbox label:before,
+.checkbox label:after {
+    content: "";
+    background: #fff;
+    width: 4px;
+    height: 18px;
+    opacity: 0;
+    transform: translateX(-50%) rotate(55deg);
+    position: absolute;
+    left: 160%;
+    top: -10px;
+    transition: all 0.2s ease 0s;
+}
+
+.checkbox label:after {
+    height: 10px;
+    transform: translateX(-50%) rotate(-33deg);
+    left: -35%;
+    top: -6px;
+}
+
+.checkbox input[type=checkbox]:checked+label:before {
+    opacity: 1;
+    transform: translateX(-50%) rotate(55deg);
+    left: 62%;
+    top: 0px;
+}
+
+.checkbox input[type=checkbox]:checked+label:after {
+    opacity: 1;
+    transform: translateX(-50%) rotate(-33deg);
+    left: 12%;
+    top: 6px;
+}
+
+@media only screen and (max-width:767px) {
+    .checkbox {
+        margin: 0 0 20px;
+    }
+}
+
+
+
+.checkbox-and-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
