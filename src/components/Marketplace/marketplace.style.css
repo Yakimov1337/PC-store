@@ -290,7 +290,7 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 3px;
   }
   
-  .marketplace #marketplace-flters li:hover, .marketplace #marketplace-flters li:focus  {
+  .marketplace #marketplace-flters li:hover, .marketplace #marketplace-flters li:focus li.filter-active {
     color: #151515;
     background: #ffc451;
   }

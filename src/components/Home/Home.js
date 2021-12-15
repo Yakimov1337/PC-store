@@ -30,7 +30,7 @@ export default function Main() {
                             <div className="col-xl-2 col-md-4">
                                 <div className="icon-box">
                                     <i className='bx bx-store'></i>
-                                    <h3><Link to="/marketplace">Biggest Marketplace</Link></h3>
+                                    <h3><Link to="/marketplace-type-all-brand-all">Biggest Marketplace</Link></h3>
                                 </div>
                             </div>
                             <div className="col-xl-2 col-md-4">

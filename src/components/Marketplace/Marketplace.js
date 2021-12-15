@@ -11,10 +11,11 @@ export default function GPUs() {
     const [products, setProducts] = useState([]);
     const [heading, setHeading] = useState("");
     const [loading, setLoading] = useState(false);
+    const [className, setClassName] = useState("");
     const { categoryType, brandName } = useParams();
 
     async function clickHandler(e) {
-        setHeading(e.target.textContent)
+        setHeading(e.target.textContent);
         const q = getAllByTypeAndBrand(e.target.textContent, "all");
         const querySnapshot = await getDocs(q);
         const items = [];
@@ -30,7 +31,7 @@ export default function GPUs() {
     }
 
     function getAllByTypeAndBrand(category, brand) {
-        if ((category == "all"|| category=="All") && brand == "all") {
+        if ((category == "all" || category == "All") && brand == "all") {
             setHeading("ALL LISTINGS");
             return collection(db, "products");
         }
@@ -100,7 +101,7 @@ export default function GPUs() {
                     <div className="row" data-aos="fade-up" data-aos-delay="100">
                         <div className="col-lg-12 d-flex justify-content-center">
                             <ul onClick={clickHandler} id="marketplace-flters">
-                                <li data-filter="*" className="filter-active">All</li>
+                                <li data-filter="*">All</li>
                                 <li data-filter=".filter-app">CPU</li>
                                 <li data-filter=".filter-card">GPU</li>
                                 <li data-filter=".filter-card">PSU</li>
