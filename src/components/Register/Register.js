@@ -36,6 +36,8 @@ export default function Register() {
                 username: usernameRef.current.value,
                 products: [],
                 address:'',
+                city:'',
+                zipCode:'',
                 phoneNumber:Number(0),
             })
     }
