@@ -8,7 +8,7 @@ import { useEffect } from 'react';
 
 export default function EditProduct({ match }) {
     require('./css/style.css');
-    
+
     const history = useHistory()
     const [currentProduct, setCurrentProduct] = useState('');
     const [error, setError] = useState('');
@@ -26,14 +26,15 @@ export default function EditProduct({ match }) {
         }
     }, [])
 
-    const editProduct = async (id, headline, desc, imageUrl, price) => {
+    const editProduct = async (id, headline, desc, imageUrl, price, quantity) => {
         const productDoc = doc(db, "products", id)
         const newFields =
         {
             headline: headline,
             description: desc,
             imageUrl: imageUrl,
-            price: Number(price)
+            price: Number(price),
+            quantity: Number(quantity)
         }
         await updateDoc(productDoc, newFields)
     }
@@ -42,13 +43,13 @@ export default function EditProduct({ match }) {
         e.preventDefault();
 
         let formData = new FormData(e.currentTarget);
-        let { headline, desc, imageUrl, price } = Object.fromEntries(formData);
+        let { headline, desc, imageUrl, price, quantity } = Object.fromEntries(formData);
 
-        await editProduct(currentProduct.id, headline, desc, imageUrl, price);
+        await editProduct(currentProduct.id, headline, desc, imageUrl, price, quantity);
         try {
             setError('');
             setLoading(true);
-            history.push('/marketplace')
+            history.push('/marketplace-type-all-brand-all')
 
         } catch {
             setError('Failed to edit a product!');
@@ -58,7 +59,7 @@ export default function EditProduct({ match }) {
 
     return (
         <div>
-           
+
             <div className="main">
                 <section className="edit">
                     {/* <img src="images/signup-bg.jpg" alt=""> */}
@@ -71,15 +72,6 @@ export default function EditProduct({ match }) {
                                     <input type="text" className="form-input" name="headline" id="text" defaultValue={currentProduct.headline} required
                                     />
                                 </div>
-                                {/* <div className="form-group" form="type">
-                                    <label className="label" form="name">Category</label>
-                                    <select id='select-options' className='select-box' >
-                                        <option value="Motherboard">Motherboard</option>
-                                        <option value="GPU">GPU</option>
-                                        <option value="CPU">CPU</option>
-                                        <option value="PSU">PSU</option>
-                                    </select>
-                                </div> */}
                                 <div className="form-group">
                                     <label className="label" form="name">Image Url</label>
                                     <input type="imageUrl" className="form-input" name="imageUrl" id="imageUrl" placeholder="Image url"
@@ -90,6 +82,13 @@ export default function EditProduct({ match }) {
                                     <label className="label" form="desc" >Description</label>
                                     <input type="description" className="form-input" name="desc" id="description" placeholder="Description"
                                         defaultValue={currentProduct.description} required
+                                    />
+                                </div>
+                                <div className="form-group">
+                                    <label className="label" form="quantity">Quantity</label>
+                                    <input type="quantity" className="form-input" name="quantity" id="quantity" placeholder="quantity"
+                                        defaultValue={currentProduct.quantity}
+                                        required
                                     />
                                 </div>
                                 <div className="form-group">
