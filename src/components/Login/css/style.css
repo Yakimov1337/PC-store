@@ -399,13 +399,13 @@ input[type=checkbox]:not(old) {
   display: none;
 }
 
-input[type=checkbox]:not(old)+label {
+#sign-in-form input[type=checkbox]:not(old)+label {
   display: inline-block;
   margin-top: 7px;
   margin-bottom: 25px;
 }
 
-input[type=checkbox]:not(old)+label>span {
+#sign-in-form input[type=checkbox]:not(old)+label>span {
   display: inline-block;
   width: 13px;
   height: 13px;
