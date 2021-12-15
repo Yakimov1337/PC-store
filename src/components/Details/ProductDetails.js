@@ -72,6 +72,8 @@ export default function ProductDetails({ match }) {
 
     }
 
+    if (loading) return <h1> Loading </h1>
+
     let buyNow =
         <div id="order" className="container mt-4 mb-4">
             <div className="row d-flex cart align-items-center justify-content-center">
@@ -94,7 +96,7 @@ export default function ProductDetails({ match }) {
                                         <span className="font-weight-bold">Order Confirmed</span>
                                         <small className="mt-2">Your delivery will go to you soon</small>
                                         <a href="#" className="text-decoration-none invoice-link">View Invoice</a>
-                                    </div> <Link to='/marketplace' className="btn btn-danger btn-block order-button">Go back to marketplace</Link>
+                                    </div> <Link to='/marketplace-type-all-brand-all' className="btn btn-danger btn-block order-button">Go back to marketplace</Link>
                                 </div>
                             </div>
                             <div className="col-md-6 background-muted">
@@ -167,18 +169,19 @@ export default function ProductDetails({ match }) {
         userOptionsDiv =
             <div className="product-price">
                 <Link to={`/edit-${match.params.productId}`} product={product} className="cart-btn">Edit</Link>
-                <Link to="/marketplace" onClick={() => { deleteProduct(product.id) }} className="cart-btn-delete">Delete</Link>
+                <Link to="/marketplace-type-all-brand-all" onClick={() => { deleteProduct(product.id) }} className="cart-btn-delete">Delete</Link>
             </div>;
     }
 
 
-    let noUserRating =
+    let productRating =
         <div className="rate">
             <h6>This product has rate of {product.stars} stars!⭐</h6>
         </div>
 
     let starsHtml =
         <div className="rate">
+            <h6>This item has rate of {product.stars} stars!⭐</h6>
             {rated
                 ? <h6>Your vote has been submitted!</h6>
                 : <>
@@ -288,7 +291,7 @@ export default function ProductDetails({ match }) {
                                 : ''
                             }
                             {!userId
-                                ? noUserRating
+                                ? productRating
                                 : ''
                             }
                         </div>
