@@ -20,6 +20,9 @@ import Services from './components/Services-comp/Services.js';
 import Team from './components/Team/Team.js';
 import ProductDetails from './components/Details/ProductDetails.js';
 import MyProducts from './components/MyProducts/MyProducts.js';
+import OrderDetails from './components/Order/OrderDetails.js';
+import OrderReceipt from './components/OrderReceipt/OrderReceipt.js';
+
 
 
 function App() {
@@ -39,6 +42,8 @@ function App() {
           <Route path='/contact-us' component={ContactUs} />
           <Route path='/marketplace-type-:categoryType-brand-:brandName' component={Marketplace} />
           <Route path='/product-:productId' component={ProductDetails} />
+          <PrivateRoute path='/buy-:productId' component={OrderDetails} /> 
+          <PrivateRoute path='/receipt-:productId' component={OrderReceipt} /> 
           <PrivateRoute path='/add-product' component={AddProduct} />
           <PrivateRoute path='/edit-my-profile' component={EditProfile} />
           <PrivateRoute path='/edit-:productId' component={EditProduct} />

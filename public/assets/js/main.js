@@ -156,7 +156,7 @@
     /**
    * Sponsors Slider
    */
-    console.log(document.querySelector('.clients-slider'));
+    // console.log(document.querySelector('.clients-slider'));
     new Swiper('.clients-slider', {
       speed: 400,
       loop: true,
