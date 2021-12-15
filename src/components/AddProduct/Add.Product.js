@@ -15,6 +15,7 @@ export default function Register() {
     let [newDesc, setNewDesc] = useState("");
     let [newImageUrl, setNewImageUrl] = useState("");
     let [newPrice, setNewPrice] = useState(0);
+    let [newQuantity,setNewQuantity] = useState(0);
     const [error, setError] = useState('');
     const [emptyCategory, setEmptyCategory] = useState(true);
     const [emptyBrand, setEmptyBrand] = useState(true);
@@ -60,10 +61,10 @@ export default function Register() {
                     author: userId,
                     brand: newBrand,
                     stars: Number(0),
-                    quantity: Number(1),
+                    quantity: Number(newQuantity),
                     ratedUsers: []
                 })
-            history.push('/marketplace')
+            history.push('/marketplace-type-all-brand-all')
 
         } catch {
             setError('Failed to create a product!');
@@ -137,15 +138,23 @@ export default function Register() {
                                 </div>
                                 <div className="form-group">
                                     <label className="label" form="name" >Description</label>
-                                    <input type="description" className="form-input" name="description" id="description" placeholder="Description" required
+                                    <input type="description" className="form-input" name="description" id="description" placeholder="Description" required maxLength="50"
                                         onChange={(event) => {
                                             setNewDesc(event.target.value);
                                         }}
                                     />
                                 </div>
                                 <div className="form-group">
+                                    <label className="label" form="Quantity">Quantity</label>
+                                    <input type="Quantity" className="form-input" name="Quantity" id="Quantity" placeholder="Quantity" required maxLength="3"
+                                        onChange={(event) => {
+                                            setNewQuantity(event.target.value);
+                                        }}
+                                    />
+                                </div>
+                                <div className="form-group">
                                     <label className="label" form="price">Price</label>
-                                    <input type="Price" className="form-input" name="price" id="price" placeholder="Price" required
+                                    <input type="Price" className="form-input" name="price" id="price" placeholder="Price" required maxLength="5"
                                         onChange={(event) => {
                                             setNewPrice(event.target.value);
                                         }}
