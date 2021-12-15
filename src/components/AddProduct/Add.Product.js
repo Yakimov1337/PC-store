@@ -98,7 +98,7 @@ export default function Register() {
                                 {error && <Alert variant="danger"> {error}</Alert>}
                                 <div className="form-group">
                                     <label className="label" form="headline">Headline</label>
-                                    <input type="headline" className="form-input" name="email" id="email" placeholder="Product headline" required maxLength="25"
+                                    <input type="headline" className="form-input" name="email" id="email" placeholder="Product headline" required maxLength="35"
                                         onChange={(event) => {
                                             setNewHeadline(event.target.value);
                                         }}
@@ -138,7 +138,7 @@ export default function Register() {
                                 </div>
                                 <div className="form-group">
                                     <label className="label" form="name" >Description</label>
-                                    <input type="description" className="form-input" name="description" id="description" placeholder="Description" required maxLength="50"
+                                    <input type="description" className="form-input" name="description" id="description" placeholder="Description" required maxLength="150"
                                         onChange={(event) => {
                                             setNewDesc(event.target.value);
                                         }}
