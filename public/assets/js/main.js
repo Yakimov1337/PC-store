@@ -77,34 +77,34 @@
   /**
    * Toggle .header-scrolled class to #header when page is scrolled
    */
-    const headerScrolled = () => {
-      let selectHeader = select('#header')
+  const headerScrolled = () => {
+    let selectHeader = select('#header')
 
-      if (window.scrollY > 100) {
-        selectHeader.classList.add('header-scrolled')
-      } else {
-        selectHeader.classList.remove('header-scrolled');
-      }
+    if (window.scrollY > 100) {
+      selectHeader.classList.add('header-scrolled')
+    } else {
+      selectHeader.classList.remove('header-scrolled');
     }
-    window.addEventListener('load', headerScrolled)
-    onscroll(document, headerScrolled)
+  }
+  window.addEventListener('load', headerScrolled)
+  onscroll(document, headerScrolled)
 
 
   /**
    * Back to top button
    */
-  
+
   const toggleBacktotop = () => {
-      let backtotop = select('.back-to-top')
-      if (window.scrollY > 100) {
-        backtotop.classList.add('active')
-      } else {
-        backtotop.classList.remove('active')
-      }
+    let backtotop = select('.back-to-top')
+    if (window.scrollY > 100) {
+      backtotop.classList.add('active')
+    } else {
+      backtotop.classList.remove('active')
     }
-    window.addEventListener('load', toggleBacktotop)
-    onscroll(document, toggleBacktotop)
-  
+  }
+  window.addEventListener('load', toggleBacktotop)
+  onscroll(document, toggleBacktotop)
+
 
   /**
    * Mobile nav toggle
@@ -152,6 +152,74 @@
         scrollto(window.location.hash)
       }
     }
+
+    /**
+   * Sponsors Slider
+   */
+    console.log(document.querySelector('.clients-slider'));
+    new Swiper('.clients-slider', {
+      speed: 400,
+      loop: true,
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false
+      },
+      slidesPerView: 'auto',
+      pagination: {
+        el: '.swiper-pagination',
+        type: 'bullets',
+        clickable: true
+      },
+      breakpoints: {
+        320: {
+          slidesPerView: 2,
+          spaceBetween: 40
+        },
+        480: {
+          slidesPerView: 3,
+          spaceBetween: 60
+        },
+        640: {
+          slidesPerView: 4,
+          spaceBetween: 80
+        },
+        992: {
+          slidesPerView: 6,
+          spaceBetween: 120
+        }
+      }
+    });
+
+    new Swiper('.testimonials-slider', {
+      speed: 600,
+      loop: true,
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false
+      },
+      slidesPerView: 'auto',
+      pagination: {
+        el: '.swiper-pagination',
+        type: 'bullets',
+        clickable: true
+      }
+    });
+
+    new Swiper('.portfolio-details-slider', {
+      speed: 400,
+      loop: true,
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        type: 'bullets',
+        clickable: true
+      }
+    });
+
+
   });
 
   /**
@@ -167,42 +235,30 @@
 
   });
 
-  /**
-   * Clients Slider
-   */
-  new Swiper('.clients-slider', {
-    speed: 400,
-    loop: true,
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false
-    },
-    slidesPerView: 'auto',
-    pagination: {
-      el: '.swiper-pagination',
-      type: 'bullets',
-      clickable: true
-    },
-    breakpoints: {
-      320: {
-        slidesPerView: 2,
-        spaceBetween: 40
-      },
-      480: {
-        slidesPerView: 3,
-        spaceBetween: 60
-      },
-      640: {
-        slidesPerView: 4,
-        spaceBetween: 80
-      },
-      992: {
-        slidesPerView: 6,
-        spaceBetween: 120
-      }
-    }
-  });
 
+
+
+
+  
+  on('click', '#marketplace-flters li ', function (e) {
+    console.log("here");
+    let portfolioFilters = select('#marketplace-flters ', true);
+    console.log(portfolioFilters);
+    console.log(document.querySelector('#marketplace-flters'));
+
+    e.preventDefault();
+    portfolioFilters.forEach(function (el) {
+      el.classList.remove('filter-active');
+    });
+    this.classList.add('filter-active');
+
+    portfolioIsotope.arrange({
+      filter: this.getAttribute('data-filter')
+    });
+    portfolioIsotope.on('arrangeComplete', function () {
+      AOS.refresh()
+    });
+  }, true);
   /**
    * Porfolio isotope and filter
    */
@@ -213,22 +269,7 @@
         itemSelector: '.portfolio-item'
       });
 
-      let portfolioFilters = select('#portfolio-flters li', true);
-
-      on('click', '#portfolio-flters li', function (e) {
-        e.preventDefault();
-        portfolioFilters.forEach(function (el) {
-          el.classList.remove('filter-active');
-        });
-        this.classList.add('filter-active');
-
-        portfolioIsotope.arrange({
-          filter: this.getAttribute('data-filter')
-        });
-        portfolioIsotope.on('arrangeComplete', function () {
-          AOS.refresh()
-        });
-      }, true);
+  
     }
 
   });
@@ -243,37 +284,12 @@
   /**
    * Portfolio details slider
    */
-  new Swiper('.portfolio-details-slider', {
-    speed: 400,
-    loop: true,
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false
-    },
-    pagination: {
-      el: '.swiper-pagination',
-      type: 'bullets',
-      clickable: true
-    }
-  });
+
 
   /**
    * Testimonials slider
    */
-  new Swiper('.testimonials-slider', {
-    speed: 600,
-    loop: true,
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false
-    },
-    slidesPerView: 'auto',
-    pagination: {
-      el: '.swiper-pagination',
-      type: 'bullets',
-      clickable: true
-    }
-  });
+
 
   /**
    * Animation on scroll
