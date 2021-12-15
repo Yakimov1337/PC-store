@@ -49,7 +49,7 @@ export default function EditProduct({ match }) {
         try {
             setError('');
             setLoading(true);
-            history.push('/marketplace-type-all-brand-all')
+            history.push(`/product-${match.params.productId}`)
 
         } catch {
             setError('Failed to edit a product!');
@@ -69,7 +69,7 @@ export default function EditProduct({ match }) {
                                 <h2 className="form-title">Edit product</h2>
                                 <div className="form-group">
                                     <label className="label">Headline</label>
-                                    <input type="text" className="form-input" name="headline" id="text" defaultValue={currentProduct.headline} required
+                                    <input type="text" className="form-input" name="headline" id="text" defaultValue={currentProduct.headline} required maxLength="35"
                                     />
                                 </div>
                                 <div className="form-group">
@@ -80,20 +80,20 @@ export default function EditProduct({ match }) {
                                 </div>
                                 <div className="form-group">
                                     <label className="label" form="desc" >Description</label>
-                                    <input type="description" className="form-input" name="desc" id="description" placeholder="Description"
+                                    <input type="description" className="form-input" name="desc" id="description" placeholder="Description" maxLength="150"
                                         defaultValue={currentProduct.description} required
                                     />
                                 </div>
                                 <div className="form-group">
                                     <label className="label" form="quantity">Quantity</label>
-                                    <input type="quantity" className="form-input" name="quantity" id="quantity" placeholder="quantity"
+                                    <input type="quantity" className="form-input" name="quantity" id="quantity" placeholder="quantity" maxLength="3"
                                         defaultValue={currentProduct.quantity}
                                         required
                                     />
                                 </div>
                                 <div className="form-group">
                                     <label className="label" form="price">Price</label>
-                                    <input type="Price" className="form-input" name="price" id="price" placeholder="Price"
+                                    <input type="Price" className="form-input" name="price" id="price" placeholder="Price" maxLength="5"
                                         defaultValue={currentProduct.price}
                                         required
                                     />
