@@ -6,9 +6,11 @@ import { useHistory } from "react-router";
 import { Link, Redirect } from "react-router-dom"
 
 
-export default function OrderDetails({ match }) {
+export default function OrderDetails({
+    match,
+    ...props
+}) {
     require('./order-details.css')
-    const history = useHistory();
     let { currentUser } = useAuth();
     const [product, setProduct] = useState({});
     const [user, setUser] = useState('');
@@ -16,9 +18,11 @@ export default function OrderDetails({ match }) {
     const [zipCode, setZipCode] = useState('');
     const [city, setCity] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
-    const [data, setData] = useState();
+    const [data, setData] = useState({});
     const [redirect, setRedirect] = useState(false);
     const [loading, setLoading] = useState(false);
+    const deliveryTime = props.location.data.deliveryTime;
+    const productPrice = props.location.data.productPrice;
 
     useEffect(async () => {
         //Get current product
@@ -46,7 +50,7 @@ export default function OrderDetails({ match }) {
 
 
     // Order submit
-    const placeOrderHandler = async (e) => {
+    async function placeOrderHandler(e) {
         e.preventDefault();
         product.quantity--;
         const productDoc = doc(db, "products", match.params.productId);
@@ -60,7 +64,8 @@ export default function OrderDetails({ match }) {
             deleteProduct(product.id);
         }
 
-        let formData = new FormData(e.currentTarget);
+
+        let formData = new FormData(e.target);
         let { firstName, lastName, address, city, zipCode, phoneNumber } = Object.fromEntries(formData)
         setData({
             firstName,
@@ -68,25 +73,25 @@ export default function OrderDetails({ match }) {
             address,
             city,
             zipCode,
-            phoneNumber
+            phoneNumber,
+            deliveryTime,
+            productPrice
         })
         setRedirect(true);
     }
     if (redirect) {
-        return <Redirect to={{ pathname: `/receipt-${match.params.productId}`, data: { data } }} />
+        return <Redirect to={{ pathname: `/receipt-${match.params.productId}`, data: data }} />
     }
-
-
 
     const checkboxHandler = async (e) => {
         e.preventDefault();
-        console.log('here');
         setAddress(user.address);
         setCity(user.city);
         setPhoneNumber(user.phoneNumber);
         setZipCode(user.zipCode);
     }
 
+    if (loading) return <h1> Loading </h1>
     return (
         <div className="order-container">
             <div className="center">
@@ -114,7 +119,7 @@ export default function OrderDetails({ match }) {
                     </div>
                     <label className="field">
                         <span className="field__label" htmlFor="address">Address</span>
-                        <input className="field__input" type="text" name="id" defaultValue={address} required maxLength="35" />
+                        <input className="field__input" type="text" name="address" defaultValue={address} required maxLength="35" />
                     </label>
                     <label className="field">
                         <span className="field__label" htmlFor="country">Country</span>
@@ -125,7 +130,7 @@ export default function OrderDetails({ match }) {
                     </label>
                     <div className="fields fields--3">
                         <label className="field">
-                            <span className="field__label" htmlFor="zipcode">Zip code</span>
+                            <span className="field__label" htmlFor="zipCode">Zip code</span>
                             <input className="field__input" type="text" name="zipCode" defaultValue={zipCode} required maxLength="15" />
                         </label>
                         <label className="field">
@@ -138,9 +143,8 @@ export default function OrderDetails({ match }) {
                         </label>
                     </div>
                 </div>
-                <hr />
-                <button className="button">Place Order</button>
+                <button type="submit" className="button">Place Order</button>
             </form >
-        </div>
+        </div >
     )
 }
