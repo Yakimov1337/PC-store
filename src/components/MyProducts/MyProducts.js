@@ -3,19 +3,13 @@ import ProductCard from "./ProductCard.js";
 import { collection, getDoc, getDocs, query, where } from "@firebase/firestore";
 import { db } from "../../firebase.js";
 import { useAuth } from "../../contexts/AuthContext.js";
-import { Link } from "react-router-dom";
-
-
 
 export default function MyProducts() {
     require('./myproducts.style.css');
-
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(false);
     const { userId } = useAuth();
     const productCollectionRef = collection(db, "products");
-
-
 
     useEffect(async () => {
         setLoading(true);
@@ -33,7 +27,7 @@ export default function MyProducts() {
         setLoading(false);
     }, [])
 
-    //WORKS BUT TAKES 1S TO RENDER ALL PRODUCTS IDK WHY
+    //WORKS BUT TAKES 1S TO RENDER ALL PRODUCTS 
     // useEffect(async()=> {
     //     setLoading(true);
     //     const getAllProducts = async () =>{
@@ -50,7 +44,7 @@ export default function MyProducts() {
         <div >
             <section id="my-profile" className="my-profile">
             <div className="container" data-aos="fade-up">
-                <div className="section-title">
+                <div id="my-products" className="section-title">
                     <h2>Products</h2>
                     <p>My listed products</p>
                 </div>
@@ -60,7 +54,7 @@ export default function MyProducts() {
                 <div className="container">
                     {products.length > 0 && !loading
                         ? products.map(product => <ProductCard key={product.id} product={product} />)
-                        : <h3 className="no-articles">You have no listed products!</h3>
+                        : <h3 id="my-products" className="no-articles">You have no listed products!</h3>
                     }
                 </div>
             </section>
