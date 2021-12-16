@@ -1,19 +1,25 @@
 /*--------------------------------------------------------------
 # About
 --------------------------------------------------------------*/
-.about .content h3 {
+#about-title h2{
+  margin-top: 8%;
+}
+.about .content h6 {
   font-weight: 700;
   font-size: 28px;
   font-family: "Poppins", sans-serif;
 }
+
 .about .content ul {
   list-style: none;
   padding: 0;
 }
+
 .about .content ul li {
   padding: 0 0 8px 26px;
   position: relative;
 }
+
 .about .content ul i {
   position: absolute;
   font-size: 20px;
@@ -21,9 +27,11 @@
   top: -3px;
   color: #ffc451;
 }
+
 .about .content p:last-child {
   margin-bottom: 0;
 }
+
 /*--------------------------------------------------------------
   # Sections General
   --------------------------------------------------------------*/
@@ -38,6 +46,7 @@ section.about-title {
 }
 
 .section-title h2 {
+  margin-top: 7%;
   font-size: 14px;
   font-weight: 500;
   padding: 0;
@@ -68,12 +77,14 @@ section.about-title {
   color: #151515;
 }
 
-.about .content h3 {
-  color:dimgray;
+.about .content h6 {
+  color: dimgray;
   font-weight: 700;
   font-size: 27px;
   font-family: "Poppins", sans-serif;
 }
+
+
 
 .about .content ul {
   list-style: none;

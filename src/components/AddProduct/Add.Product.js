@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { db } from '../../firebase';
 import { useHistory } from 'react-router';
 import { addDoc, collection } from '@firebase/firestore';
@@ -21,26 +21,22 @@ export default function Register() {
     const [emptyBrand, setEmptyBrand] = useState(true);
     const [loading, setLoading] = useState(false);
     const { userId } = useAuth();
-
     const history = useHistory()
     const productsCollectionRef = collection(db, "products");
 
     async function getOptions(type) {
-        if (type == "Motherboard") {
+        if (type === "Motherboard") {
             setBrands(["ASRock", "Asus", "Biostar", "EVGA", "GIGABYTE", "MSI"]);
-        } else if (type == "CPU") {
+        } else if (type === "CPU") {
             setBrands(["Intel", "AMD"]);
         }
-        else if (type == "PSU") {
+        else if (type === "PSU") {
             setBrands(["Corsair", "EVGA", "Thermaltake"]);
-        } else if (type == "GPU") {
+        } else if (type === "GPU") {
             setBrands(["Nvidia", "AMD", "Asus", "EVGA", "GIGABYTE", "MSI", "Sapphire"]);
         }
         return;
     }
-
-
-
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -72,29 +68,15 @@ export default function Register() {
         setLoading(false);
     }
 
-
-
+    if (loading) return <h1> Loading </h1>
     return (
         <div>
-            <meta charSet="UTF-8" />
-            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-            <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
-
-
-            {/* Font Icon */}
-            <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css" />
-            {/* Main css */}
-            <link rel="stylesheet" href="css/style.css" />
             <div className="main">
                 <section className="signup" id="add-product">
-                    {/* <img src="images/signup-bg.jpg" alt=""> */}
                     <div className="container-reg">
                         <div className="signup-content" >
                             <form method="POST" onSubmit={handleSubmit} id="signup-form" className="signup-form form-auto">
                                 <h2 className="form-title">Create offer</h2>
-                                {/* <div className="form-group">
-                                    <input type="text" className="form-input" name="name" id="name" placeholder="Your Name" />
-                                </div> */}
                                 {error && <Alert variant="danger"> {error}</Alert>}
                                 <div className="form-group">
                                     <label className="label" form="headline">Headline</label>
@@ -146,7 +128,7 @@ export default function Register() {
                                 </div>
                                 <div className="form-group">
                                     <label className="label" form="Quantity">Quantity</label>
-                                    <input type="Quantity" className="form-input" name="Quantity" id="Quantity" placeholder="Quantity" required maxLength="3"
+                                    <input type="number" className="form-input" name="Quantity" id="Quantity" placeholder="Quantity" required maxLength="3"
                                         onChange={(event) => {
                                             setNewQuantity(event.target.value);
                                         }}
@@ -154,7 +136,7 @@ export default function Register() {
                                 </div>
                                 <div className="form-group">
                                     <label className="label" form="price">Price</label>
-                                    <input type="Price" className="form-input" name="price" id="price" placeholder="Price" required maxLength="5"
+                                    <input type="number" className="form-input" name="price" id="price" placeholder="Price" required maxLength="5"
                                         onChange={(event) => {
                                             setNewPrice(event.target.value);
                                         }}
