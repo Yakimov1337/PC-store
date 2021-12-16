@@ -28,33 +28,33 @@ import OrderReceipt from './components/OrderReceipt/OrderReceipt.js';
 function App() {
 
   return (
-    <div>
-      <AuthProvider>
-        <Header />
-        <Switch>
-          <Route exact path='/' component={Home} />
-          <Route path='/login' component={Login} />
-          <Route path='/register' component={Register} />
-          <Route path='/forgot-password' component={ForgotPassword} />
-          <Route path='/about' component={About} />
-          <Route path='/services' component={Services} />
-          <Route path='/team' component={Team} />
-          <Route path='/contact-us' component={ContactUs} />
-          <Route path='/marketplace-type-:categoryType-brand-:brandName' component={Marketplace} />
-          <Route path='/product-:productId' component={ProductDetails} />
-          <PrivateRoute path='/buy-:productId' component={OrderDetails} /> 
-          <PrivateRoute path='/receipt-:productId' component={OrderReceipt} /> 
-          <PrivateRoute path='/add-product' component={AddProduct} />
-          <PrivateRoute path='/edit-my-profile' component={EditProfile} />
-          <PrivateRoute path='/edit-:productId' component={EditProduct} />
-          <PrivateRoute path='/my-profile' component={MyProfile} />
-          <PrivateRoute path='/my-products' component={MyProducts} />
-          <Route path="/" component={NotFound} />
-        </Switch>
-        <Footer />
-        <Preloader />
-      </AuthProvider>
-    </div>
+      <div>
+        <AuthProvider>
+          <Header />
+          <Switch>
+            <Route exact path='/' component={Home} />
+            <Route path='/login' component={Login} />
+            <Route path='/register' component={Register} />
+            <Route path='/forgot-password' component={ForgotPassword} />
+            <Route path='/about' component={About} />
+            <Route path='/services' component={Services} />
+            <Route path='/team' component={Team} />
+            <Route path='/contact-us' component={ContactUs} />
+            <Route path='/marketplace-type-:categoryType-brand-:brandName' component={Marketplace} />
+            <Route path='/product-:productId' component={ProductDetails} />
+            <PrivateRoute path='/buy-:productId' component={OrderDetails} />
+            <PrivateRoute path='/receipt-:productId' component={OrderReceipt} />
+            <PrivateRoute path='/add-product' component={AddProduct} />
+            <PrivateRoute path='/edit-my-profile' component={EditProfile} />
+            <PrivateRoute path='/edit-:productId' component={EditProduct} />
+            <PrivateRoute path='/my-profile' component={MyProfile} />
+            <PrivateRoute path='/my-products' component={MyProducts} />
+            <Route path="/" component={NotFound} />
+          </Switch>
+          <Footer />
+          <Preloader />
+        </AuthProvider>
+      </div>
   );
 }
 

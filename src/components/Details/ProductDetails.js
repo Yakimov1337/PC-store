@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useAuth } from '../../contexts/AuthContext.js';
-import { doc, deleteDoc, getDoc, updateDoc } from "firebase/firestore";
+import { doc, deleteDoc, getDoc, updateDoc, arrayUnion } from "firebase/firestore";
 import { db } from "../../firebase";
 import { Link } from "react-router-dom";
 
@@ -12,7 +12,6 @@ export default function ProductDetails({ match }) {
     const [product, setProduct] = useState({});
     const [loading, setLoading] = useState(false);
     const [rated, setRated] = useState(false);
-    const [stars, setStars] = useState();
     const [deliveryTime, setDeliveryTime] = useState("Normal - 3 days delivery");
     const { userId } = useAuth();
 
@@ -26,16 +25,18 @@ export default function ProductDetails({ match }) {
         } else {
             console.log("No such document!");
         }
-
     }, [])
 
     //Works but re-work it later
     if (Object.keys(product).length > 0) {
-        console.log(product);
-        if (product.ratedUsers.includes(userId) && rated == false) {
-            setRated(true)
-        }
+        product.ratedUsers.forEach(ratedUser => {
+            if (userId == ratedUser && rated == false) {
+                setRated(true)
+            }
+        });
     }
+
+
 
     const deleteProduct = async (id) => {
         const productDoc = doc(db, "products", id);
@@ -43,13 +44,12 @@ export default function ProductDetails({ match }) {
     }
 
     //FIX THIS 
-    const addStars = async (id) => {
+    const addStars = async (id,stars) => {
         const productDoc = doc(db, "products", id);
-        let count = Number(product.stars) + Number(stars);
-        console.log(count);
+        let count = Number(product.stars+stars);
         let addStars = {
             stars: Number(count),
-            ratedUsers: [userId],
+            ratedUsers: arrayUnion(userId),
         }
         await updateDoc(productDoc, addStars)
     }
@@ -85,42 +85,36 @@ export default function ProductDetails({ match }) {
                 : <>
                     <input type="radio" id="star5" name="rate" value="5"
                         onClick={(event) => {
-                            setStars(event.target.value);
-                            addStars(match.params.productId);
+                            addStars(match.params.productId,5);
                             setRated(true);
                         }} />
                     <label htmlFor="star5" title="text">5 stars</label>
                     <input type="radio" id="star4" name="rate" value="4"
                         onClick={(event) => {
-                            setStars(event.target.value);
-                            addStars(match.params.productId);
+                            addStars(match.params.productId,4);
                             setRated(true);
                         }} />
                     <label htmlFor="star4" title="text">4 stars</label>
                     <input type="radio" id="star3" name="rate" value="3"
                         onClick={(event) => {
-                            setStars(event.target.value);
-                            addStars(match.params.productId);
+                            addStars(match.params.productId,3);
                             setRated(true);
                         }} />
                     <label htmlFor="star3" title="text">3 stars</label>
                     <input type="radio" id="star2" name="rate" value="2"
                         onClick={(event) => {
-                            setStars(event.target.value);
-                            addStars(match.params.productId);
+                            addStars(match.params.productId,2);
                             setRated(true);
                         }} />
                     <label htmlFor="star2" title="text">2 stars</label>
                     <input type="radio" id="star1" name="rate" value="1"
                         onClick={(event) => {
-                            setStars(event.target.value);
-                            addStars(match.params.productId);
+                            addStars(match.params.productId,1);
                             setRated(true);
                         }} />
                     <label htmlFor="star1" title="text">1 star</label>
                 </>
             }
-
         </div>
 
 
@@ -131,18 +125,13 @@ export default function ProductDetails({ match }) {
                 <div className="left-column ">
                     <img className="game-img" src={product.imageUrl} />
                 </div>
-
                 <div className="right-column">
-
                     <div className="product-description">
                         <span>{product.type}</span>
-
                         <h1>{product.headline}</h1>
                         <p>{product.description}</p>
                     </div>
-
                     <div className="product-configuration">
-
                         <div className="product-color">
                             <span>Color</span>
                             <div className="color-choose">
@@ -160,9 +149,6 @@ export default function ProductDetails({ match }) {
                                 </div>
                             </div>
                         </div>
-
-
-
                         <div className="cable-config">
                             <span>Delivery options</span>
                             <div className="cable-choose">
@@ -182,6 +168,7 @@ export default function ProductDetails({ match }) {
 
                     <div className="product-price">
                         {buttonsBasedOnUser}
+
                         {userId && userId != product.author
                             ? starsHtml
                             : ''
@@ -190,6 +177,7 @@ export default function ProductDetails({ match }) {
                             ? productRating
                             : ''
                         }
+
                     </div>
                 </div>
             </div>

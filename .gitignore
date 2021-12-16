@@ -32,3 +32,5 @@ src/firebase.js
 firestore.rules
 remoteconfig.template.json
 storage.rules
+public/index.html
+src/App.js
