@@ -31,3 +31,4 @@ src/firebase.js
 .env
 firestore.rules
 remoteconfig.template.json
+storage.rules

@@ -128,7 +128,7 @@ export default function Register() {
                                     <input type="password" ref={passwordConfirmRef} className="form-input" name="re_password" id="re_password" placeholder="Repeat your password" required />
                                 </div>
                                 <div className="form-group">
-                                    <input type="checkbox" name="agree-term" id="agree-term" className="agree-term" />
+                                    <input type="checkbox" name="agree-term" id="agree-term" className="agree-term" defaultChecked required />
                                     <label htmlFor="agree-term" className="label-agree-term"><span><span /></span>I agree all statements in  <a href="#" className="term-service">Terms of service</a></label>
                                 </div>
                                 <div className="form-group">
