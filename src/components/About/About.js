@@ -5,7 +5,7 @@ export default function About() {
             <section id="about-title" className="about-title">
                 <div className="container" data-aos="fade-up">
                     <div className="section-title">
-                        <h2>About</h2>
+                        <h2 id="about-title">About</h2>
                         <p>Why we are here</p>
                     </div>
                 </div>
@@ -19,7 +19,7 @@ export default function About() {
                             <img src="assets/img/photo.jpg" className="img-fluid" alt="" />
                         </div>
                         <div className="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right" data-aos-delay="100">
-                            <h3>Welcome to PC-STORE, your number one source for digital products. We're dedicated to giving you the very best of digital world, with a focus on best marketplace on the web.</h3>
+                            <h6 className="about-heading">Welcome to PC-STORE, your number one source for digital products. We're dedicated to giving you the very best of digital world, with a focus on best marketplace on the web.</h6>
                             <p className="fst-italic">
                                 Founded in 1996 by George Yakimov, PC-STORE has come a long way from its beginnings in Bulgaria.
                                 When Geore first started out, his passion for leading digital marketplace
