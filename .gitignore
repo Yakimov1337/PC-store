@@ -34,3 +34,4 @@ remoteconfig.template.json
 storage.rules
 public/index.html
 src/App.js
+firebase.json

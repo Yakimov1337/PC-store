@@ -97,7 +97,7 @@ export default function EditProduct({ match }) {
                                 </div>
 
                                 <div className="form-group">
-                                    <input type="submit" name="AddProduct" className="form-submit" value="Edit product"
+                                    <input type="submit" name="AddProduct" className="form-submit" value="Edit profile"
                                     // onClick={() => {editProduct( currentProduct.id)}} 
                                     />
                                 </div>
