@@ -93,7 +93,7 @@ export default function EditProduct({ match }) {
                                 </div>
                                 <div className="form-group">
                                     <label className="label" form="price">Price</label>
-                                    <input type="Price" className="form-input" name="price" id="price" placeholder="Price" maxLength="5"
+                                    <input type="number" className="form-input" name="price" id="price" placeholder="Price" maxLength="5"
                                         defaultValue={currentProduct.price}
                                         required
                                     />
