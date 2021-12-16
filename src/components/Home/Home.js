@@ -1,69 +1,81 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import { useAuth } from '../../contexts/AuthContext.js';
+import { useAuth } from '../../contexts/AuthContext';
+import { collection, getDocs, doc, query, where } from "@firebase/firestore";
+import { db } from '../../firebase'
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 
 export default function Main() {
     require('./home.style.css')
     const { currentUser } = useAuth();
+    const [products, setProducts] = useState([]);
+    const userCollectionRef = collection(db, "products");
+    useEffect(async () => {
+        const q = query(userCollectionRef, where("type", "==", "GPU"));
+        const querySnapshot = await getDocs(q)
+        const items = [];
+        querySnapshot.forEach((doc) => {
+            let product = {
+                id: doc.id,
+                ...doc.data(),
+            };
+            items.push(product);
+        });
+        setProducts(items);
+    }, []);
+    console.log();
 
     let button = '';
     if (currentUser) {
         button = <Link className="cta-btn" to="/marketplace-type-all-brand-all">Explore now</Link>
     } else {
-        button = <Link className="cta-btn" to="/login">Sign Up</Link>
+        button = <Link className="cta-btn" to="/register">Sign Up</Link>
     }
     return (
         <div id='home'>
-            <div >
-                <section id="hero" className="d-flex align-items-center justify-content-center">
-                    <div className="container" data-aos="fade-up">
-
-                        <div className="row justify-content-center" data-aos="fade-up" data-aos-delay="150">
-                            <div className="col-xl-6 col-lg-8">
-                                <h1>Powerful Digital Solutions By PC Store<span>.</span></h1>
-                                <h2>We are team of talented digital marketers</h2>
-                            </div>
+            <section id="hero" className="d-flex align-items-center justify-content-center">
+                <div className="container" data-aos="fade-up">
+                    <div className="row justify-content-center" data-aos="fade-up" data-aos-delay="150">
+                        <div className="col-xl-6 col-lg-8">
+                            <h1>Powerful Digital Solutions By PC Store<span>.</span></h1>
+                            <h2>We are team of talented digital marketers</h2>
                         </div>
-
-                        <div className="row gy-4 mt-5 justify-content-center" data-aos="zoom-in" data-aos-delay="250">
-                            <div className="col-xl-2 col-md-4">
-                                <div className="icon-box">
-                                    <i className='bx bx-store'></i>
-                                    <h3><Link to="/marketplace-type-all-brand-all">Biggest Marketplace</Link></h3>
-                                </div>
-                            </div>
-                            <div className="col-xl-2 col-md-4">
-                                <div className="icon-box">
-                                    <i className="ri-bar-chart-box-line"></i>
-                                    <h3><Link to="/services">Financial Service</Link></h3>
-                                </div>
-                            </div>
-                            <div className="col-xl-2 col-md-4">
-                                <div className="icon-box">
-                                    <i className="ri-calendar-todo-line"></i>
-                                    <h3><Link to="/services">Analytics</Link></h3>
-                                </div>
-                            </div>
-                            <div className="col-xl-2 col-md-4">
-                                <div className="icon-box">
-                                    <i className="ri-paint-brush-line"></i>
-                                    <h3><Link to="/services">Repair Service</Link></h3>
-                                </div>
-                            </div>
-                            <div className="col-xl-2 col-md-4">
-                                <div className="icon-box">
-                                    <i className="ri-database-2-line"></i>
-                                    <h3><Link to="/services">Storage</Link></h3>
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
-                </section>
-            </div>
+                    <div className="row gy-4 mt-5 justify-content-center" data-aos="zoom-in" data-aos-delay="250">
+                        <div className="col-xl-2 col-md-4">
+                            <div className="icon-box">
+                                <i className='bx bx-store'></i>
+                                <h3><Link to="/marketplace-type-all-brand-all">Biggest Marketplace</Link></h3>
+                            </div>
+                        </div>
+                        <div className="col-xl-2 col-md-4">
+                            <div className="icon-box">
+                                <i className="ri-bar-chart-box-line"></i>
+                                <h3><Link to="/services">Financial Service</Link></h3>
+                            </div>
+                        </div>
+                        <div className="col-xl-2 col-md-4">
+                            <div className="icon-box">
+                                <i className="ri-calendar-todo-line"></i>
+                                <h3><Link to="/services">Analytics</Link></h3>
+                            </div>
+                        </div>
+                        <div className="col-xl-2 col-md-4">
+                            <div className="icon-box">
+                                <i className="ri-paint-brush-line"></i>
+                                <h3><Link to="/services">Repair Service</Link></h3>
+                            </div>
+                        </div>
+                        <div className="col-xl-2 col-md-4">
+                            <div className="icon-box">
+                                <i className="ri-database-2-line"></i>
+                                <h3><Link to="/services">Storage</Link></h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
             <main id="main">
-
                 <section id="services" className="services">
                     <div className="container" data-aos="fade-up">
 
@@ -101,171 +113,41 @@ export default function Main() {
                         </div>
                     </div>
                 </section>
-
                 <section id="cta" className="cta">
                     <div className="container" data-aos="zoom-in">
 
                         <div className="text-center">
                             <h3>Get Started</h3>
                             <p> Explore our biggest and trusted marketplace.Find solution for your business.Satisfy your needs.</p>
-
                             {button}
-
                         </div>
-
                     </div>
                 </section>
 
-
                 <section id="portfolio" className="portfolio">
                     <div className="container" data-aos="fade-up">
-
                         <div className="section-title">
                             <h2>Products</h2>
-                            <p>Check our latest Products</p>
+                            <p>Check our hot Products</p>
                         </div>
-
-                        <div className="row" data-aos="fade-up" data-aos-delay="100">
-                            <div className="col-lg-12 d-flex justify-content-center">
-                                <ul id="portfolio-flters">
-                                    <li data-filter="*" className="filter-active">All</li>
-                                    <li data-filter=".filter-app">CPU</li>
-                                    <li data-filter=".filter-card">GPU</li>
-                                    <li data-filter=".filter-web">MOTHERBOARD</li>
-                                </ul>
-                            </div>
-                        </div>
-
                         <div className="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
-
-                            <div className="col-lg-4 col-md-6 portfolio-item filter-app">
-                                <div className="portfolio-wrap">
-                                    <img src="assets/img/portfolio/portfolio-1.jpg" className="img-fluid" alt="" />
-                                    <div className="portfolio-info">
-                                        <h4>App 1</h4>
-                                        <p>App</p>
-                                        <div className="portfolio-links">
-                                            <a href="assets/img/portfolio/portfolio-1.jpg" data-gallery="portfolioGallery" className="portfolio-lightbox" title="App 1"><i className="bx bx-plus"></i></a>
-                                            <a href="portfolio-details.html" title="More Details"><i className="bx bx-link"></i></a>
+                            {products.length > 0
+                                ? products.map(product => 
+                                    <div className="col-lg-4 col-md-6 portfolio-item filter-app" key={product.id}>
+                                        <div className="portfolio-wrap">
+                                            <img src={product.imageUrl} className="img-fluid" alt="" />
+                                            <div className="portfolio-info">
+                                                <h4>{product.heading}</h4>
+                                                <p>{product.heading}</p>
+                                                <div className="portfolio-links">
+                                                    <Link to={`/product-${product.id}`} title="More Details"><i className="bx bx-link"></i></Link>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="col-lg-4 col-md-6 portfolio-item filter-web">
-                                <div className="portfolio-wrap">
-                                    <img src="assets/img/portfolio/portfolio-2.jpg" className="img-fluid" alt="" />
-                                    <div className="portfolio-info">
-                                        <h4>Web 3</h4>
-                                        <p>Web</p>
-                                        <div className="portfolio-links">
-                                            <a href="assets/img/portfolio/portfolio-2.jpg" data-gallery="portfolioGallery" className="portfolio-lightbox" title="Web 3"><i className="bx bx-plus"></i></a>
-                                            <a href="portfolio-details.html" title="More Details"><i className="bx bx-link"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="col-lg-4 col-md-6 portfolio-item filter-app">
-                                <div className="portfolio-wrap">
-                                    <img src="assets/img/portfolio/portfolio-3.jpg" className="img-fluid" alt="" />
-                                    <div className="portfolio-info">
-                                        <h4>App 2</h4>
-                                        <p>App</p>
-                                        <div className="portfolio-links">
-                                            <a href="assets/img/portfolio/portfolio-3.jpg" data-gallery="portfolioGallery" className="portfolio-lightbox" title="App 2"><i className="bx bx-plus"></i></a>
-                                            <a href="portfolio-details.html" title="More Details"><i className="bx bx-link"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="col-lg-4 col-md-6 portfolio-item filter-card">
-                                <div className="portfolio-wrap">
-                                    <img src="assets/img/portfolio/portfolio-4.jpg" className="img-fluid" alt="" />
-                                    <div className="portfolio-info">
-                                        <h4>Card 2</h4>
-                                        <p>Card</p>
-                                        <div className="portfolio-links">
-                                            <a href="assets/img/portfolio/portfolio-4.jpg" data-gallery="portfolioGallery" className="portfolio-lightbox" title="Card 2"><i className="bx bx-plus"></i></a>
-                                            <a href="portfolio-details.html" title="More Details"><i className="bx bx-link"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="col-lg-4 col-md-6 portfolio-item filter-web">
-                                <div className="portfolio-wrap">
-                                    <img src="assets/img/portfolio/portfolio-5.jpg" className="img-fluid" alt="" />
-                                    <div className="portfolio-info">
-                                        <h4>Web 2</h4>
-                                        <p>Web</p>
-                                        <div className="portfolio-links">
-                                            <a href="assets/img/portfolio/portfolio-5.jpg" data-gallery="portfolioGallery" className="portfolio-lightbox" title="Web 2"><i className="bx bx-plus"></i></a>
-                                            <a href="portfolio-details.html" title="More Details"><i className="bx bx-link"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="col-lg-4 col-md-6 portfolio-item filter-app">
-                                <div className="portfolio-wrap">
-                                    <img src="assets/img/portfolio/portfolio-6.jpg" className="img-fluid" alt="" />
-                                    <div className="portfolio-info">
-                                        <h4>App 3</h4>
-                                        <p>App</p>
-                                        <div className="portfolio-links">
-                                            <a href="assets/img/portfolio/portfolio-6.jpg" data-gallery="portfolioGallery" className="portfolio-lightbox" title="App 3"><i className="bx bx-plus"></i></a>
-                                            <a href="portfolio-details.html" title="More Details"><i className="bx bx-link"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="col-lg-4 col-md-6 portfolio-item filter-card">
-                                <div className="portfolio-wrap">
-                                    <img src="assets/img/portfolio/portfolio-7.jpg" className="img-fluid" alt="" />
-                                    <div className="portfolio-info">
-                                        <h4>Card 1</h4>
-                                        <p>Card</p>
-                                        <div className="portfolio-links">
-                                            <a href="assets/img/portfolio/portfolio-7.jpg" data-gallery="portfolioGallery" className="portfolio-lightbox" title="Card 1"><i className="bx bx-plus"></i></a>
-                                            <a href="portfolio-details.html" title="More Details"><i className="bx bx-link"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="col-lg-4 col-md-6 portfolio-item filter-card">
-                                <div className="portfolio-wrap">
-                                    <img src="assets/img/portfolio/portfolio-8.jpg" className="img-fluid" alt="" />
-                                    <div className="portfolio-info">
-                                        <h4>Card 3</h4>
-                                        <p>Card</p>
-                                        <div className="portfolio-links">
-                                            <a href="assets/img/portfolio/portfolio-8.jpg" data-gallery="portfolioGallery" className="portfolio-lightbox" title="Card 3"><i className="bx bx-plus"></i></a>
-                                            <a href="portfolio-details.html" title="More Details"><i className="bx bx-link"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="col-lg-4 col-md-6 portfolio-item filter-web">
-                                <div className="portfolio-wrap">
-                                    <img src="assets/img/portfolio/portfolio-9.jpg" className="img-fluid" alt="" />
-                                    <div className="portfolio-info">
-                                        <h4>Web 3</h4>
-                                        <p>Web</p>
-                                        <div className="portfolio-links">
-                                            <a href="assets/img/portfolio/portfolio-9.jpg" data-gallery="portfolioGallery" className="portfolio-lightbox" title="Web 3"><i className="bx bx-plus"></i></a>
-                                            <a href="portfolio-details.html" title="More Details"><i className="bx bx-link"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
+                                    </div>)
+                                : <h3 className="no-articles">There are no hot products right now!</h3>
+                            }
                         </div>
-
                     </div>
                 </section>
 
