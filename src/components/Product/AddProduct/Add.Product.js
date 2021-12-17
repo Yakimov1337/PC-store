@@ -15,7 +15,7 @@ export default function Register() {
     let [newDesc, setNewDesc] = useState("");
     let [newImageUrl, setNewImageUrl] = useState("");
     let [newPrice, setNewPrice] = useState(0);
-    let [newQuantity,setNewQuantity] = useState(0);
+    let [newQuantity, setNewQuantity] = useState(0);
     const [error, setError] = useState('');
     const [emptyCategory, setEmptyCategory] = useState(true);
     const [emptyBrand, setEmptyBrand] = useState(true);
@@ -40,8 +40,8 @@ export default function Register() {
 
     async function handleSubmit(e) {
         e.preventDefault();
-        console.log(emptyBrand,emptyCategory);
-        if (emptyBrand||emptyCategory) {
+        console.log(emptyBrand, emptyCategory);
+        if (emptyBrand || emptyCategory) {
             return setError('Please select category and option!')
         }
         try {
@@ -59,9 +59,9 @@ export default function Register() {
                     stars: Number(0),
                     quantity: Number(newQuantity),
                     ratedUsers: []
+                }).then(() => {
+                    history.push('/marketplace-type-all-brand-all')
                 })
-            history.push('/marketplace-type-all-brand-all')
-
         } catch {
             setError('Failed to create a product!');
         }
@@ -75,12 +75,12 @@ export default function Register() {
                 <section className="signup" id="add-product">
                     <div className="container-reg">
                         <div className="signup-content" >
-                            <form method="POST" onSubmit={handleSubmit} id="signup-form" className="signup-form form-auto">
+                            <forms id="signup-form" className="signup-form form-auto">
                                 <h2 className="form-title">Create offer</h2>
                                 {error && <Alert variant="danger"> {error}</Alert>}
                                 <div className="form-group">
                                     <label className="label" form="headline">Headline</label>
-                                    <input type="headline" className="form-input" name="email" id="email" placeholder="Product headline" required maxLength="35"
+                                    <input type="headline" className="form-input" name="headline" id="headline" placeholder="Product headline" required maxLength="35"
                                         onChange={(event) => {
                                             setNewHeadline(event.target.value);
                                         }}
@@ -144,9 +144,9 @@ export default function Register() {
                                 </div>
 
                                 <div className="form-group">
-                                    <input type="submit" name="AddProduct" className="form-submit" value="Add product" />
+                                    <input onClick={handleSubmit} type="submit" name="AddProduct" className="form-submit" value="Add product" />
                                 </div>
-                            </form>
+                            </forms>
                         </div>
                     </div>
                 </section>
