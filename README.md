@@ -1,70 +1,39 @@
-# Getting Started with Create React App
+# Project Description 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[x] The project goal is create website about digital services. Website offers services like
+Advertising & Marketing, Game Tech, Security and Identity, Cloud services but its main goal is 
+to provide Marketplace where members can list products, place an order and also rate items.
+Marketplace section has four categories [GPU,CPU,PSU,MOTHERBOARD] every category has brand name.
+From contact page all visitors can contact us and see our location on google maps.
+Guest users are able to become members via [facebook]!
 
-## Available Scripts
+# Product details and placing an order 
+[x] While opening details of any product, all visitors are able to see product details as 
+heading, type, description, price and rating but only members can [RATE] and [BUY] or [EDIT/DELETE]
+if they are authors. On pressing [BUY] button registered user is redirected to a shipping details page,
+where details like address, name, phone are needed to place an order. There is **use my profile address**
+checkbox button which will fulfil shipping information automatically from current user profile information.
+After successfully placing an order, order receipt page will appear with all the information needed as
+delivery time, max revisions, total cost + fees and VAT and more.
 
-In the project directory, you can run:
+# My profile 
+[x] My profile section is page with all the information about current user as username, email, phone Number,
+delivery address, city, zip code, user image. All this information could be edited by clicking [EDIT] button.
 
-### `npm start`
+# My listings
+[x] My listing page shows all listed products by current user.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# Guest users
+[x] Guest users are able to visit only static pages as home/about/contact/services and dynamic marketplace/details.
+[x] Guest users are able to see product [RATING] but are NOT able to RATE or Place an order[BUY] product.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+# Registered users
+[x] Registered users are able to access all the functionalities as place an order, rate a product, my profile pages.
 
-### `npm test`
+# Data validation
+[x] Error handling and data validation for all forms and fields like email@ etc... is applied.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Links 
+Firebase deployed: [https://mystore-f7ec1.web.app] [https://mystore-f7ec1.firebaseapp.com]
+Github link: [https://github.com/Yakimov1337/PC-store]
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
