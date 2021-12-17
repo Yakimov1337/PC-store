@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import ProductCard from "./ProductCard.js";
 import { collection, getDoc, getDocs, query, where } from "@firebase/firestore";
-import { db } from "../../firebase.js";
-import { useAuth } from "../../contexts/AuthContext.js";
+import { db } from "../../../firebase.js";
+import { useAuth } from "../../../contexts/AuthContext.js";
 
 export default function MyProducts() {
     require('./myproducts.style.css');

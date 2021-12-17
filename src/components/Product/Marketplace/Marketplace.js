@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom'
 import ProductCard from "./ProductCard.js";
 import { collection, getDocs, where, query } from "@firebase/firestore";
-import { db } from "../../firebase.js";
+import { db } from "../../../firebase.js";
 
 
 

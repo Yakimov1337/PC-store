@@ -1,27 +1,27 @@
 import { Route, Switch } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthContext.js';
 import Footer from './components/Footer/Footer.js';
-import ForgotPassword from './components/ForgotPassword/ForgotPassword.js';
+import ForgotPassword from './components/Sign/ForgotPassword/ForgotPassword.js';
 import Header from './components/NavBar/NavBar';
-import Login from './components/Login/Login.js';
+import Login from './components/Sign/Login/Login.js';
 import Home from './components/Home/Home';
-import Marketplace from './components/Marketplace/Marketplace.js';
-import MyProfile from './components/MyProfile/MyProfile.js';
+import Marketplace from './components/Product/Marketplace/Marketplace.js';
+import MyProfile from './components/User/MyProfile/MyProfile.js';
 import Preloader from './components/Static/Preloader/Preloader';
-import Register from './components/Register/Register.js';
+import Register from './components/Sign/Register/Register.js';
 import PrivateRoute from '../src/contexts/PrivateRoute.js';
 import NotFound from './components/Static/404-NotFound/NotFound.js';
 import About from './components/Static/About/About.js';
-import AddProduct from './components/AddProduct/Add.Product.js';
-import EditProduct from './components/Edit/EditProduct.js';
-import EditProfile from './components/Edit-Profile/EditProfile.js';
+import AddProduct from './components/Product/AddProduct/Add.Product.js';
+import EditProduct from './components/Product/Edit/EditProduct.js';
+import EditProfile from './components/User/Edit-Profile/EditProfile.js';
 import ContactUs from './components/Static/Contact-us/ContactUs.js';
-import Services from './components/Services-comp/Services.js';
+import Services from './components/Static/Services-comp/Services.js';
 import Team from './components/Static/Team/Team.js';
-import ProductDetails from './components/Details/ProductDetails.js';
-import MyProducts from './components/MyProducts/MyProducts.js';
-import OrderDetails from './components/Order/OrderDetails.js';
-import OrderReceipt from './components/OrderReceipt/OrderReceipt.js';
+import ProductDetails from './components/Product/Details/ProductDetails.js';
+import MyProducts from './components/User/MyProducts/MyProducts.js';
+import OrderDetails from './components/Product/Order/OrderDetails.js';
+import OrderReceipt from './components/Product/OrderReceipt/OrderReceipt.js';
 
 
 

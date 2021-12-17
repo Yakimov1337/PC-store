@@ -1,6 +1,6 @@
-import { useAuth } from '../../contexts/AuthContext';
+import { useAuth } from '../../../contexts/AuthContext';
 import { collection, getDocs, doc, query, where } from "@firebase/firestore";
-import { db } from '../../firebase'
+import { db } from '../../../firebase'
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -13,7 +13,7 @@ export default function MyProfile() {
     const userCollectionRef = collection(db, "users");
     // const userCollectionRef = doc(db, "users", userId);
 
-    let level = "Begginer";
+    let level = "Beginner";
     useEffect(async () => {
         const q = query(userCollectionRef, where("email", "==", currentUser.email));
         const querySnapshot = await getDocs(q)

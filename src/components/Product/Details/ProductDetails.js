@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { useAuth } from '../../contexts/AuthContext.js';
+import { useAuth } from '../../../contexts/AuthContext.js';
 import { doc, deleteDoc, getDoc, updateDoc, arrayUnion } from "firebase/firestore";
-import { db } from "../../firebase";
+import { db } from "../../../firebase";
 import { Link } from "react-router-dom";
 
 
@@ -58,7 +58,7 @@ export default function ProductDetails({ match }) {
             <span>{product.price} € </span>
             {userId
                 ? <Link to={{ pathname: `/buy-${match.params.productId}`, data: { deliveryTime, productPrice: product.price } }} className="cart-btn">Buy now</Link>
-                : ""
+                : <div className="cart-btn">Price</div>
             }
         </div >
 

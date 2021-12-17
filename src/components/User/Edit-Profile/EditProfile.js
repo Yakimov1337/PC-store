@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
-import { db } from '../../firebase';
+import { db } from '../../../firebase';
 import { useHistory } from 'react-router';
 import { doc, updateDoc, getDocs, where, query, collection } from '@firebase/firestore';
 import { useEffect } from 'react';
-import { useAuth } from '../../contexts/AuthContext';
+import { useAuth } from '../../../contexts/AuthContext';
 
 
 
 export default function EditProduct({ match }) {
     require('./css/style.css');
 
-    const history = useHistory()
+    const history = useHistory();
     const [user, setUser] = useState('');
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
@@ -80,7 +80,7 @@ export default function EditProduct({ match }) {
                                 </div>
                                 <div className="form-group">
                                     <label className="label" form="desc" >Address</label>
-                                    <input type="description" className="form-input" name="address" id="address" placeholder="address" 
+                                    <input type="description" className="form-input" name="address" id="address" placeholder="address"
                                         defaultValue={user.address} required
                                     />
                                 </div>

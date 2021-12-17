@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { db } from '../../firebase';
+import { db } from '../../../firebase';
 import { useHistory } from 'react-router';
 import { addDoc, collection } from '@firebase/firestore';
-import { useAuth } from '../../contexts/AuthContext';
+import { useAuth } from '../../../contexts/AuthContext';
 import { Alert } from 'react-bootstrap';
 
 

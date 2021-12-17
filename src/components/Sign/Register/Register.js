@@ -1,8 +1,8 @@
 import { collection, addDoc, getDocs } from '@firebase/firestore';
-import { db } from '../../firebase';
+import { db } from '../../../firebase';
 import React, { useRef, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { useAuth } from '../../contexts/AuthContext';
+import { useAuth } from '../../../contexts/AuthContext';
 import { Alert } from 'react-bootstrap';
 
 

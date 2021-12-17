@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
-import { useAuth } from '../../contexts/AuthContext.js';
+import { useAuth } from '../../../contexts/AuthContext.js';
 import { doc, deleteDoc, getDoc, updateDoc, getDocs, where, query, collection } from "firebase/firestore";
-import { db } from "../../firebase";
-import { useHistory } from "react-router";
-import { Link, Redirect } from "react-router-dom"
+import { db } from "../../../firebase";
+import { Redirect } from "react-router-dom"
 
 
 export default function OrderDetails({
