@@ -2,7 +2,7 @@
 ![pcstore](https://i.ibb.co/DRbvFhJ/Screenshot-35.png)
 # Project Description 
 
-[x] The project goal is create website about digital services. Website offers services like
+[x] The project goal is to create website about digital services. Website offers services like
 Advertising & Marketing, Game Tech, Security and Identity, Cloud services but its main goal is 
 to provide Marketplace where members can list products, place an order and also rate items.
 Marketplace section has four categories [GPU,CPU,PSU,MOTHERBOARD] every category has brand name.
