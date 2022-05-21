@@ -1,5 +1,5 @@
 # PC-Store - Explore the digital world
-![pcstore](https://ibb.co/DRbvFhJ)
+![pcstore](https://i.ibb.co/DRbvFhJ/Screenshot-35.png)
 # Project Description 
 
 [x] The project goal is create website about digital services. Website offers services like
